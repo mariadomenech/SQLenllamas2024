@@ -1,0 +1,7 @@
+[
+    {
+        "question": "¿Cuánto ha gastado en total cada cliente en el restaurante?",
+        "answer": ["Customer A: 76, customer B: 74 , customer C: 36"],
+        "explanation": "La consulta SQL utilizada (ver solution_day1_mat.sql) encuentra la cantidad total que cada cliente ha gastado en el restaurante. Utiliza la información de las tablas MENU y SALES, las cuales están vinculadas por el ID del producto. La suma de los precios de ventas se agrupa por el ID del cliente (CUSTOMER_ID), proporcionando el gasto total de cada cliente.",
+    }
+]
