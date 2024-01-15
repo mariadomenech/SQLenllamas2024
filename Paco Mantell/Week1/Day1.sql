@@ -5,3 +5,4 @@ JOIN SQL_EN_LLAMAS.CASE01.MENU B
 ON A.product_id=B.product_id
 GROUP BY A.customer_id
 ORDER BY A.customer_id
+
