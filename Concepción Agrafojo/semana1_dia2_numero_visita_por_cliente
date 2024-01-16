@@ -1,0 +1,5 @@
+USE DATABASE sql_en_llamas;
+
+select sales.customer_id CLIENTE, count(distinct sales.order_date) NUMERO_VISITAS
+from case01.sales
+group by sales.customer_id
