@@ -1,3 +1,4 @@
+--¿Cuánto ha gastado en total cada cliente en el restaurante?
 SELECT 
      members.customer_id
     ,COALESCE(SUM(menu.price),0) AS total_spend
