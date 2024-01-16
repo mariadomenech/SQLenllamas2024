@@ -1,13 +1,13 @@
 
 //mostrando solo los clientes que han ido alguna vez
 select customer_id, 
-        count(cast(order_date as text)) as days
+        count(distinct(cast(order_date as text))) as days
         from SQL_EN_LLAMAS.CASE01.SALES
         group by customer_id
 
 //mostrando todos los clientes (aprovechando el script del día 1)
 select a.customer_id,
-        count(cast(c.order_date as text)) as days
+        count(distinct(cast(c.order_date as text))) as days
     from SQL_EN_LLAMAS.CASE01.MEMBERS a
         left join SQL_EN_LLAMAS.CASE01.SALES c 
             on a.customer_id = c.customer_id
@@ -17,7 +17,7 @@ select a.customer_id,
 
 //mostrando todos los clientes (aprovechando el script del día 1 pero omitiendo el menú)
 select a.customer_id,
-        count(cast(c.order_date as text)) as days
+        count(distinct(cast(c.order_date as text))) as days
     from SQL_EN_LLAMAS.CASE01.MEMBERS a
         left join SQL_EN_LLAMAS.CASE01.SALES c 
             on a.customer_id = c.customer_id
