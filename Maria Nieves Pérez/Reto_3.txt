@@ -1,0 +1,29 @@
+WITH primero AS (
+    SELECT 
+        s.customer_id, 
+        CASE WHEN s.order_date = (MIN(s.order_date) OVER (PARTITION BY s.customer_id)) THEN m.product_name 
+            ELSE NULL END AS primer_producto,
+        s.order_date
+    FROM SQL_EN_LLAMAS.CASE01.SALES s
+        INNER JOIN SQL_EN_LLAMAS.CASE01.MENU m 
+            ON s.product_id=m.product_id 
+    ORDER BY primer_producto
+),
+
+segundo AS (
+    SELECT 
+        me.customer_id,
+        p.order_date,
+        primer_producto
+    FROM primero p
+        RIGHT JOIN SQL_EN_LLAMAS.CASE01.MEMBERS me 
+            ON p.customer_id=me.customer_id 
+    WHERE primer_producto IS NOT NULL OR p.order_date IS NULL
+)
+
+SELECT 
+    customer_id, 
+    COALESCE(order_date::varchar(10),'No hay producto'),
+    CASE WHEN primer_producto IS NULL THEN 'No hay producto'
+        ELSE primer_producto END AS primer_producto
+FROM segundo;
