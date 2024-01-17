@@ -1,5 +1,5 @@
 --------------------------------------------------------------DIA_3----------------------------------------------------------
-
+--Versión JOIN_DATE desactualizado
 SELECT DISTINCT
     D.CUSTOMER_ID,
     IFNULL(PRODUCT_NAME, 'ninguno') as PRODUCTOS_CONSUMIDOS,
@@ -17,3 +17,19 @@ INNER JOIN MENU C
     ON B.PRODUCT_ID = C.PRODUCT_ID
 FULL JOIN MEMBERS D
     ON A.CUSTOMER_ID = D.CUSTOMER_ID;
+
+    
+--Versión JOIN_DATE actualizado
+SELECT DISTINCT
+    C.CUSTOMER_ID,
+    IFNULL(PRODUCT_NAME, 'ninguno') as PRODUCTOS_CONSUMIDOS,
+    CASE
+        WHEN PRODUCTOS_CONSUMIDOS = 'ninguno' THEN 'nunca'
+        ELSE TO_CHAR(JOIN_DATE)
+    END AS FECHA_DE_CONSUMO
+FROM SALES A
+INNER JOIN MENU B
+    ON A.PRODUCT_ID = B.PRODUCT_ID
+RIGHT JOIN MEMBERS C
+    ON A.CUSTOMER_ID = C.CUSTOMER_ID
+    AND A.ORDER_DATE = C.JOIN_DATE;
