@@ -14,7 +14,7 @@ GROUP BY C.CUSTOMER_ID;
 /*********************************/
 /***** COMENTARIO JUAN PEDRO *****/
 /*********************************/
-/*
+/* 
 El resultado es el que se buscaba, pero el código tiene ciertas cosas que no son del todo correcto. Te las cuento:
 
     * Cuando llamas al campo PRICE no hay problema porque solo está en una tabla pero es una buena práctica que 
