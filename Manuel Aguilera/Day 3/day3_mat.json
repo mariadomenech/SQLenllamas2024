@@ -1,4 +1,4 @@
-]
+
 	{
 		"question_day": 3,
 		"question": "¿Cuál es el primer producto que ha pedido cada cliente?",
@@ -9,4 +9,3 @@
 		],
 		"explanation": "La consulta SQL utilizada (ver solution_day3_mat.sql) identifica el primer pedido de cada cliente, incluyendo el nombre del producto desde la tabla MENU. Se ha usado RANK() en vez del ROW_NUMBER() porque el ORDER_DATE sólo muestra la fecha y no la hora, por lo que no sabemos que producto se compró primero en caso de la compra de dos productos el mismo día. En este caso, es decir en caso de empate, muestra los dos"
 	}
-]
