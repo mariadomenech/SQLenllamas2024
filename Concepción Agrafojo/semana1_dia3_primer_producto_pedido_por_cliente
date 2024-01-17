@@ -1,6 +1,6 @@
 USE DATABASE sql_en_llamas;
 
-/* semana 1, día 3 - PRIMER PRODUCTO QUE HA PEDIDO CADA CLIENTE*/
+/* semana 1, día 3 - PRIMER PRODUCTO QUE HA PEDIDO CADA CLIENTE - Solución 1 */
 
 select distinct sales.customer_id CLIENTE, menu.product_name PRIMER_PRODUCTO_PEDIDO
 from case01.sales
@@ -8,3 +8,21 @@ inner join case01.menu
     on sales.product_id= menu.product_id
 inner join case01.members
     on sales.order_date= members.join_date;
+
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+--OTRA SOLUCION SERIA:
+/* semana 1, día 3 - PRIMER PRODUCTO QUE HA PEDIDO CADA CLIENTE - Solución 2 */
+
+USE DATABASE sql_en_llamas;
+
+select distinct sales.customer_id CLIENTE,  menu.product_name PRIMER_PRODUCTO_PEDIDO
+from case01.sales
+inner join case01.menu
+    on sales.product_id= menu.product_id
+where (sales.customer_id,sales.order_date ) in 
+    (
+    select sales.customer_id , min(sales.order_date) 
+    from case01.sales
+    group by sales.customer_id
+    );
