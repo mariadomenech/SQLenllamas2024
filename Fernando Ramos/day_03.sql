@@ -15,3 +15,16 @@ FROM (
             ON S.product_id = M.product_id 
     )
 WHERE PRIMERA_CONSUMICION = 1
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+
+/* 
+
+Me parece muy guay que hagas uso de una función de ventana como es el RANK. Así veo que las entiendes.
+
+Quizás como extra, porque lo que pedimos lo cumples, mejoraría la visualización de los resultados finales, de modo que sean más sencillos de interpretar
+para alguien que vea el resultado en forma de tabla.
+
+*/
