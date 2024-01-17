@@ -1,5 +1,5 @@
 //Día 3: ¿Cuál es el primer producto que ha pedido cada cliente?
-select sales.customer_id, ARRAY_AGG (menu.product_name), sales.order_date
+select sales.customer_id, LISTAGG ( distinct menu.product_name, ','), sales.order_date
 from case01.sales
 inner join case01.menu
 on sales.product_id = menu.product_id
