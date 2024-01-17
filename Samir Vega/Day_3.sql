@@ -1,0 +1,19 @@
+--------------------------------------------------------------DIA_3----------------------------------------------------------
+
+SELECT DISTINCT
+    D.CUSTOMER_ID,
+    IFNULL(PRODUCT_NAME, 'ninguno') as PRODUCTOS_CONSUMIDOS,
+    IFNULL(TO_CHAR(FECHA_DE_CONSUMO), 'nunca') AS FECHA_DE_CONSUMO
+FROM (
+    SELECT
+        MIN(ORDER_DATE) AS FECHA_DE_CONSUMO,
+        CUSTOMER_ID
+    FROM SALES 
+    GROUP BY CUSTOMER_ID) A
+LEFT JOIN SALES B
+    ON A.CUSTOMER_ID = B.CUSTOMER_ID
+    AND A.FECHA_DE_CONSUMO = B.ORDER_DATE
+INNER JOIN MENU C
+    ON B.PRODUCT_ID = C.PRODUCT_ID
+FULL JOIN MEMBERS D
+    ON A.CUSTOMER_ID = D.CUSTOMER_ID;
