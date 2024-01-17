@@ -28,7 +28,7 @@ Con estos cambios, ten cuenta que CUSTOMER_ID no puede venir de la tabla SALES �
         
 Por último, para el cliente que no ha tenido ningún pedido va a salirte un gasto NULL, pero visualmente Josep prefiere 
 ver un 0 en vez de un NULL, para ello hay un algunas funciones que puedes usar: NVL() y IFNULL() por ejemplo, échales
-un ojo si no las conoces.
+un ojo si no las conoces. 
         
 Te animo a que rehagas el código a continuación de este comentario. Cualquier duda no dudes en contactar.
 */
