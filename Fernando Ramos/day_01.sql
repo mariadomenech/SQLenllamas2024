@@ -26,10 +26,10 @@ e incluso en algunos gestores mejora el tiempo de cómputo.
 
 SELECT A.customer_id
 	,SUM(CASE 
-			WHEN S.customer_id IS NULL
-				THEN 0
-			ELSE M.price
-			END) AS total_gastado
+		WHEN S.customer_id IS NULL
+			THEN 0
+		ELSE M.price
+	END) AS total_gastado
 FROM SQL_EN_LLAMAS.CASE01.MEMBERS A
 LEFT JOIN SQL_EN_LLAMAS.CASE01.SALES S 
     ON A.customer_id = S.customer_id
