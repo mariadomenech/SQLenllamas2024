@@ -9,7 +9,7 @@ ORDER BY A.customer_id
 /*********************************/
 /***** COMENTARIO JUAN PEDRO *****/
 /*********************************/
-/*
+/* 
 El Código no es del todo correcto, pues tú resultado omite un cliente que está en la tabla de clientes MEMBERS, 
 pero que no está en la de pedidos SALES, es decir, no ha hecho ningún pedido (un ejemplo puede ser alguien que se
 registra en la web, pero luego no llegó a realizar ningún pedido).
