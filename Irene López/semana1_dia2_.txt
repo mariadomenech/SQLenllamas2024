@@ -7,3 +7,12 @@ FROM
     FULL JOIN SQL_EN_LLAMAS.CASE01.MEMBERS ME
         ON ME.CUSTOMER_ID = S.CUSTOMER_ID
 GROUP BY ME.CUSTOMER_ID;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/*
+
+El resultado es completamente correcto pero tengo sentimientos encontrados con el FULL JOIN, como en el anterior ejercicio.
+
+*/
