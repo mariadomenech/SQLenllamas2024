@@ -40,3 +40,27 @@ simplemente para tener menos lineas de código. Pero bueno esto último es una o
 
 Te animo a que rehagas el código a continuación de este comentario. Cualquier duda no dudes en contactar.
 */
+
+/*********************************/
+/*****    COMENTARIO PABLO   *****/
+/*********************************/
+
+/*
+Buenos días, código corregido.
+Respecto de la pregunta "Con estos cambios, ten cuenta que CUSTOMER_ID no puede venir de la tabla SALES ¿te animas a decirme por qué? :D"
+No tiene sentido cogerlo desde SALES porque solo tendremos en cuenta a los clientes que hayan realizado compras y no al total de cliente 
+registrados.
+Gracias!
+*/
+
+USE SQL_EN_LLAMAS;
+
+SELECT  M.CUSTOMER_ID
+        ,IFNULL((SUM(Me.PRICE)),0) AS GASTO_TOTAL 
+FROM CASE01.MEMBERS M
+LEFT JOIN CASE01.SALES S
+    ON S.CUSTOMER_ID = M.CUSTOMER_ID
+LEFT JOIN CASE01.MENU Me
+    ON S.PRODUCT_ID = Me.PRODUCT_ID
+
+GROUP BY 1;
