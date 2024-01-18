@@ -42,4 +42,8 @@ Ahora vamos al caso del cliente A, para un mismo día, pidió CURRY y SUSHI, per
 Queremos mostrar ambos, en este caso tenemos que hacer uso de la función de ventana RANK() ya que al revisar la columna de ordenación ORDER_DATE, 
 no va a ver diferencia y va a asignar el mismo rango a ambos platos.
 
+Por último tabulaciones, en snowflake no ocurre, pero en otros gestores como ORACLE, hay que tener cuidado con los saltos de línea entre código.
+Me refiero a la línea 16. Si ejecutas este código en producción te dará error porque al encontrar el salto de línea es como que hace una pausa para leer
+y cree que la estructura del WITH termina en la línea 16 y no está completa.
+
 */
