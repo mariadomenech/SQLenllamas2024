@@ -1,0 +1,21 @@
+--¿Cuál es el producto más vendido del menú y cuántas veces ha sido pedido?
+
+with A as (
+select
+      count(sales.product_id) as n_veces_pedido
+      ,menu.product_name 
+from SQL_EN_LLAMAS.CASE01.SALES
+left join SQL_EN_LLAMAS.CASE01.MENU
+on sales.product_id=menu.product_id
+group by menu.product_name
+) 
+
+select 
+    product_name
+   , n_veces_pedido
+from A
+where n_veces_pedido=(
+select 
+    max(n_veces_pedido) 
+from A
+)
