@@ -12,3 +12,14 @@ JOIN MENU M
 ON M.PRODUCT_ID =S.PRODUCT_ID
 WHERE S.ORDER_DATE = A.ORDER_DATE
 GROUP BY 1;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Oye, muy guay que conozcas la función LISTAGG, si le das un alias... PERFECTO!!
+
+Mismo comentario sobre los FULL JOIN y tabulaciones.
+
+*/
