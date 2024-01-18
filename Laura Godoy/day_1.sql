@@ -23,3 +23,17 @@ Respecto a las tabulaciones, a mí me resulta más fácil leer las columnas tabu
 
 Por último, dale un alias a la columna SUM(PRICE) y PERFECTO!
 */
+
+/*********************************************************/
+/***************** CORRECCIÓN LAURA *********************/
+/*********************************************************/
+
+select
+     mem.customer_id
+    ,NVL(sum(price),0) as total_gasto
+from members mem
+left join sales s
+on mem.customer_id=s.customer_id
+left join menu men
+on s.product_id=men.product_id
+group by mem.customer_id;
