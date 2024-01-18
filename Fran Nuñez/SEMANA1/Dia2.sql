@@ -25,3 +25,11 @@ y de nuevo LEFT JOIN con MENU.
 Respecto a las tabulaciones, a mí me resulta más fácil leer las columnas tabuladas tras cada ',', es decir, expandiría la lista de columnas a mostrar.
 
 */
+
+/*CAMBIOS FRAN*/
+SELECT MEMBERS.CUSTOMER_ID AS "CLIENTE",
+COUNT (DISTINCT SALES.ORDER_DATE) AS "Nº VISITAS"
+FROM SALES
+RIGHT JOIN MEMBERS
+ON SALES.CUSTOMER_ID = MEMBERS.CUSTOMER_ID
+GROUP BY MEMBERS.CUSTOMER_ID
