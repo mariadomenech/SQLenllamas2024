@@ -1,12 +1,13 @@
+-- ver cuánto dinero han gastado sus clientes:
 SELECT 
      ME.CUSTOMER_ID CLIENTE
     ,SUM(IFNULL(PRICE, 0)) "PRECIO"
 FROM
-    SQL_EN_LLAMAS.CASE01.SALES S
-    JOIN SQL_EN_LLAMAS.CASE01.MENU M
-    ON S.PRODUCT_ID=M.PRODUCT_ID
-    FULL JOIN SQL_EN_LLAMAS.CASE01.MEMBERS ME
+    SQL_EN_LLAMAS.CASE01.MEMBERS ME -- Partimos de la dimensión principal para que todos sean LEFT JOINS
+    LEFT JOIN SQL_EN_LLAMAS.CASE01.SALES S
     ON S.CUSTOMER_ID=ME.CUSTOMER_ID
+    LEFT JOIN SQL_EN_LLAMAS.CASE01.MENU M
+    ON S.PRODUCT_ID=M.PRODUCT_ID
 GROUP BY ME.CUSTOMER_ID;
 
 /*********************************************************/
