@@ -1,0 +1,10 @@
+USE DATABASE sql_en_llamas;
+
+/* --semana 1, día 4 - PRODUCTO MAS PEDIDO Y NUM VECES*/
+
+select menu.product_name PRODUCTO_MAS_PEDIDO, count(sales.product_id) NUM_VECES_PEDIDO
+from case01.sales
+inner join case01.menu
+    on sales.product_id= menu.product_id
+group by 1
+QUALIFY Row_Number() Over (ORDER BY count(sales.product_id) DESC)=1;
