@@ -32,3 +32,17 @@ un ojo si no las conoces.
         
 Te animo a que rehagas el código a continuación de este comentario. Cualquier duda no dudes en contactar.
 */
+
+/*********************************/
+/*** CORRECCIÓN CODIGO SHEILA ****/
+/*********************************/
+
+SELECT MB.CUSTOMER_ID AS CLIENTE,
+       ZEROIFNULL(SUM(M.PRICE)) AS GASTO_TOTAL
+FROM SQL_EN_LLAMAS.CASE01.MEMBERS AS MB
+LEFT JOIN SQL_EN_LLAMAS.CASE01.SALES AS S
+ON MB.CUSTOMER_ID = S.CUSTOMER_ID
+LEFT JOIN SQL_EN_LLAMAS.CASE01.MENU AS M
+ON S.PRODUCT_ID = M.PRODUCT_ID
+GROUP BY MB.CUSTOMER_ID
+ORDER BY GASTO_TOTAL DESC
