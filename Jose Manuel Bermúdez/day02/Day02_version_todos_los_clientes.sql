@@ -10,6 +10,6 @@ SELECT mem.customer_id, COUNT(DISTINCT(sal.order_date))
 /*
 
 Por otro lado, el OUTER aquí es opcional, pero si personalmente lo ves más claro, no hay diferencia.
-Dale un alias a la columna COALESCE(sum(men.price), 0) y PERFECTO!
+Dale un alias a la columna COUNT(DISTINCT(sal.order_date)) y PERFECTO!
 
 */
