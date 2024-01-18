@@ -34,7 +34,7 @@ from (
         order_date
        ,customer_id
        ,product_name
-        DENSE_RANK() over (partition by customer_id order by order_date) AS row_num
+       ,DENSE_RANK() over (partition by customer_id order by order_date) AS row_num
 from SQL_EN_LLAMAS.CASE01.SALES
 left join SQL_EN_LLAMAS.CASE01.MENU 
 on sales.product_id = menu.product_id) as orden_compra
