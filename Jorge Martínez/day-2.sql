@@ -22,3 +22,17 @@ select a.customer_id,
         left join SQL_EN_LLAMAS.CASE01.SALES c 
             on a.customer_id = c.customer_id
         group by a.customer_id;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Muy guay que juegues con las queries.
+
+Para mí la más correcta es la última. Ya que consulta solo las tablas necesarias, cuando trabajas con tablas de millones de datos agradeces ahorrarte joins innecesarios.
+
+Lo del casteo no lo veo necesario.
+
+
+*/
