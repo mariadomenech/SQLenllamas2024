@@ -17,3 +17,14 @@ Bien planteado, pero, ¿dónde ha quedado la columna  members.customer_id en la 
 Por último, dale un alias a la columna count(distinct(order_date)) y PERFECTO!
 
 */
+
+/*********************************************************/
+/***************** CORRECCIÓN LAURA *********************/
+/*********************************************************/
+select 
+    count(distinct(order_date)) as n_dias_visita
+    , members.customer_id 
+from sales sales
+right join members members
+on members.customer_id=sales.customer_id
+group by members.customer_id;
