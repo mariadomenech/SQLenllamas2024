@@ -23,6 +23,6 @@ y, ¿si no hubiera sido así?
 Te propongo que le des una vuelta a cómo montarías esa misma subconsulta, para que coja la fecha mínima dependiendo del cliente.
 
 Quizás como extra, porque lo que pedimos lo cumples, mejoraría la visualización de los resultados finales, de modo que sean más sencillos de interpretar
-para alguien que vea el resultado en forma de tabla.
+para alguien que vea el resultado en forma de tabla. Te invito a explorar la función LISTAGG.
 
 */
