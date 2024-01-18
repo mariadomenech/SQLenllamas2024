@@ -24,3 +24,14 @@ y de nuevo LEFT JOIN con MENU.
 Respecto a las tabulaciones, a mí me resulta más fácil leer las columnas tabuladas tras cada ',', es decir, expandiría la lista de columnas a mostrar.
 
 */
+
+/*CAMBIOS FRAN*/
+SELECT MEMBERS.CUSTOMER_ID AS "CLIENTE",
+CASE WHEN SUM(MENU.PRICE) IS NULL
+THEN 0 ELSE SUM(MENU.PRICE) END AS "GASTO"
+FROM SALES
+JOIN MENU
+ON SALES.PRODUCT_ID = MENU.PRODUCT_ID
+RIGHT JOIN MEMBERS
+ON SALES.CUSTOMER_ID = MEMBERS.CUSTOMER_ID
+GROUP BY MEMBERS.CUSTOMER_ID
