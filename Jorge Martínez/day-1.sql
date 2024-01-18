@@ -6,3 +6,14 @@ select a.customer_id,
         left join SQL_EN_LLAMAS.CASE01.MENU b
             on b.product_id = c.product_id
         group by a.customer_id;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Pues Jorge, perfecta la solución.
+
+Como nota, a mí me gusta poner las palabras clave en mayúsculas. Pero bueno, es subjetivo.
+
+*/
