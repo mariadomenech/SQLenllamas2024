@@ -1,7 +1,7 @@
 --------------------------------------------------------------DIA_4----------------------------------------------------------
 
 SELECT TOP 1
-    PRODUCT_NAME,
+    B.PRODUCT_NAME,
     COUNT(*) AS CONTEO_PEDIDOS
 FROM SALES A
 INNER JOIN MENU B
