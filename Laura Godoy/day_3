@@ -1,0 +1,25 @@
+--Día 3.¿Cuál es el primer producto que ha pedido cada cliente?
+select customer_id, product_name 
+from SQL_EN_LLAMAS.CASE01.SALES
+left join SQL_EN_LLAMAS.CASE01.MENU
+on sales.product_id=menu.product_id
+where order_date=(select min(order_date)
+from SQL_EN_LLAMAS.CASE01.SALES);
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+El resultado es correcto.
+
+Pero aquí ten cuidado con cómo has montado la subconsulta, porque en este caso, coincide que los 3 clientes pidieron por primera vez en el mismo día, pero 
+y, ¿si no hubiera sido así?
+
+Te propongo que le des una vuelta a cómo montarías esa misma subconsulta, para que coja la fecha mínima dependiendo del cliente.
+
+Quizás como extra, porque lo que pedimos lo cumples, mejoraría la visualización de los resultados finales, de modo que sean más sencillos de interpretar
+para alguien que vea el resultado en forma de tabla. Te invito a explorar la función LISTAGG.
+
+*/

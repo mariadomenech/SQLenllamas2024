@@ -1,0 +1,7 @@
+[
+    {
+        "question": "¿Cuánto ha gastado en total cada cliente en el restaurante?",
+        "answer": ["Customer A: 76, customer B: 74 , customer C: 36, customer D: 0"],
+        "explanation": "La consulta SQL utilizada (ver solution_day1_mat.sql) busca la cantidad total gastada por cada cliente, incluso si algunos clientes no han realizado compras. Utiliza las tablas MEMBERS, SALES, y MENU, uniendo la información por los IDs de cliente y de producto. La función NVL(PRICE, 0) trata los valores nulos en la columna PRICE como ceros. La consulta final agrupa los resultados por el ID de cliente, proporcionando el gasto total para cada cliente, con inclusión de aquellos sin compras.",
+    }
+]

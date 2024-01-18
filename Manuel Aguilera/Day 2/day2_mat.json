@@ -1,0 +1,7 @@
+[
+    {
+        "question": "¿Cuántos días ha visitado el restaurante cada cliente?",
+        "answer": ["Customer B: 6 visitas, customer A: 4 visitas , customer C: 2 visitas, customer D: 0 visitas"],
+        "explanation": "La consulta SQL utilizada (ver solution_day2_mat.sql) cuenta cuántos días únicos ha visitado cada cliente el restaurante. Utiliza las tablas MEMBERS y SALES, uniendo la información por los IDs de cliente. El resultado muestra el número de visitas únicas por cliente, ordenadas de mayor a menor, incluso si algunos clientes no han realizado compras.",
+    }
+]
