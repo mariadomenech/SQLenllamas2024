@@ -26,17 +26,17 @@ para alguien que vea el resultado en forma de tabla. Te invito a explorar la fun
 /*********************************************************/
 /***************** CORRECCIÓN LAURA *********************/
 /*********************************************************/
-SELECT
+select
      customer_id
-    ,LISTAGG(product_name, ', ') WITHIN GROUP (ORDER BY order_date) AS productos_primera_compra
-FROM (
-    SELECT
+    ,LISTAGG(product_name, ', ') within group (order by order_date) as productos_primera_compra
+from (
+    select
         order_date
        ,customer_id
        ,product_name
-        DENSE_RANK() OVER (PARTITION BY customer_id ORDER BY order_date) AS row_num
-    FROM SQL_EN_LLAMAS.CASE01.SALES
-    LEFT JOIN SQL_EN_LLAMAS.CASE01.MENU ON sales.product_id = menu.product_id
-) AS orden_compra
-WHERE row_num = 1
-GROUP BY customer_id;
+        DENSE_RANK() over (partition by customer_id order by order_date) AS row_num
+from SQL_EN_LLAMAS.CASE01.SALES
+left join SQL_EN_LLAMAS.CASE01.MENU 
+on sales.product_id = menu.product_id) as orden_compra
+where row_num = 1
+group by customer_id;
