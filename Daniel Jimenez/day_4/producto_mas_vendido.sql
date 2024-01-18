@@ -23,7 +23,8 @@ LIMIT 3;
 
 //Esta ultima forma devuelve el mismo resultado pero la he elaborado usando algunos agregados y una subconsulta y volviendola ligeramente mas compleja 
 
-SELECT producto_mas_pedido, veces_vendidos
+SELECT producto_mas_pedido, 
+        veces_vendidos
 FROM (
     SELECT  menu.product_name as producto_mas_pedido,
             COUNT(*) as veces_vendidos,
