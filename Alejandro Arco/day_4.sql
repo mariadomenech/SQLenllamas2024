@@ -1,0 +1,12 @@
+-- Dia 4 ¿Cuál es el producto más pedido del menú y cuántas veces ha sido pedido?
+
+SELECT TOP 1
+    PRODUCT_NAME,
+    COUNT(PRODUCT_NAME) AS TOTAL_PEDIDOS
+FROM
+    MENU
+LEFT JOIN
+    SALES
+ON MENU.PRODUCT_ID = SALES.PRODUCT_ID
+GROUP BY PRODUCT_NAME
+ORDER BY TOTAL_PEDIDOS DESC;
