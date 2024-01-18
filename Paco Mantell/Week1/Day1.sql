@@ -32,3 +32,12 @@ un ojo si no las conoces.
         
 Te animo a que rehagas el código a continuación de este comentario. Cualquier duda no dudes en contactar.
 */
+SELECT A.customer_id AS CLIENTE,
+ZEROIFNULL(SUM(C.price)) AS TOTAL
+FROM SQL_EN_LLAMAS.CASE01.MEMBERS A
+LEFT JOIN SQL_EN_LLAMAS.CASE01.SALES B
+ON A.customer_id=B.customer_id
+LEFT JOIN SQL_EN_LLAMAS.CASE01.MENU C
+ON B.product_id=C.product_id
+GROUP BY A.customer_id
+ORDER BY A.customer_id
