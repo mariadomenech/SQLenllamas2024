@@ -1,0 +1,14 @@
+USE DATABASE sql_en_llamas;
+
+/* --semana 1, día 5 - TARJETAS FIDELIZACION - PUNTOS POR CLIENTE*/
+-- Sushi cuenta doble
+-- Cada eur gastado = 10 puntos
+
+select members.customer_id as CLIENTE
+, ifnull(SUM(menu.price * 10 * (case when menu.product_name = 'sushi' then 2 else 1 end)),0) NUMERO_PUNTOS
+from case01.sales
+inner join case01.menu
+    on sales.product_id= menu.product_id
+right join case01.members
+    on sales.customer_id= members.customer_id
+group by 1    ;
