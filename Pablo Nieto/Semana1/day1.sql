@@ -33,3 +33,17 @@ un ojo si no las conoces.
         
 Te animo a que rehagas el código a continuación de este comentario. Cualquier duda no dudes en contactar.
 */
+
+/*
+Corrección del código. CUSTOMER_ID no puede venir de la tabla SALES porque no todos los clientes tienen por qué
+haber realizado algún pedido.
+*/
+SELECT
+    a.customer_id,
+    nvl(SUM(c.price), 0) AS total_gastado
+FROM SQL_EN_LLAMAS.CASE01.MEMBERS a
+LEFT JOIN SQL_EN_LLAMAS.CASE01.SALES b
+    ON a.customer_id = b.customer_id
+LEFT JOIN SQL_EN_LLAMAS.CASE01.MENU c
+    ON b.product_id = c.product_id
+GROUP BY a.customer_id;
