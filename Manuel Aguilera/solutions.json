@@ -36,5 +36,16 @@
 		"question": "¿Cuál es el producto más pedido del menú y cuántas veces ha sido pedido?",
 		"answer": 	"Ramen: 8 veces", 
 		"explanation": "La consulta SQL utilizada (ver solution_day4_mat.sql) identifica el producto más pedido con un COUNT, utilizamos la función ROW_NUMBER, para asignar un ranking a cada producto según la cantidad de pedidos, y luego seleccionamos los productos que tengan este ranking igual a 1, lo que significa que es el producto más vendido."
+	},
+	{
+		"question_day": 5,
+		"question": "Josep quiere repartir tarjetas de fidelazación a sus clientes. Si cada EURO gastado equivale a 10 puntos y el sushi tiene un multiplicador de X2 puntos, ¿Cuántos puntos tendría cada cliente?",
+		"answer": 	[
+					"Customer A: 860 puntos", 
+					"Customer B: 940 puntos ", 
+					"Customer C: 360 puntos",
+					"Customer D: 0 puntos"
+		],
+		"explanation": "La consulta SQL utilizada (ver solution_day5_mat.sql) identifica los puntos que tiene cada cliente, se hace un sumatorio de todo lo que ha gastado cada cliente indicando la lógica de puntuación con un CASE: 20 puntos por precio si es sushi, en caso contrario 10puntos, se usa el NVL para manejar casos donde un cliente no ha realizado ninguna compra, estableciendo el gasto total en 0 en ese caso."
 	}
 ]
