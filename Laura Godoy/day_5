@@ -1,0 +1,17 @@
+--Josep quiere repartir tarjetas de fielización a sus clientes. Si cada euro gastado equivale a 10 puntos y el sushi tiene un multiplicador de X2 puntos, Cuántos puntos tendría cada cliente?
+with A as (
+select 
+    customer_id
+    , price
+    , CASE when product_name='sushi' then price*10*2 
+    else price*10 
+    end as puntos
+from SQL_EN_LLAMAS.CASE01.SALES
+left join SQL_EN_LLAMAS.CASE01.MENU
+on sales.product_id=menu.product_id
+) 
+select 
+    customer_id
+    , sum(puntos)
+from A
+group by customer_id
