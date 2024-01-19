@@ -14,6 +14,6 @@ on sales.customer_id=members.customer_id
 ) 
 select 
     customer_id
-    , NVL(sum(puntos),0)
+    , NVL(sum(puntos),0) as total_puntos
 from A
 group by customer_id
