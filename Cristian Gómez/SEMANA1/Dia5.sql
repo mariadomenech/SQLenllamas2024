@@ -10,7 +10,20 @@
     GROUP BY 1
 
 ------------- Si queremos que los clientes que no han realizado ningún pedido o compra aparezcan con 0 puntos-------------------------
-        
+SELECT 
+    C.CUSTOMER_ID  AS CLIENTE_CP,
+    COALESCE(SUM(CASE 
+        WHEN M.PRODUCT_NAME = 'sushi' then M.PRICE * 10 * 2
+        ELSE M.PRICE * 10
+    END), 0) AS SUMA_PUNTOS
+FROM MEMBERS C
+LEFT JOIN SALES S
+    ON S.CUSTOMER_ID = C.CUSTOMER_ID
+LEFT JOIN MENU M
+    ON S.PRODUCT_ID = M.PRODUCT_ID
+
+-------- OTRA FORMA PERO MAS LARGA (SI, ES EL RESULTADO DE PROBAR COSAS)-------------
+GROUP BY 1
    WITH CALCULO_PUNTOS AS 
    (SELECT 
         S.CUSTOMER_ID  AS CLIENTE_CP,
