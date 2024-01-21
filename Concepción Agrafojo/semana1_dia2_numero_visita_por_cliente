@@ -3,3 +3,20 @@ USE DATABASE sql_en_llamas;
 select sales.customer_id CLIENTE, count(distinct sales.order_date) NUMERO_VISITAS
 from case01.sales
 group by sales.customer_id;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto, pero añadiría la talba MEMBERS para contar con el cliente D.
+
+select 
+      members.customer_id CLIENTE
+    , count(distinct sales.order_date) NUMERO_VISITAS
+from case01.members
+    left join case01.sales
+        on members.customer_id = sales.customer_id
+group by members.customer_id;
+
+*/
