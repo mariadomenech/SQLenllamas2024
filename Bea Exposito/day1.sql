@@ -15,7 +15,7 @@ GROUP BY members.customer_id;
 /*
 
 El resultado es correcto, pero utilizas FULL JOIN lo cual no es recomendable ya que, en tablas con millones de registros, el rendimiento se ve drásticamente afectado (en nuestro caso no se nota diferencia
-ya que tenemos pocos registros). En este caso, se debería de utilizar LEFT JOIN:
+ya que tenemos pocos registros). En este caso, se debería de utilizar RIGHT JOIN:
 
 SELECT 
       members.customer_id
@@ -23,7 +23,7 @@ SELECT
 FROM case01.sales
     INNER JOIN case01.menu
         ON sales.product_id = menu.product_id
-    LEFT JOIN case01.members 
+    RIGHT JOIN case01.members 
         ON sales.customer_id = members.customer_id
 GROUP BY members.customer_id;
 
