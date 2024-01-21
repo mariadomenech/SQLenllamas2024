@@ -7,3 +7,13 @@ INNER JOIN CASE01.MENU
 GROUP BY PRODUCT_NAME
 ORDER BY NUM_VECES DESC
 LIMIT 1;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/*
+
+Perfecto Jorge!
+
+*/
