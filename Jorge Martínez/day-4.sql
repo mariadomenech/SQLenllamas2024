@@ -8,3 +8,14 @@ select b.product_name,
         group by b.product_name
     order by cuenta desc
     limit 1
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto Jorge!
+
+Como nota, a mí me gusta poner las palabras clave en mayúsculas. Pero bueno, es subjetivo.
+
+*/
