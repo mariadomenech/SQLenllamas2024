@@ -26,3 +26,26 @@ where (sales.customer_id,sales.order_date ) in
     from case01.sales
     group by sales.customer_id
     );
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto en ambos casos, me quedaría con la primera opción al ser más limpio el código al utilizar el join.
+También se podria usar la funcion RANK, échale un vistazo.
+
+Como detalle, se podria simplificar un poco la salida de la query utilizando LISTAGG para asi tener un único registro por cliente:
+
+select 
+      sales.customer_id as cliente
+    , LISTAGG(distinct menu.product_name, ', ') as primer_producto_pedido
+from case01.sales
+inner join case01.menu
+    on sales.product_id= menu.product_id
+inner join case01.members
+    on sales.order_date = members.join_date
+group by cliente
+order by cliente asc;
+
+*/
