@@ -58,3 +58,48 @@ FROM menu_sales C
 GROUP BY  1
 ORDER BY 2 DESC
 LIMIT 1
+
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+De las dos opciones me quedaría con la opción 2 por ser más simple y por el uso de CTEs. Aunque es un buen detalle utilizar LISTAGG, es algo que no se pide en el ejercicio. 
+
+En la opción 1 das muchos rodeos para mostrar un resultado que puedes mostrar con una query mucho mas sencilla, en la opción 2 pasa algo similar 
+pero a mucha menor escala. Te muestro una query mas sencilla en la que se obtiene el mismo resultado:
+
+select
+      c.product_name
+    , count(b.product_id) as product_count
+from members a 
+    left join sales b
+        on a.customer_id = b.customer_id
+    inner join menu c
+        on b.product_id = c.product_id
+group by c.product_name
+order by product_count desc
+limit 1;
+
+
+Aquí otra opción en la que utilizamos CTE y RANK:
+
+with ranking as (
+    select
+          c.product_name
+        , count(b.product_id) as product_count
+        , rank() over (order by product_count desc) as rk
+    from members a 
+        left join sales b
+            on a.customer_id = b.customer_id
+        inner join menu c
+            on b.product_id = c.product_id
+    group by c.product_name
+)
+
+select * exclude rk
+from ranking
+where rk = 1;
+
+*/
