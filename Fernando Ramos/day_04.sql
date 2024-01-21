@@ -7,3 +7,13 @@ JOIN SQL_EN_LLAMAS.CASE01.MENU M
 GROUP BY PRODUCT_NAME
 ORDER BY VENTAS DESC
 LIMIT 1
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+
+/* 
+
+Correcto Fernando!!
+
+*/
