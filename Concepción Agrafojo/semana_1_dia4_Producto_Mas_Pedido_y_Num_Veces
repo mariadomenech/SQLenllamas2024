@@ -8,3 +8,12 @@ inner join case01.menu
     on sales.product_id= menu.product_id
 group by 1
 QUALIFY Row_Number() Over (ORDER BY count(sales.product_id) DESC)=1;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto, me ha gustado mucho la utilización de QUALIFY!
+
+*/
