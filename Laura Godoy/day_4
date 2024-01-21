@@ -19,3 +19,15 @@ select
     max(n_veces_pedido) 
 from A
 )
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/*
+
+Muy bien Laura!!
+
+No hace falta hacer una subconsulta de nuevo en el WHERE de la línea 17. Puedes directamente hacer un TOP 1 al crear la tabla CTE y ahorras tiempo de CPU.
+
+*/
