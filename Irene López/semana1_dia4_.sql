@@ -14,3 +14,16 @@ FROM CTE C
         ON C.PRODUCT_ID = M.PRODUCT_ID
 WHERE "Veces pedido"=(SELECT MAX("Veces pedido") FROM CTE)
 ;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/*
+
+Muy bien Irene!!
+
+No hace falta hacer una subconsulta de nuevo en el WHERE de la línea 15. Puedes directamente hacer un TOP 1 al crear la tabla CTE y ahorras tiempo de CPU.
+
+Las dobles comillas para los alias no son necesarias, por si quieres ahorrarte escribirlas.
+
+*/
