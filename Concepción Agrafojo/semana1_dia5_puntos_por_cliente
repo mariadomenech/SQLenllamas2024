@@ -12,3 +12,24 @@ inner join case01.menu
 right join case01.members
     on sales.customer_id= members.customer_id
 group by 1    ;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto, has utilizado bien los joins y controlado los nulos.
+
+A modo de detalle, yo cambiaría el CASE por un IFF para que quede un poco más limpio (por lo general usaría CASE cuando hay mas de 1 caso o la codición es compleja).
+
+select 
+      members.customer_id as CLIENTE
+    , ifnull(SUM(menu.price * 10 * iff(menu.product_name = 'sushi', 2, 1)),0) as NUMERO_PUNTOS
+from case01.sales
+inner join case01.menu
+    on sales.product_id= menu.product_id
+right join case01.members
+    on sales.customer_id= members.customer_id
+group by 1;
+
+*/
