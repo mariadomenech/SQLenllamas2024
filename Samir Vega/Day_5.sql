@@ -18,3 +18,10 @@ SELECT
     SUM(IFNULL(PUNTOS, 0)) AS PUNTOS
 FROM AUX
 GROUP BY CUSTOMER_ID;
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto enhorabuena! Muy bien usado el with para evitar subconsutlas, nada que objetar pues también me gusta mucho como está tabulado y limpio el código.
+*/
