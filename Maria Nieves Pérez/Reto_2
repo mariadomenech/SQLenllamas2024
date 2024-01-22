@@ -7,3 +7,9 @@ FROM SQL_EN_LLAMAS.CASE01.SALES s
 GROUP BY m.customer_id
 ORDER BY m.customer_id;
 
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto enhorabuena
+*/
