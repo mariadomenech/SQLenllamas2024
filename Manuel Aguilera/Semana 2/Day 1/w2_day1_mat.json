@@ -1,0 +1,12 @@
+
+	{
+		"question_week": 2,
+		"question_day": 1,
+		"question": "¿Cuántos pedidos y cuántas pizzas se han entregado con éxito por cada runner, cuál es el porcentaje de éxito de cada runner? ¿Qué porcentaje de las pizzas entregadas tenían modificaciones?",
+		"answer": 	[
+				{"RUNNER_ID": 1,  "PEDIDOS_EXITOSOS": 4,   "PEDIDOS_EXITOSOS_PORCENTAJE": 100,  "PIZZAS_EXITOSAS": 6,   "PIZZAS_MODIFICADAS_PORCENTAJE": 33.333333 },
+				{"RUNNER_ID": 2,  "PEDIDOS_EXITOSOS": 3,   "PEDIDOS_EXITOSOS_PORCENTAJE": 75,   "PIZZAS_EXITOSAS": 5,   "PIZZAS_MODIFICADAS_PORCENTAJE": 80},
+				{"RUNNER_ID": 3,  "PEDIDOS_EXITOSOS": 1,   "PEDIDOS_EXITOSOS_PORCENTAJE": 50,   "PIZZAS_EXITOSAS": 1,   "PIZZAS_MODIFICADAS_PORCENTAJE": 100}
+		],
+		"explanation": "La consulta SQL utilizada (ver solution_w2_day1_mat.sql) proporciona métricas como el número de pedidos exitosos, el número de pizzas exitosas, el porcentaje de pedidos exitosos y el porcentaje de pizzas modificadas para cada RUNNER_ID. Las métricas se calculan teniendo en cuenta la cancelación de pedidos y las modificaciones en las pizzas."
+	}
