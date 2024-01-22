@@ -47,3 +47,38 @@ GROUP BY
     cliente
 ORDER BY 
     cliente;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto y me ha gustado el control de nulos aunque lo simplificaria un poco usando IFF en lugar de CASE, personalmente usaría CASE cuando haya un control de casuísticas
+o cuando la condición de la única casuística es compleja:
+
+IFNULL(IFF(menu.product_name = 'sushi', menu.price * 10 * 2, menu.price * 10), 0) as Puntos
+
+También mejoraría la legibilidad del código.
+
+WITH PuntosPorVenta as (
+    SELECT 
+        members.customer_id as cliente, 
+        CASE 
+            WHEN menu.product_name = 'sushi' THEN menu.price * 10 * 2 
+            WHEN menu.product_name IS NULL THEN 0
+            ELSE menu.price * 10
+        END as Puntos
+    FROM SQL_EN_LLAMAS.CASE01.MEMBERS
+    LEFT JOIN SQL_EN_LLAMAS.CASE01.SALES
+        ON members.customer_id = sales.customer_id
+    LEFT JOIN SQL_EN_LLAMAS.CASE01.MENU
+        ON sales.product_id = menu.product_id
+)
+
+SELECT 
+    cliente, 
+    SUM(Puntos) as PuntosTotales
+FROM PuntosPorVenta
+GROUP BY cliente
+
+*/
