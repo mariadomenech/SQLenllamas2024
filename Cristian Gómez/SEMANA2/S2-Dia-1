@@ -1,0 +1,40 @@
+WITH TempRunner AS (
+    SELECT
+        RUNNER_ID AS RUNNER_ID
+        ,SUM(CASE  
+            WHEN CANCELLATION IN ('Customer Cancellation', 'Restaurant Cancellation') THEN 0 ELSE 1
+        END) AS PEDIDOS_ENVIADOS_EXITO
+        ,100 * SUM(CASE  
+            WHEN CANCELLATION IN ('Customer Cancellation', 'Restaurant Cancellation') THEN 0 ELSE 1
+        END) / COUNT(ORDER_ID) AS PORCENTAJE_ENVIADOS_EXITO
+    FROM RUNNER_ORDERS
+    GROUP BY 1
+),
+TempCustomer AS (
+    SELECT
+        R.RUNNER_ID
+        ,SUM(CASE 
+            WHEN R.CANCELLATION IN ('Customer Cancellation', 'Restaurant Cancellation') THEN 0 ELSE 1 
+        END) AS PIZZAS_ENTREGADAS_EXITO
+        ,100 * SUM(CASE  
+            WHEN (R.CANCELLATION IN ('Customer Cancellation', 'Restaurant Cancellation') OR (C.EXCLUSIONS IS NULL OR C.EXCLUSIONS ='null' OR C.EXCLUSIONS = '') AND (C.EXTRAS IS NULL OR C.EXTRAS ='null' OR C.EXTRAS = '')) THEN 0 ELSE 1 END) / COUNT(CASE WHEN R.CANCELLATION IN ('Customer Cancellation', 'Restaurant Cancellation') THEN NULL ELSE C.PIZZA_ID END)
+        AS PORCENTAJE_PIZZAS_ENVIADAS_MODIFICADAS
+  
+    FROM RUNNER_ORDERS R
+    JOIN CUSTOMER_ORDERS C 
+        ON R.ORDER_ID = C.ORDER_ID
+    GROUP BY 1
+)
+
+SELECT
+    A.RUNNER_ID AS RUNNER
+    ,A.PEDIDOS_ENVIADOS_EXITO
+    ,B.PIZZAS_ENTREGADAS_EXITO
+    ,A.PORCENTAJE_ENVIADOS_EXITO
+    ,B.PORCENTAJE_PIZZAS_ENVIADAS_MODIFICADAS
+FROM TempRunner A
+LEFT JOIN TempCustomer B
+    ON A.RUNNER_ID = B.RUNNER_ID
+
+;
+DROP TABLE IF EXISTS TempRunner, TempCustomer
