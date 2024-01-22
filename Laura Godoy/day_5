@@ -17,3 +17,16 @@ select
     , NVL(sum(puntos),0) as total_puntos
 from A
 group by customer_id
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+
+/* 
+
+Perfecto Laura, buen uso de las tablas CTEs!!
+
+Un poco de lío con los left join y luego el right join. En mi opinión, como MENU y MEMBERS son tablas de dimensiones, llevarían ambas un RIGHT JOIN.
+
+*/
