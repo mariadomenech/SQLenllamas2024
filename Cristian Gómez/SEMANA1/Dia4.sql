@@ -6,3 +6,12 @@ JOIN MENU M
     ON S.PRODUCT_ID = M.PRODUCT_ID
 GROUP BY 1
 ORDER BY 2 DESC
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto. También sería posible utilizar LIMIT 1 al final de la query en logar de TOP 1.
+
+*/
