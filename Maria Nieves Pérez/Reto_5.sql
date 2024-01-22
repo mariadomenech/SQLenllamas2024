@@ -61,3 +61,30 @@ GROUP BY Cliente
 ORDER BY Cliente;
 
 --A mi, personalmente, me gusta más la de las CTE, es más clara de entender--
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto enhorabuena! Muy bien usado el with para evitar subconsutlas, pienso igual, pienso que son más claros de entender aunque creo que hacerlo
+en menos pasos es igualmente entendible. Por ejemplo mi propuesta hubiera sido algo así:
+WITH AUX AS
+   (SELECT A.CUSTOMER_ID, 
+           C.PRODUCT_NAME,
+           CASE WHEN C.PRODUCT_NAME = 'sushi' 
+                THEN SUM(C.PRICE)*20
+                ELSE SUM(C.PRICE)*10
+                END AS POINTS
+    FROM MEMBERS A
+    LEFT JOIN SALES B
+           ON A.CUSTOMER_ID = B.CUSTOMER_ID
+    LEFT JOIN MENU C
+           ON B.PRODUCT_ID = C.PRODUCT_ID
+    GROUP BY A.CUSTOMER_ID, C.PRODUCT_NAME
+   )
+SELECT CUSTOMER_ID, 
+       NVL(SUM(POINTS),0) AS POINTS
+FROM AUX
+GROUP BY CUSTOMER_ID
+ORDER BY CUSTOMER_ID;
+*/
