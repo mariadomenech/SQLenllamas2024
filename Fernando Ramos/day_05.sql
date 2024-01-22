@@ -31,3 +31,18 @@ clientes as (
 )
 
 select * from clientes
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+
+/* 
+
+Perfecto Fernando, buen uso de las tablas CTEs!!
+
+Para que la visualización del resultado quede perfecta, añadiría un CASE WHEN o IFNULL para que cuando el cliente D 
+no cruce con ''total_gastado'', no muestre un NULL en la sumatoria, sino un 0. Me gusta que si una columna es de tipo númerico
+y encima de importes, los nulos sean considerados como importe 0.
+
+*/
