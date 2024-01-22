@@ -31,3 +31,26 @@ SELECT CUSTOMER_ID, SUM(TOTAL_POINTS_PER_DATE) AS TOTAL_POINTS FROM (
     ORDER BY CUSTOMER_ID, ORDER_DATE
 )
 GROUP BY CUSTOMER_ID;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Casi. A la hora de hacer el producto con el multiplicador se ha liado un poco.
+
+Si separas en columnas diferentes SUM(10*(PRICE)) y
+POW(2, SUM(CASE WHEN PRODUCT_NAME = 'sushi' THEN 1 ELSE 0 END)) AS TOTAL_POINTS_PER_DATE
+lo verás más claro.
+
+Estás diciendo en tu consulta, súmame el total gastado por CLIENTE y FECHA, y si en esta partición (cliente + fecha) encuentras un pedido de sushi,
+multiplica por 2 el total gastado.
+
+Es decir, no solo estás multiplicando por 2 lo gastado en sushi por el cliente A, al hacer la sumatoria por fecha y no por producto, estás multiplicando por 2
+todo lo gastado el día 2021-01-01, que fue el día que el cliente A pidió SUSHI.
+
+Pero en realidad solo queremos multiplicar el producto sushi, a la hora de hacer sumatoria y producto, tienes que sacarte todas las columnas necesarias y
+que influyen en el cálculo de puntos. En este caso, CUSTOMER_ID y PRODUCT_NAME.
+
+*/
