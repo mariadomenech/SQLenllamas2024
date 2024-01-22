@@ -20,3 +20,14 @@ where
 group by 
     mb.customer_id
 ;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+
+/* 
+
+Perfecto Jose! Buen uso del RANK() y del  array_agg() que facilita la visualización. Hay una función muy parecida, LISTAGG(), 
+que hace la misma función y puedes elegir el separador de lista. 
+
+*/

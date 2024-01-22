@@ -20,3 +20,13 @@ full outer join
     SQL_EN_LLAMAS.CASE01.MEMBERS as mb on mb.customer_id = s.customer_id
 group by 
     mb.customer_id;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+
+/* 
+
+Parece que me repito, pero, resultado correcto, código correcto y tabulación correcta!
+
+*/
