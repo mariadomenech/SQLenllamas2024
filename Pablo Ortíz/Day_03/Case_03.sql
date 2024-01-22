@@ -14,3 +14,11 @@ left join menu as b
 on a.product_id=b.product_id
 )
 having orden =1;
+
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+Todo correcto, solo que, para que la visualización fuese más correcto, podrías agrupar a los clientes y usar LISTAGG para tener una fila para cada cliente.
+*/
