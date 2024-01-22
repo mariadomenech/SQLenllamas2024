@@ -31,3 +31,13 @@ FROM (
     ) AS P
 RIGHT JOIN SQL_EN_LLAMAS.CASE01.MEMBERS AS MB
 ON P.CLIENTE = MB.CUSTOMER_ID
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+En cuanto a cual es mejor de tus opciones teniendo en cuanto cuando usar el sum daría igual. Pero en cualquier caso no es correcto tu resultado,
+le has dado 20 puntos por haber comprado sushi pero son 200, porque son 20 por cada € gastado es decir 20x10 vale 10€ el sushi, igual con los otros platos.
+Te animo a que lo reahagas de cualquiera de las dos formas que dices aunque si quieres probar otra prueba a usar tablas temporales con el with, son muy útiles 
+cuando se requieren subconsultas. Cualquier duda de como se hace no dudes en contactarme.
+*/
