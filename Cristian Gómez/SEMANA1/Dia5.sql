@@ -21,10 +21,10 @@ LEFT JOIN SALES S
     ON S.CUSTOMER_ID = C.CUSTOMER_ID
 LEFT JOIN MENU M
     ON S.PRODUCT_ID = M.PRODUCT_ID
-
--------- OTRA FORMA PERO MAS LARGA (SI, ES EL RESULTADO DE PROBAR COSAS)-------------
 GROUP BY 1
-   WITH CALCULO_PUNTOS AS 
+        
+-------- OTRA FORMA PERO MAS LARGA (SI, ES EL RESULTADO DE PROBAR COSAS)-------------
+WITH CALCULO_PUNTOS AS 
    (SELECT 
         S.CUSTOMER_ID  AS CLIENTE_CP,
         SUM(CASE 
@@ -45,3 +45,23 @@ GROUP BY 1
 FROM MEMBERS C
 LEFT JOIN CALCULO_PUNTOS
     ON C.CUSTOMER_ID = CALCULO_PUNTOS.CLIENTE_CP
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+La segunda opción es la mejor, ya que controlas tanto los nulos como los clientes sin pedidos. Lo único que cambiaría sería el CASE por un IFF, personalmente usaría CASE cuando haya un control de casuísticas
+o cuando la condición de la única casuística es compleja:
+
+SELECT 
+      C.CUSTOMER_ID AS CLIENTE
+    , SUM(IFNULL(IFF(M.PRODUCT_NAME = 'sushi', 2*10*M.PRICE, 10*M.PRICE), 0)) AS PUNTOS
+FROM MEMBERS C
+    LEFT JOIN SALES S
+        ON S.CUSTOMER_ID = C.CUSTOMER_ID
+    LEFT JOIN MENU M
+        ON S.PRODUCT_ID = M.PRODUCT_ID
+GROUP BY CLIENTE;
+
+*/
