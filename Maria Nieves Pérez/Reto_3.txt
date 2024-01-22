@@ -27,3 +27,13 @@ SELECT
     CASE WHEN primer_producto IS NULL THEN 'No hay producto'
         ELSE primer_producto END AS primer_producto
 FROM segundo;
+
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto enhorabuena! pero un par de matices, me ha gustado mucho el usar el with (tal vez la segunda tabla del with se podría omitir en favor de un código
+más corto pues no hace tanta falta esa tabla. Y aunque el resultado es correcto tal vez hubiera sido mejor mostrar a cada cliente en una sola fila con ayuda de 
+la función LISTAGG. Caulquier cosa que necesites no dudes en contactar.
+*/
