@@ -1,0 +1,61 @@
+--¿Cuántos pedidos y cuántas pizzas se han entregado con éxito por cada runner, cuál es su porcentaje de éxito de cada runner? ¿qué porcentaje de las pizzas entregadas tenían modificaciones?
+
+
+
+--número de pedidos que hace cada runner
+
+   with A as ( select 
+    NVL(count(order_id),0) as n_orders_total,
+    runners.runner_id
+    from runner_orders
+    right join runners
+    on runner_orders.runner_id=runners.runner_id
+    group by runners.runner_id
+    ),
+--  número de pedidos con éxito cada runner  
+B as (
+select 
+    count(order_id) as n_orders_exito,
+    runner_id 
+    from runner_orders 
+    where cancellation <>'Customer Cancellation' and cancellation<>'Restaurant Cancellation' or cancellation is null
+    group by runner_id
+),
+--número de pizzas de cada pedido
+C as (
+select
+    count(pizza_id) as n_pizzas,
+    customer_orders.order_id
+    from customer_orders
+    right join runner_orders
+    on runner_orders.order_id=customer_orders.order_id
+        where cancellation <>'Customer Cancellation' and cancellation<>'Restaurant Cancellation' or cancellation is null
+    group by customer_orders.order_id
+    ),
+--número de pizzas modificadas de cada pedido final
+D as (select 
+    count(pizza_id) as n_pizzas_modificadas,
+    runner_id
+    from customer_orders
+    left join runner_orders
+    on customer_orders.order_id=runner_orders.order_id
+    where exclusions<>'null' and exclusions is not null and exclusions<>'' and extras<> 'null' and extras is not null and extras<>''
+    and cancellation <>'Customer Cancellation' and cancellation<>'Restaurant Cancellation' or cancellation is not null
+    group by runner_id
+    )
+
+select 
+(n_orders_exito/n_orders_total)*100 as porcentaje_exito,
+n_orders_exito,
+A.runner_id,
+(n_pizzas_modificadas/sum(n_pizzas))*100 as porcentaje_pizzas_modificadas
+from A
+left join runner_orders
+on runner_orders.runner_id=A.runner_id
+left join B
+on A.runner_id=B.runner_id
+left join C
+on runner_orders.order_id=C.order_id
+left join D 
+on runner_orders.runner_id=D.runner_id
+group by A.runner_id, n_orders_exito, porcentaje_exito, n_pizzas_modificadas
