@@ -20,3 +20,12 @@ from
     on a.product_id=c.product_id
         )
         group by 1;
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto enhorabuena! Pero los full no son recomendables era mejor usar left (from members left sales left menu) o right si inviertes el orden. No está
+mal usar el full pero no es recomendable. Como futura idea te recomiendo el uso de las tablas temporales WITH para hacer subconsultas, no son obligatorias
+y tampoco tan útiles en query tan pequeñas pero te recomiendo que les ehces un ojo pues son interesantes para evitar subconsultas.
+*/
