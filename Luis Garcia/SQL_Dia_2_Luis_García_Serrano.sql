@@ -17,3 +17,12 @@ s.customer_id
 from sales s
 group by s.customer_id
 order by dias_visitados_distintos desc;
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto enhorabuena! Muy bien usado la función APPROX_COUNT_DISTINCT es mucho más rápida (para muchos datos) que COUNT(DISTINCT s.order_date), 
+aunque cuidado con esa función pues aunque en datos pequeños no hay problema, con una gran catidad de datos puede no darte el número exacto y darte un
+número aproximado.
+*/
