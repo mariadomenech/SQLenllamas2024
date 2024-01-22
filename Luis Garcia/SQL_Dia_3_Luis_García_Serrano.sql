@@ -33,3 +33,14 @@ LEFT JOIN MENU M
 ON M.PRODUCT_ID=S1.PRODUCT_ID
 
 -- MOLA PPORQUE SUSHI Y CURRY PARA EL CUSTOMER ID=A  SE REPITEN YA QUE SE COMPRA EL MISMO DÍA Y LO SACA
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+Resultado correcto pero se ha perdido una información. El A pidio dos platos y tienes ambos, pero el C también pero con el distint has perdido la información
+de que su primer pedido fueron 2 ramen. Además sería interesante usar la función LISTAGG para tener a cada cliente en una sola fila aunque tuviera más de
+un producto. Unos tips para limpieza de código, te reomiendo no usar saltos de linea en el código eso dificulta la lectura además de que algunos editores (no 
+es el caso de snowflake) pueden no ejecutar bien si hay saltos de linea. Y los comentarios para explicar el código queda más limpio si se hacen a parte un parrafo
+o varios en vez de intercalados, aunque esto son unos tips y una cuestión siempre muy debatible ya que es algo muy subjetivo la limpieza del código.
+*/
