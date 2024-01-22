@@ -11,3 +11,12 @@ on m.customer_id = s.customer_id
 left join SQL_EN_LLAMAS.CASE01.MENU p 
 on s.product_id = p.product_id 
 group by m.customer_id;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto!
+
+*/
