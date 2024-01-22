@@ -1,48 +1,64 @@
-SELECT C.CUSTOMER_ID, SUM(NVL(PRICE,0)) AS GASTO_TOTAL  
-FROM SQL_EN_LLAMAS.CASE01.MEMBERS C
-LEFT JOIN SQL_EN_LLAMAS.CASE01.SALES A ON (C.CUSTOMER_ID=A.CUSTOMER_ID)
-LEFT JOIN SQL_EN_LLAMAS.CASE01.MENU B ON (A.PRODUCT_ID = B.PRODUCT_ID)
-GROUP BY C.CUSTOMER_ID;
-
-/*********************************/
-/***** COMENTARIO JUAN PEDRO *****/
-/*********************************/
-/* 
-El resultado es el que se buscaba, el código es correcto y muy limpio. La expliación en el archivo JSON
-me parece perfecta, demuestra que controlas cada cosa que has puesto.
-
-Una opinión más subjetiva, es que me gusta que esté todo en mayusucula, para mi punto de vista eso le 
-da limpieza al código. Sin intención de padecer pedante buscando fallos que no hay, te muestro como tabularía
-yo el código:
-SELECT C.CUSTOMER_ID, 
-       SUM(NVL(PRICE,0)) AS GASTO_TOTAL  
-FROM SQL_EN_LLAMAS.CASE01.MEMBERS C
-LEFT JOIN SQL_EN_LLAMAS.CASE01.SALES A 
-       ON C.CUSTOMER_ID = A.CUSTOMER_ID
-LEFT JOIN SQL_EN_LLAMAS.CASE01.MENU B 
-       ON A.PRODUCT_ID = B.PRODUCT_ID
-GROUP BY C.CUSTOMER_ID;
-
-- Me gusta poner las columnas de la SELECT una por fila y alineadas entre ellas. 
-- Me gusta poner el ON de los JOIN debajo ya que en una sola línea no lo veo limpio en casos que puedan existir
-  más condiciones de cruce, es decir, un AND adicional, e incluso tu tabla del LEFT puede ser una subconsulta.
-  Además de ponerlo debajo lo alineo concretamente a la derecha simplemente porque el ON yo lo veo como parte del JOIN, 
-  te pongo un ejemplo.
-SELECT ....
-       ....
-FROM  .... A
-LEFT JOIN (SELECT ..... FROM .....) B
-       ON .....
-      AND .....
-LEFT JOIN (SELECT ..... FROM .....) C
-       ON .....
-      AND .....
-WHERE ....
-  AND ....
-GROUP BY ....
-ORDER BY ....
-
-Para este caso más simple considero que tu forma es absolutamente limpia y legible. Hay muchas formas de tabular un código,
-la mía no es más correcta que otra, solo te la pongo como complemento a un comentario que hubiera sido muy escueto ya que 
-como te he dicho antes no tengo nada que objetar de tú código en ningún aspecto. ¡ENHORABUENA!
-*/
+WITH RUNNER_ORDERS_CLEAN AS 
+(
+SELECT 
+    ORDER_ID,
+    RUNNER_ID,
+    CASE 
+        WHEN PICKUP_TIME='null' OR PICKUP_TIME='' THEN null
+        ELSE PICKUP_TIME
+    END AS PICKUP_TIME,
+    CASE 
+        WHEN DISTANCE='null' OR DISTANCE ='' THEN null
+        ELSE TRY_CAST(REGEXP_REPLACE(DISTANCE, '[a-zA-Z]', '') AS NUMBER(10, 2)) 
+    END AS DISTANCE_KM,
+    CASE 
+        WHEN DURATION='null' OR DURATION = '' THEN null
+        ELSE TRY_CAST(REGEXP_REPLACE(DURATION, '[a-zA-Z]', '') AS NUMBER) 
+    END AS DURATION_MIN,
+    CASE 
+        WHEN CANCELLATION='null' OR CANCELLATION='' THEN null
+        ELSE CANCELLATION 
+    END AS CANCELLATION
+    FROM SQL_EN_LLAMAS.CASE02.RUNNER_ORDERS
+), --Limpieza de datos de la tablla runner_orders
+CUSTOMER_ORDERS_CLEAN AS
+(
+SELECT 
+    ORDER_ID,
+    CUSTOMER_ID,
+    PIZZA_ID,
+    CASE 
+        WHEN EXCLUSIONS='null' or EXCLUSIONS='' THEN null
+        ELSE EXCLUSIONS
+    END AS EXCLUSIONS, 
+    CASE 
+        WHEN EXTRAS='null' or EXTRAS='' THEN null
+        ELSE EXTRAS
+    END AS EXTRAS
+FROM SQL_EN_LLAMAS.CASE02.CUSTOMER_ORDERS
+) --Limpieza de datos de la tablla customer_orders
+SELECT RUNNER_ID,
+COUNT(DISTINCT CASE
+                    WHEN CANCELLATION IS NULL THEN A.ORDER_ID
+                END) AS PEDIDOS_EXITOSOS, 
+        -- Cuento los distintos ORDER_ID siempre que no haya sido CANCELADO el pedido
+ COUNT (CASE
+            WHEN CANCELLATION IS NULL THEN 1
+        END) AS PIZZAS_EXITOSAS,
+       -- Cuanto las distintas filas que tiene siempre que el pedido no haya sido CANCELADO, que van a ser las pizzas pedidas 
+       (100 * COUNT(DISTINCT CASE
+                                 WHEN CANCELLATION IS NULL THEN A.ORDER_ID
+                             END)) / COUNT(DISTINCT A.ORDER_ID) AS PEDIDOS_EXITOSOS_PORCENTAJE, 
+        --Divido los distintos ORDER_ID siempre que no haya sido CANCELADO el pedido por los pedidos totales y lo multiplico por 100 para sacar el porcentaje
+ (100 * COUNT (CASE
+                   WHEN CANCELLATION IS NULL
+                        AND (EXCLUSIONS IS NOT NULL
+                             OR EXTRAS IS NOT NULL) THEN 1 -- Casos en que las pizzas han sufrido modificaciones
+               END)) / COUNT (CASE
+                                  WHEN CANCELLATION IS NULL THEN 1
+                              END) AS PIZZAS_MODIFICADAS_PORCENTAJE
+                --Divido las pizzas modificadas por los pizzas totales y lo multiplico por 100 para sacar el porcentaje
+FROM RUNNER_ORDERS_CLEAN A
+INNER JOIN CUSTOMER_ORDERS_CLEAN B 
+    ON (A.ORDER_ID=B.ORDER_ID)
+GROUP BY 1;
