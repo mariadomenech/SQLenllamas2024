@@ -19,3 +19,17 @@ SELECT customer_id, sum(puntos) as puntos
     FROM 
     t_puntos
     GROUP BY customer_id
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+
+/* 
+
+Perfecto Joprge!!
+
+Para que la visualización del resultado quede perfecta, añadiría un CASE WHEN o IFNULL para que cuando el cliente D 
+no cruce con ''SALES'', no muestre un NULL en la sumatoria, sino un 0. Me gusta que si una columna es de tipo númerico
+y encima de importes, los nulos sean considerados como importe 0.
+
+*/
