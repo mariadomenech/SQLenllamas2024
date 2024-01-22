@@ -8,3 +8,12 @@ left join SQL_EN_LLAMAS.CASE01.SALES s
 on m.customer_id = s.customer_id
 group by m.customer_id
 ORDER BY DIAS_VISITADOS DESC;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto!
+
+*/
