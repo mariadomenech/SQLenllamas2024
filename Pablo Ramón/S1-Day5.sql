@@ -20,3 +20,12 @@ FROM (
         ON Me.PRODUCT_ID = S.PRODUCT_ID
 ) A
 GROUP BY 1;
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto enhorabuena! Pero el full no es recomendable usarlo (aunque si correcto) era mejor un LEFT. 
+Aprovecho para comentarte el uso de las tablas temporales por medio del with. A veces es útil usarlas cuando se hacen subconsultas no son necesarias 
+pero échales un ojo.
+*/
