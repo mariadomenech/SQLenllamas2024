@@ -29,3 +29,13 @@ LEFT JOIN CASE01.MENU
        ON SALES.PRODUCT_ID = MENU.PRODUCT_ID
 GROUP BY 1
 ORDER BY 2 DESC
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+CASI PERFECTO. La segunda forma es menos adeacuada que la primera, porque en caso de empate el top solo te saca uno y el rank te los saca todos, de la primera 
+como información te puedes ahorrar una subconsulta ya que la función RANK() admite eso en el ORDER BY:
+RANK() OVER (ORDER BY COUNT(PRODUCT_ID) DESC)
+Por lo demás, ¡todo perfecto!
+*/
