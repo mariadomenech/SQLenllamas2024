@@ -18,3 +18,12 @@ FROM(
     GROUP BY MEMBERS.CUSTOMER_ID, MENU.PRODUCT_NAME,SALES.ORDER_DATE)A
 GROUP BY A.CLIENTE, A.PRIMER_PEDIDO
 ORDER BY A.CLIENTE;
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto pero casi perfecto! has perdido la información en el cliente C de que pidios dos productos en su primer pedido, podrias o no haber usado el distinct
+para que te saliera dos veces el ramen o bien habertelas ideado para obtener un resultado talque así: C: "2 ramen", A: "1 sushi, 1 curry".
+Además siempre interesa sacar a todos incluido al que no pidió pero esta en la tabla de MEMBERS.
+*/
