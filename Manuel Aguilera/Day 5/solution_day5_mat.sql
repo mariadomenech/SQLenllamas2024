@@ -11,3 +11,10 @@ LEFT JOIN SQL_EN_LLAMAS.CASE01.SALES A
 LEFT JOIN SQL_EN_LLAMAS.CASE01.MENU B 
     ON (A.PRODUCT_ID = B.PRODUCT_ID)
 GROUP BY C.CUSTOMER_ID;
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto enhorabuena! Realmente te has dado cuenta que no hace falta una subconsulta y has usado solo una select, muy bien optimizado el código.
+*/
