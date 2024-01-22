@@ -33,3 +33,13 @@ INNER JOIN MENU B
 RIGHT JOIN MEMBERS C
     ON A.CUSTOMER_ID = C.CUSTOMER_ID
     AND A.ORDER_DATE = C.JOIN_DATE;
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+Aunque correcto el resultado muy bien aprovechando el cambio de la fecha para sacar con un simple cruce la fecha mínima, piensa que el cliente C pidio dos platos
+de ramen y esa información la has perdido con el distinct, el A pidio dos productos en su primer pedido pero al ser distintos no te ha ocurrido esa perdida de 
+información.
+Otra cosa es la visualización de los datos, tal vez con la función LISTAGG sería visualemtne más correcto pues agurparias en una sola fila cada cliente.
+*/
