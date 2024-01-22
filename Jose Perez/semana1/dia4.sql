@@ -23,3 +23,13 @@ from
 left join 
     SQL_EN_LLAMAS.CASE01.MENU as mn on r.product_id = mn.product_id
 where _rn = 1;
+
+*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+
+/* 
+
+Perfecto Jose! Y me gusta que hagas uso del RANK(), porque justo eso, nos permite sacar más de un producto en caso de empate.
+
+*/
