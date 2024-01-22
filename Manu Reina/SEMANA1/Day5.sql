@@ -20,3 +20,13 @@ FROM (
         GROUP BY 1,2
         ORDER BY 1)A
 GROUP BY 1;
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto enhorabuena! Como nota puedes usar with para evitar subconsutlas aunque eso es mucho más útil en query más largas. 
+Si te comento que lo que usas no se puede con cualquier SQL en el case when haces referencia a un campo que acabas de calculas en la misma consulta
+eso no siempre se acepta (snowflake sí) de todas maneras habría una forma en la que con una sola select sale el resultado y no requiere muchas líneas de código,
+te animo a que lo investigues.
+*/
