@@ -29,5 +29,5 @@ FROM (
 /*
 ¡Todo correcto enhorabuena! me ha gustado mucho tu código poniendo el número al lado, solo puedo hacerte un comentario, y es la visualización del resultado 
 hubiera sido aún más perfecta si usas la función LISTAGG para tener a cada cliente en una sola linea, es decir, para el A tendría una sola fila y pondría
-"1 shushi, 1 curry". 
+"1 shushi, 1 curry". Que es lo que pones en el comentario, tenías la idea solo te faltaba la función! GENIAL tu propuesta!
 */
