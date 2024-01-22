@@ -29,3 +29,8 @@ GROUP BY 1;
 Aprovecho para comentarte el uso de las tablas temporales por medio del with. A veces es útil usarlas cuando se hacen subconsultas no son necesarias 
 pero échales un ojo.
 */
+
+/*********************************/
+/*****   COMENTARIO PABLO    *****/
+/*********************************/
+Gracias! Lo tendré en cuenta para los futuros ejericios, por costumbre con el cliente que siempre pide FULL ya lo uso por defecto.
