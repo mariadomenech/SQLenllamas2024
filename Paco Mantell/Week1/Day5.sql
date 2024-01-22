@@ -18,3 +18,12 @@ LEFT JOIN CTE_PUNTOS_PROD C
 ON B.product_id=C.product_id
 GROUP BY 1
 ORDER BY 2 DESC
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto enhorabuena! Muy bien usado el with para evitar subconsutlas. Si algo decirte tal vez que se pueden tabular algunas cosas para un código más limpio,
+aunque esto siempre es una cuestión subjetiva.
+*/
+
