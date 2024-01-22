@@ -16,3 +16,12 @@ select product_name as "Producto más pedido",veces as "Veces pedido"
       group by 1
       )
     where orden = 1;
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto enhorabuena! muy bien por usar RANK y no el TOP, incluso dentro de las funciones ventana un ROW_NUMBER que podría ser otra alternativa ocurriría
+lo mismo en caso de empate. Si algo tengo que matizarte es que el full aunque correcto, no es recomendable es siempre mejor usar LEFT.
+Otra cosilla que comentarte sería la limpieza de código, este tema siempre es subjetivo peroi creo que se vería mejor si los campos de una select llevan alguna 
+tabulación extra, pero esto siempre es cuestión de gustos. Enhorabuena por tu uso del RANK!
+*/
