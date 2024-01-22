@@ -13,3 +13,10 @@ FROM CASE01.SALES S
 FULL JOIN CASE01.MEMBERS M
     ON S.CUSTOMER_ID = M.CUSTOMER_ID
 GROUP BY 1;
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+Es correcto tanto el resutlado como el código, pero recuerda que es más conveniente no usar el FULL y usar un LEFT o RIGHT.
+*/
