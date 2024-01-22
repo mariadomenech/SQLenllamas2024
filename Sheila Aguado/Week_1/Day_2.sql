@@ -5,3 +5,10 @@ LEFT JOIN SQL_EN_LLAMAS.CASE01.SALES AS S
 ON MB.CUSTOMER_ID = S.CUSTOMER_ID
 GROUP BY MB.CUSTOMER_ID
 ORDER BY CLIENTE
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto enhorabuena!
+*/
