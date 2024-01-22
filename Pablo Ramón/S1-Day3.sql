@@ -23,3 +23,11 @@ FROM (
     QUALIFY RANK() OVER(PARTITION BY M.CUSTOMER_ID ORDER BY S.ORDER_DATE ASC) = 1
 ) A
 ;
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto enhorabuena! me ha gustado mucho tu código poniendo el número al lado, solo puedo hacerte un comentario, y es la visualización del resultado 
+hubiera sido aún más perfecta si usas la función LISTAGG para tener a cada cliente en una sola linea, es decir, para el A tendría una sola fila y pondría
+"1 shushi, 1 curry". 
+*/
