@@ -23,3 +23,16 @@ FROM (
     GROUP BY A.CLIENTE,
     A.PRODUCTO)B
 GROUP BY B.CLIENTE
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+
+/* 
+
+Oye, muy bien Fran!!
+
+Las dobles comillas para los alias no hacen falta.
+
+*/
