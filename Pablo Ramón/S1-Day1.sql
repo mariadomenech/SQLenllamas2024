@@ -64,3 +64,10 @@ LEFT JOIN CASE01.MENU Me
     ON S.PRODUCT_ID = Me.PRODUCT_ID
 
 GROUP BY 1;
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+Correcto!
+*/
