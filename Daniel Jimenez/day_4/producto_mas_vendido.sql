@@ -35,3 +35,14 @@ FROM (
     GROUP BY menu.product_name
 ) AS subconsulta
 WHERE ranking = 1;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Me quedo con la 3ª opción por la utilización de la funcion de ventana RANK. El resultado sería correcto.
+
+Como se comentó por el grupo, no añadáis opciones que no devuelvan lo que se pide en el ejercicio.
+
+*/
