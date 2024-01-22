@@ -3,3 +3,10 @@ FROM SQL_EN_LLAMAS.CASE01.MEMBERS C
 LEFT JOIN SQL_EN_LLAMAS.CASE01.SALES A ON (C.CUSTOMER_ID=A.CUSTOMER_ID)
 GROUP BY C.CUSTOMER_ID
 ORDER BY 2 DESC;
+
+/*********************************/
+/***** COMENTARIO JUAN PEDRO *****/
+/*********************************/
+/*
+¡Todo correcto enhorabuena!
+*/
