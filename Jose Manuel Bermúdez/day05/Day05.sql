@@ -8,3 +8,13 @@ FROM sales sal
 	RIGHT JOIN members mem ON mem.customer_id = sal.customer_id
 GROUP BY mem.customer_id
 ORDER BY mem.customer_id;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+
+/* 
+
+Perfecto Jose Manuel!
+
+*/
