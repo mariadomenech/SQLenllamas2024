@@ -54,15 +54,15 @@ WITH DISTANCIA_RECORRIDA AS(
 ), KM_H_PROMEDIO AS(
     SELECT
         RUNNER_ID
-        ,AVG("km/h") AS "Promedio km/h"
+        , ROUND(AVG("km/h"),2) AS "Promedio km/h"
     FROM KM_H   
     GROUP BY RUNNER_ID
 )
 SELECT 
     DISTINCT DR.RUNNER_ID AS "Corredores"
     , DISTANCE AS "Distancia total recorrida"
-    ,PEDIDOS AS "Pedidos realizados"
-    ,"Promedio km/h"
+    , PEDIDOS AS "Pedidos realizados"
+    , "Promedio km/h"
 FROM 
     DISTANCIA_RECORRIDA DR
     LEFT JOIN KM_H KH
