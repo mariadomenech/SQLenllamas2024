@@ -62,3 +62,25 @@ FROM RUNNER_ORDERS_CLEAN A
 INNER JOIN CUSTOMER_ORDERS_CLEAN B 
     ON (A.ORDER_ID=B.ORDER_ID)
 GROUP BY 1;
+
+/**************************/
+/*** COMENTARIOS JUANPE ***/
+/**************************/
+/*
+Respecto RUNNER_ORDERS_CLEAN muy bien usada la función REGEXP_REPLACE para limpiar las celdas y me ha gustado mucho el uso de TRY_CAST 
+para convertir el campo, aunque te comento un detalle, no te hace falta el CASE WHEN y validar los nulos y en el ELSE tu función ya que
+la función TRY_CAST va a hacer eso por ti, dado que esta función si no puede convertir el dato en lo que le pides en lugar de dar error,
+te devuelve NULL, por tanto lo que viene ‘’ o ‘null’ te lo va devolver NULL igualmente, esto te ahorraría unas líneas de código.
+
+Respecto CUSTOMER_ORDERS_CLEAN muy bien, como detalle comentarte que cuando el CASE WHEN solo valida un campo siempre puedes tomar como
+alternativa el DECODE, esto te permitiría que el CASE WHEN que ocupa 4 lineas se quede en una sola:
+    DECODE(CAMPO,WHEN1,THEN1,WHEN2,THEN2,(WHENn,THENn),ELSE)
+    DECODE(EXCLUSIONS,'',NULL,'null',NULL,EXCLUSIONS)
+Dicho esto, el CASE WHEN es totalmente válido.
+
+Para terminar la SELECT final es correcta y esos son los resultados que deben de salir, buen manejo de la función COUNT usando DISTINCT
+y CASE WHEN dentro de dicha función, aunque había formas de hacer los conteos con algo menos de código, pero totalmente correcta tu propuesta.
+
+He echado en falta al RUNNER que no ha realizado ningún pedido y no esta de más expresar los resultados de porcentajes redondeados a dos decimales.
+En general muy bien resuelto, ¡enhorabuena por el ejercicio!
+*/
