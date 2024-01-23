@@ -52,3 +52,21 @@ RIGHT JOIN CTE_TOTALS B
     ON A.runner_id=B.runner_id
 RIGHT JOIN CTE_MOD_PIZZAS D
     ON A.runner_id=D.runner_id
+
+/*************************/
+/*** COMENTARIO JUANPE***/
+/************************/
+/*
+La PIZZA_ID 2 del ORDER_ID 3, te sale como ‘SI modificada’ y no lo es, revisa tu query.
+A parte la pizza del pedido ORDER_ID 9 aunque si tiene modificaciones está cancelada por tanto no puedes sumarla, 
+ya que el porcentaje de pizzas modificadas es respecto de las entregadas.
+
+Hecho en falta al runner que no ha realizado ningun pedido. 
+Vsualmente queda mejor si los porcentajes los redondeas a dos decimales.
+
+En cuanto a la lógica establecida en tu query, el orden de los with, decir que muy clara y ordenada, primero el status, 
+luego las entregas, luego toales, modificaciones y finalmente el resultado final, todo en pequeñas select muy claras, 
+muy bien, solo faltaría los matices que te he comentado.
+*/
+
+
