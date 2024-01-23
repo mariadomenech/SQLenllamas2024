@@ -44,3 +44,21 @@ group by 1
 select runner_id, num_pedidos_exitosos, num_pizza_entreg_con_exito, PORCENTAJE_EXITO_POR_RUNNER, PORCENTAJE_PIZZAS_ENTREGADAS_MODIFICADAS
 from sel01
 ;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Faltaría multiplicar por 100 para obtener el %, además el % de pizzas modificadas entregadas no se tiene que calcular sobre el total sino sobre las entregadas.
+
+Otro detalle que no afecta en nada es que no es necesario especificar las columnas de una CTE:
+
+      with co as (
+      .....
+      ),
+
+      ro as (
+      ....
+      )
+*/
