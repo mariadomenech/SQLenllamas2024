@@ -83,3 +83,58 @@ En cuanto a la lógica establecida en tu query, el orden de los with, decir que 
 luego las entregas, luego toales, modificaciones y finalmente el resultado final, todo en pequeñas select muy claras, 
 muy bien, solo faltaría los matices que te he comentado.
 */
+WITH CTE_STATUS AS(
+/* CREAMOS DOS ESTADOS DE ENTREGA*/
+    SELECT A.runner_id,
+        B.order_id,
+        CASE
+            WHEN B.cancellation = 'Restaurant Cancellation' OR B.cancellation = 'Customer Cancellation' THEN 'C'
+            ELSE 'D'
+        END status
+    FROM sql_en_llamas.case02.runners A
+    LEFT JOIN sql_en_llamas.case02.runner_orders B
+        ON A.runner_id=B.runner_id
+), CTE_TOTALS AS(
+    /*PEDIDOS Y PIZZAS TOTALES*/
+    SELECT A.runner_id,
+    ZEROIFNULL(COUNT(DISTINCT A.order_id)) TOTAL_ORDERS,
+    ZEROIFNULL(COUNT(B.pizza_id)) TOTAL_PIZZAS
+    FROM CTE_STATUS A
+    LEFT JOIN sql_en_llamas.case02.customer_orders B
+        ON A.order_id=B.order_id
+    GROUP BY 1
+), CTE_DELIVERED AS(
+    /*PEDIDOS Y PIZZAS ENTREGADOS*/
+    SELECT A.runner_id,
+    ZEROIFNULL(COUNT(DISTINCT A.order_id)) DEL_ORDERS,
+    ZEROIFNULL(COUNT(B.pizza_id)) DEL_PIZZAS
+    FROM CTE_STATUS A
+    LEFT JOIN sql_en_llamas.case02.customer_orders B
+        ON A.order_id=B.order_id
+    WHERE A.status='D'
+    GROUP BY 1
+),CTE_MODS AS(
+    /*PIZZAS ENTREGADAS CON MODIFICACIONES*/
+    SELECT B.runner_id,
+        ZEROIFNULL(COUNT(A.pizza_id)) TOT_MOD_PIZZAS,
+        CASE
+            WHEN (A.exclusions='null' OR LENGTH(A.exclusions)=0) AND (A.extras = 'null' OR LENGTH(A.extras) = 0 OR LENGTH(A.extras) IS null) THEN 'No'
+            ELSE 'Si'
+        END MODS
+    FROM sql_en_llamas.case02.customer_orders A
+    RIGHT JOIN CTE_STATUS B
+        ON A.order_id=B.order_id
+    WHERE MODS='Si'
+    AND B.status = 'D'
+    GROUP BY 1,3
+)
+SELECT A1.runner_id runner,
+A1.DEL_ORDERS DELIVERED_ORDERS,
+A1.DEL_PIZZAS DELIVERED_PIZZAS,
+DIV0(A1.DEL_ORDERS, A3.TOTAL_ORDERS)::decimal(10,2) * 100 SUCCESS_RATE,
+DIV0(A2.TOT_MOD_PIZZAS,A1.DEL_PIZZAS)::decimal(10,2) * 100 SUCCESS_RATE
+FROM CTE_DELIVERED A1
+RIGHT JOIN CTE_MODS A2
+    ON A1.runner_id=a2.runner_id
+RIGHT JOIN CTE_TOTALS A3
+    ON A1.runner_id=A3.runner_id
