@@ -1,16 +1,16 @@
 -------------------------------------------------------------------------------------
-/*Dia 1 ¿Cuántos pedidos y cuántas pizas se han entregado con exito por cada runner 
+/* Dia 1 ¿Cuántos pedidos y cuántas pizas se han entregado con exito por cada runner 
 ¿Cuál es el porcentaje de éxito de cada runner?
-¿Qué porcentaje de las pizzas entregadas tenían modificaciones?*/
+¿Qué porcentaje de las pizzas entregadas tenían modificaciones? */
 
-/*DISCLAIMER
+/* DISCLAIMER
   Te he dejado todo el proceso completo. Esta primera parte son las consultas de 
-  ayuda para ir ojeando las tablas y los dos drop por si quería eliminar las temporrales.
+  ayuda para ir ojeando las tablas y los dos drop por si quería eliminar las temporales.
   Después tienes la creación y limpieza de cada tabla temporal y por último la consulta.
-  Admito la consulta de nuestro chat (evidentemente) y de chat gpt, pero en este último
-  caso solo para resolver errores en la creación de la consulta, como "case when" mal 
-  formados, comas mal puestas y cosas así. La lógica siempre la he ido aplicando yo.
-*/
+  Admito haber usado como ayuda la consulta de nuestro chat (evidentemente) y de chat gpt, 
+  pero en este último caso solo para resolver errores en la creación de la consulta, 
+  como "case when" mal formados, comas mal puestas y cosas así. 
+  La lógica siempre la he ido aplicando yo. */
 
 SELECT * FROM CASE02.CUSTOMER_ORDERS;
 SELECT * FROM CASE02.RUNNER_ORDERS;
