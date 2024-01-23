@@ -1,0 +1,49 @@
+USE DATABASE sql_en_llamas;
+/* --semana 2, día 1 - PIZZAS - Pedidos y pizzas entregados CON EXITO por cada runner, etc*/
+with co (order_id, customer_id, pizza_id,exclusions, extras, order_time ) as
+(select order_id, customer_id, pizza_id
+,case when exclusions='null' then null
+      when exclusions=''     then null
+      else exclusions end as exclusions
+,case when extras='null' then null
+      when extras=''     then null
+      else extras end as extras
+, order_time
+from case02.customer_orders
+),
+ro (order_id, runner_id, pickup_time, distance, duration, cancellation) as
+(
+select order_id, runners.runner_id
+,case when pickup_time='null' then null
+      when pickup_time=''     then null
+      else pickup_time end as pickup_time_
+,case when distance='null' then null
+      when distance=''     then null
+      else distance end as distance_ 
+,case when duration='null' then null
+      when duration=''     then null
+      else duration end as duration_ 
+,case when cancellation='null' then null
+      when cancellation=''     then null
+      else cancellation end as cancellation_
+from case02.runner_orders
+right join case02.runners on runners.runner_id = runner_orders.runner_id
+)
+,sel01 (runner_id, NUM_PEDIDOS,NUM_PIZZAS, num_pedidos_exitosos, num_pizza_entreg_con_exito,num_pizza_MODIFICADAS_entreg_con_exito, num_cancelaciones, PORCENTAJE_EXITO_POR_RUNNER,PORCENTAJE_PIZZAS_ENTREGADAS_MODIFICADAS ) as
+(
+select ro.runner_id, count(distinct co.order_id) NUM_PEDIDOS, count(co.pizza_id)NUM_PIZZAS
+,count(distinct (case when ro.cancellation is     null then co.order_id else null end)) num_pedidos_exitosos 
+,count(case when ro.cancellation is     null then co.pizza_id else null end) num_pizza_entreg_con_exito
+,count(case when (ro.cancellation is null and (co.exclusions is not null or co.extras  is not null)) then co.pizza_id else null end)
+num_pizza_MODIFICADAS_entreg_con_exito
+,count(distinct (case when ro.cancellation is not null then co.order_id else null end)) num_cancelaciones
+,iff((num_pedidos_exitosos + num_cancelaciones)= 0, 0,
+((num_pedidos_exitosos / (num_pedidos_exitosos + num_cancelaciones))*100)) as PORCENTAJE_EXITO_POR_RUNNER
+,iff(num_pizza_entreg_con_exito=0, 0,(num_pizza_MODIFICADAS_entreg_con_exito/(num_pizza_entreg_con_exito))*100) as PORCENTAJE_PIZZAS_ENTREGADAS_MODIFICADAS
+from co
+right join ro on co.order_id = ro.order_id
+group by 1
+)
+select runner_id, num_pedidos_exitosos, num_pizza_entreg_con_exito, PORCENTAJE_EXITO_POR_RUNNER, PORCENTAJE_PIZZAS_ENTREGADAS_MODIFICADAS
+from sel01
+;
