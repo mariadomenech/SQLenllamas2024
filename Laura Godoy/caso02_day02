@@ -1,0 +1,49 @@
+--¿Cuál es la distancia acumulada de reparto de cada runner?¿Y la velocidad promedio (en km/h)?
+
+with A as (--quito nulos
+    select 
+         case
+         when distance='null' then null 
+         else distance
+         end as distance, 
+        runner_id
+   from runner_orders
+),
+B as ( --quito los km
+    select  
+        RTRIM(distance , 'km')as distance,
+        runner_id
+    from A
+),
+C as (
+select 
+    sum(distance) as distancia_acumulada  ,
+    runner_id
+from B 
+group by runner_id 
+),
+D as (
+select case
+    when duration='null' then null 
+    else duration
+    end as duration, 
+    runner_id
+from runner_orders
+),
+E as ( --quito los minutos
+    select  
+      RTRIM(duration , ' minutes')as duration,
+      runner_id
+    from D
+)
+
+select 
+    sum(B.distance) as distancia_acumulada,
+    sum(B.distance)/sum(E.duration/60) as v_media,
+    B.runner_id
+from B
+left join runner_orders
+on B.runner_id=runner_orders.runner_id
+left join E
+on B.runner_id=E.runner_id
+group by B.runner_id
