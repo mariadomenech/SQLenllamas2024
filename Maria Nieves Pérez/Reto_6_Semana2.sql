@@ -94,3 +94,23 @@ ORDER BY corredor;
 
 --Dejo comentadas las columnas auxiliares que he usado para comprobar que los resultados eran correctos--
 --Ha sido dificil pero ha merecido la pena =D --
+
+/************************/
+/** Comentarios Juanpe **/
+/************************/
+/*
+El DISTINCT del primer with te sobra, pues has perdido un pizza, ya que hay un pedido que incluía dos pizzas exactamente iguales.
+En el campo CANCELACIONES, lo que pones ‘En curso’ realmente sería algo como ‘Entregado’.
+OJO cuidado en el with exclusiones_y_extras pues el where no es correcto, te falta un paréntesis pues no es lo mismo:
+        WHERE exclusiones != 'Sin exclusiones' 
+        OR extras != 'Sin extras'
+        AND cancelaciones = 'En curso';
+que esto:
+        WHERE (exclusiones != 'Sin exclusiones' 
+        OR extras != 'Sin extras')
+        AND cancelaciones = 'En curso';
+Si tienes dudas con esto no dudes en preguntarme.
+Muy bien el controlar la división por 0, hay varias opciones y un case when es una de ellas.
+Bien el final, al mostrar los porcentajes redondeados.
+Como siempre cualquier cosa no dudes en preguntar
+*/
