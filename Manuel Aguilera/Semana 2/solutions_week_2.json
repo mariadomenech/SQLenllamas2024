@@ -9,5 +9,18 @@
 				{"RUNNER_ID": 3,  "PEDIDOS_EXITOSOS": 1,   "PEDIDOS_EXITOSOS_PORCENTAJE": 50,   "PIZZAS_EXITOSAS": 1,   "PIZZAS_MODIFICADAS_PORCENTAJE": 100}
 		],
 		"explanation": "La consulta SQL utilizada (ver solution_w2_day1_mat.sql) proporciona métricas como el número de pedidos exitosos, el número de pizzas exitosas, el porcentaje de pedidos exitosos y el porcentaje de pizzas modificadas para cada RUNNER_ID. Las métricas se calculan teniendo en cuenta la cancelación de pedidos y las modificaciones en las pizzas."
+	},	
+	{
+		"question_week": 2,
+		"question_day": 2,
+		"question": "¿Cuál es la distancia acumulada de reparto de cada Runner? ¿Y la velocidad promedio (en km/h)?",
+		"answer": 	[
+						{ "RUNNER_ID": 3,   "DISTANCIA_TOTAL": 63.4,   "VELOCIDAD_KM_H": 45.53609702 },
+						{ "RUNNER_ID": 2,   "DISTANCIA_TOTAL": 71.8,   "VELOCIDAD_KM_H": 62.89997815 },
+						{ "RUNNER_ID": 1,   "DISTANCIA_TOTAL": 10,     "VELOCIDAD_KM_H": 40			 } ,
+						{ "RUNNER_ID": 4,   "DISTANCIA_TOTAL": 0,      "VELOCIDAD_KM_H": 0 			 } 
+				],
+		"explanation": "La consulta SQL utilizada (ver solution_w2_day2_mat.sql) proporciona métricas como la distancia total y velocidad promedio de cada runner, se uliza las funciones de agregación SUM y AVG agrupando por RUNNER_ID."
 	}
+
 ]
