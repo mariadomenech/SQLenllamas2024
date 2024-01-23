@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------------
 /* Dia 1 ¿Cuántos pedidos y cuántas pizas se han entregado con exito por cada runner 
 ¿Cuál es el porcentaje de éxito de cada runner?
-¿Qué porcentaje de las pizzas entregadas tenían modificaciones? */
+¿Qué porcentaje de las pizzas entregadas tenían modificaciones? 
 
-/* DISCLAIMER
+  DISCLAIMER
   Te he dejado todo el proceso completo. Esta primera parte son las consultas de 
   ayuda para ir ojeando las tablas y los dos drop por si quería eliminar las temporales.
   Después tienes la creación y limpieza de cada tabla temporal y por último la consulta.
