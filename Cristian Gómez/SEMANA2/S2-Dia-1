@@ -38,3 +38,13 @@ LEFT JOIN TempCustomer B
 
 ;
 DROP TABLE IF EXISTS TempRunner, TempCustomer
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+La única pega que te puedo poner es que no has añadido cruce con la tabla RUNNERS por lo que el runner_id 4 no aparece, ten encuenta que al añadir dicho runner habria que hacer control de nulos en el resultado.
+Por los demás runners, el resultado sería correcto.
+
+*/
