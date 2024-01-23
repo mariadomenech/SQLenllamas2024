@@ -6,8 +6,8 @@ WITH CTE_CLEAN_DATA AS (
 )
 
 SELECT B.runner_id runner,
-CONCAT(ZEROIFNULL(SUM(distance_num)), ' km') distancia_acum,
-CONCAT(ZEROIFNULL(60 * AVG(distance_num)/AVG(duration_num)), ' km/h') velocidad_prom
+CONCAT(ZEROIFNULL(SUM(distance_num))::decimal(10,2), ' km') distancia_acum,
+CONCAT(ZEROIFNULL(60 * AVG(distance_num)/AVG(duration_num))::decimal(10,2), ' km/h') velocidad_prom
 FROM CTE_CLEAN_DATA A
 RIGHT JOIN sql_en_llamas.case02.runners B
 ON A.runner_id=B.runner_id
