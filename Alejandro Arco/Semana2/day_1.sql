@@ -86,3 +86,12 @@ LEFT JOIN PEDIDOS_EXITO AS E
     ON T.RUNNER_ID = E.RUNNER_ID
 LEFT JOIN PIZZAS_MODIFICADAS AS P
     ON T.RUNNER_ID = P.RUNNER_ID;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Perfecto! Te iba a comentar el tema de controlar los nulos en los % pero veo que has comentado el motivo asi que 0 pegas.
+
+*/
