@@ -1,6 +1,6 @@
 /*1.¿Cuanto dinero le sobra a Giuseppe después de estas entregas?
   Ingresos:
-           - Meat lovers 12€
+           - Meatlovers 12€
            - Vegetariana 10€
            - Cada ingrediente extra 1€
   Gastos:
