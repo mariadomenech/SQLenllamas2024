@@ -18,3 +18,6 @@ FROM SQL_EN_LLAMAS.CASE01.MEMBERS mb
 LEFT JOIN puntos_producto pp
        ON mb.customer_id = pp.customer_id
 GROUP BY mb.customer_id;
+
+/*JUANPE: CORRECTO! aunque todo es correcto, personalmente en esta query tan simple veo inncesario un with, pues alarga un código que se podía hacer con
+una sola SELECT y pocas lineas.*/
