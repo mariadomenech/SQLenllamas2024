@@ -1,0 +1,8 @@
+
+	{
+		"question_week": 2,
+		"question_day": 3,
+		"question": "Una pizza MeatLovers cuesta 12€ y una vegetariana 20€, y cada ingrediente extra supone 1€ adicional. Por otro lado, a cada corredor se le paga 0.30€/km recorrido. ¿Cuánto dinero le sobra a Giuseppe después de estas entregas",
+		"answer": 	"98.440",
+		"explanation": "La consulta SQL utilizada (ver solution_w2_day3_mat.sql)  busca calcular el beneficio neto de cada pedido restando la ganancia del runner (basada en la distancia) del precio total de la pizza (considerando extras y exclusiones)."
+	}
