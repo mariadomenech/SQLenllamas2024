@@ -4,10 +4,10 @@
 		"question_day": 2,
 		"question": "¿Cuál es la distancia acumulada de reparto de cada Runner? ¿Y la velocidad promedio (en km/h)?",
 		"answer": 	[
-						{ "RUNNER_ID": 3,   "DISTANCIA_TOTAL": 63.4,   "VELOCIDAD_KM_H": 45.53609702 },
-						{ "RUNNER_ID": 2,   "DISTANCIA_TOTAL": 71.8,   "VELOCIDAD_KM_H": 62.89997815 },
-						{ "RUNNER_ID": 1,   "DISTANCIA_TOTAL": 10,     "VELOCIDAD_KM_H": 40			 } ,
+						{ "RUNNER_ID": 3,   "DISTANCIA_TOTAL": 63.4,   "VELOCIDAD_KM_H": 40.00000020 },
+						{ "RUNNER_ID": 2,   "DISTANCIA_TOTAL": 71.8,   "VELOCIDAD_KM_H": 53.85000000 },
+						{ "RUNNER_ID": 1,   "DISTANCIA_TOTAL": 10,     "VELOCIDAD_KM_H": 42.74157300 } ,
 						{ "RUNNER_ID": 4,   "DISTANCIA_TOTAL": 0,      "VELOCIDAD_KM_H": 0 			 } 
 				],
-		"explanation": "La consulta SQL utilizada (ver solution_w2_day2_mat.sql) proporciona métricas como la distancia total y velocidad promedio de cada runner, se uliza las funciones de agregación SUM y AVG agrupando por RUNNER_ID."
+		"explanation": "La consulta SQL utilizada (ver solution_w2_day2_mat.sql) proporciona métricas como la distancia total y velocidad promedio de cada runner, se uliza las funciones de agregación SUM agrupando por RUNNER_ID."
 	}
