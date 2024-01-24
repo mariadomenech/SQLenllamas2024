@@ -1,0 +1,46 @@
+    -- Una pizza meat lovers cuesta 12 euros  y una vegetariana 10 euros, y cada ingrediente extra supone 1 euro adicional. Por otro lado, a cada corredor se le paga 0.30 euros/km recorrido. ¿Cuánto dinero le sobra a giusepe después de estas entregas?
+
+
+with A as (select 
+    customer_orders.order_id,
+    customer_orders.pizza_id,
+    C.value::string AS extras_separado,
+    --pizza_name,
+    case
+    when pizza_name='Meatlovers' then 12
+    else 10
+    end as price_pizza
+from customer_orders  
+left join runner_orders
+on customer_orders.order_id=runner_orders.order_id
+left join pizza_names
+on customer_orders.pizza_id=pizza_names.pizza_id,
+LATERAL FLATTEN(input=>split(extras, ',')) C
+where cancellation<>'Restaurant Cancellation' and cancellation<>'Customer Cancellation'
+),
+B as (
+select 
+    order_id,
+    --pizza_id,
+    --extras_separado,
+    --pizza_name,
+    SUM(price_pizza)+1 as total_price_pizza
+    
+from A
+where extras_separado<>'null' and extras_separado<>''
+GROUP BY ORDER_ID
+),
+
+C as (--quito nulos
+    select 
+        RTRIM( case
+         when distance='null' then null 
+         else distance
+         end , 'km') as distance,
+        ORDER_ID
+   from runner_orders
+)
+select 
+    sum(total_price_pizza)-sum(C.distance*0.3) as dinero_que_le_sobra_a_giuseppe
+from B LEFT JOIN C ON b.ORDER_ID=C.ORDER_ID;
+
