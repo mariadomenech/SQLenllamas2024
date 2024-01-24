@@ -56,11 +56,7 @@ WITH CTE_PRICES AS(
     GROUP BY 1
 ), CTE_TOTALES AS(
     /*CALCULAMOS LOS TOTALES*/
-    SELECT 
-    CASE 
-        WHEN SUM(DD.pizza_sales) >= 0 THEN 'TOTAL' 
-        ELSE 'TOTAL' 
-    END totales,
+    SELECT 'TOTAL' totales,
     CONCAT(SUM(DD.pizza_sales),' €') total_sales,
     CONCAT(SUM(EE.runner_cost),' €') total_cost,
     CONCAT(SUM(DD.pizza_sales) - SUM(EE.runner_cost), ' €') total_profit
