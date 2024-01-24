@@ -1,0 +1,51 @@
+WITH TempBalances AS ( 
+    SELECT
+        CAST(REGEXP_REPLACE(RO.DISTANCE, '[^0-9.]', '') AS FLOAT) * 0.3  AS COSTE_RUNNER
+        ,CASE
+            WHEN C.PIZZA_ID = 1 THEN 12 -- ID = 1 ES MEATLOVERS
+            WHEN C.PIZZA_ID = 2 THEN 10 -- ID = 2 ES VEGETARIAN
+        END AS PRECIO_BASE_PIZZA
+        ,CASE
+            WHEN C.EXTRAS IS NULL OR C.EXTRAS = 'null' or C.EXTRAS = '' THEN 0
+            ELSE LEN(REPLACE(EXTRAS, ', ', ''))  
+        END AS PRECIO_EXTRAS
+    FROM CUSTOMER_ORDERS C
+    JOIN RUNNER_ORDERS RO
+        ON C.ORDER_ID = RO.ORDER_ID
+    WHERE RO.DISTANCE <> 'null' AND RO.DURATION <> 'null'
+)
+
+SELECT
+    SUM(PRECIO_BASE_PIZZA) + SUM(PRECIO_EXTRAS) - SUM(COSTE_RUNNER) AS BENEFICIO_ENTREGAS
+FROM TempBalances
+;
+
+DROP TABLE IF EXISTS TempBalances;
+
+------- si en lugar de pizza_id se quiere usar el nombre de la pizza ---------
+
+WITH TempBalances AS ( 
+    SELECT
+        CAST(REGEXP_REPLACE(RO.DISTANCE, '[^0-9.]', '') AS FLOAT) * 0.3  AS COSTE_RUNNER
+        ,CASE
+            WHEN P.PIZZA_NAME = 'Meatlovers' THEN 12 
+            WHEN P.PIZZA_NAME = 'Vegetarian' THEN 10  
+        END AS PRECIO_BASE_PIZZA
+        ,CASE
+            WHEN C.EXTRAS IS NULL OR C.EXTRAS = 'null' or C.EXTRAS = '' THEN 0
+            ELSE LEN(REPLACE(EXTRAS, ', ', ''))  
+        END AS PRECIO_EXTRAS
+    FROM CUSTOMER_ORDERS C
+    JOIN RUNNER_ORDERS RO
+        ON C.ORDER_ID = RO.ORDER_ID
+    JOIN PIZZA_NAMES P
+        ON C.PIZZA_ID = P.PIZZA_ID 
+    WHERE DISTANCE <> 'null' AND DURATION <> 'null'  
+)
+
+SELECT
+    SUM(PRECIO_BASE_PIZZA) + SUM(PRECIO_EXTRAS) - SUM(COSTE_RUNNER) AS BENEFICIO_ENTREGAS
+FROM TempBalances
+;
+
+DROP TABLE IF EXISTS TempBalances;
