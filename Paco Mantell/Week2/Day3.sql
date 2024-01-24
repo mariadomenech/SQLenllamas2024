@@ -19,14 +19,6 @@ WITH CTE_PRICES AS(
     FROM sql_en_llamas.case02.runners A
     LEFT JOIN sql_en_llamas.case02.runner_orders B
         ON A.runner_id=B.runner_id
-), CTE_TOTALS AS(
-    /*PEDIDOS Y PIZZAS TOTALES*/
-    SELECT A.runner_id,
-    ZEROIFNULL(COUNT(B.pizza_id)) TOTAL_PIZZAS
-    FROM CTE_STATUS A
-    LEFT JOIN sql_en_llamas.case02.customer_orders B
-        ON A.order_id=B.order_id
-    GROUP BY 1
 ), CTE_COUNT_EXTRAS AS(
     /*NUMERO DE EXTRAS DE CADA PIZZA*/
     SELECT order_id,
