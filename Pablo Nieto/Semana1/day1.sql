@@ -47,3 +47,5 @@ LEFT JOIN SQL_EN_LLAMAS.CASE01.SALES b
 LEFT JOIN SQL_EN_LLAMAS.CASE01.MENU c
     ON b.product_id = c.product_id
 GROUP BY a.customer_id;
+
+/*JUNAPE: efectivamente como queremos a todos los clientes debe venir de la tabla member. Ahora si es correcto del todo.*/
