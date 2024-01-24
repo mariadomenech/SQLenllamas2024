@@ -8,3 +8,13 @@ right join members c
 on a.customer_id = c.customer_id
 group by c.customer_id
 ;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+El resultado es completamente correcto, buen uso de la tabla de dimensiones members con el RIGHT JOIN.
+
+Y la visualización de la salida, bastante original. Bien hecho!
+
+*/
