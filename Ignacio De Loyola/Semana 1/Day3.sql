@@ -22,3 +22,12 @@ where ranking = 1
 group by customer_id
 order by customer_id
 ;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+El resultado es completamente correcto, has usado el rank, paar sacar los empates, perfecto.
+Me gusta como formateas la salida!
+
+*/
