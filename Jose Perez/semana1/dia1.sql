@@ -9,3 +9,11 @@ left join
     SQL_EN_LLAMAS.CASE01.MENU as mn on mn.product_id = s.product_id
 group by 
     mb.customer_id;
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+
+/* 
+
+Perfecto
+*/
