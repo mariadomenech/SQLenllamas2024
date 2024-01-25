@@ -1,0 +1,60 @@
+USE DATABASE sql_en_llamas;
+/* --semana 2, día 3 - Beneficios*/
+with co  as
+(select order_id, customer_id, co.pizza_id
+,case when exclusions='null' then null
+      when exclusions=''     then null
+      else exclusions end as exclusions_
+,case when extras='null' then null
+      when extras=''     then null
+      else trim(extras) end as extras_
+, order_time
+,iff(upper(pn.pizza_name)='MEATLOVERS',12,10) precio_pizza_base
+,case when extras_ is null then 0 else (REGEXP_COUNT( extras_ ,',' )+1)*1 end as coste_extras
+,(precio_pizza_base + coste_extras)precio_pizza_completa
+,pn.pizza_name
+from case02.customer_orders co
+inner join case02.pizza_names pn on (pn.pizza_id= co.pizza_id)
+),
+ro (order_id, runner_id, pickup_time, distance, duration, cancellation) as
+(
+select order_id, runners.runner_id
+,case when pickup_time='null' then null
+      when pickup_time=''     then null
+      else pickup_time end as pickup_time_
+,case when distance='null' then null
+      when distance=''     then null
+      else REGEXP_REPLACE(distance,'[A-Z a-z]','') end as distance_ 
+        --Evito las letras. Aquí hay puntos decimales que no debemos quitar
+,case when duration='null' then null
+      when duration=''     then null
+      else REGEXP_REPLACE(duration,'[^0-9]','') end as duration_ 
+        --Evito todos los caracteres no numéricos
+,case when cancellation='null' then null
+      when cancellation=''     then null
+      else cancellation end as cancellation_
+from case02.runner_orders
+right join case02.runners on runners.runner_id = runner_orders.runner_id
+),
+ped as
+(
+select order_id,sum(precio_pizza_completa)precio_pedido
+from co
+group by 1
+),
+sel0_runners  as
+(
+select ro.runner_id,ro.order_id
+, ifnull(sum(distance),0) as DISTANCIA_KMS, ifnull((sum(duration)/60),0) as DURACION_HORAS
+,iff(DURACION_HORAS=0,0, DISTANCIA_KMS/ DURACION_HORAS) as VELOCIDAD_PROMEDIO_KM_H
+,(DISTANCIA_KMS * 0.3)PAGO_RUNNER
+,sum(precio_pedido)precio_pedido_2
+from ro
+right join ped on (ped.order_id = ro.order_id)
+where cancellation is null
+GROUP BY ro.runner_id, ro.order_id
+)
+select (sum(precio_pedido_2)  -sum(PAGO_RUNNER))as beneficio_total
+from sel0_runners
+
+;
