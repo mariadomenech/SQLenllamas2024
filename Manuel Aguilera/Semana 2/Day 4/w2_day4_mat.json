@@ -1,0 +1,21 @@
+
+	{
+		"question_week": 2,
+		"question_day": 4,
+		"question": "Partiendo de la receta de cada una de las pizzas, ¿Cuántas veces se repite cada topping/ingrediente?",
+		"answer": [
+					"Bacon	1",
+					"BBQ Sauce	1",
+					"Beef	1",
+					"Cheese	2",
+					"Chicken	1",
+					"Mushrooms	2",
+					"Onions	1",
+					"Pepperoni	1",
+					"Peppers	1",
+					"Salami	1",
+					"Tomatoes	1",
+					"Tomato Sauce	1"
+		],
+		"explanation": "La consulta SQL utilizada (ver solution_w2_day4_mat.sql) cuenta la frecuencia de cada ingrediente en las pizzas y devuelve una lista ordenada de TOPPING_ID, TOPPING_NAME y su frecuencia de aparición (CONTEO)."
+	}
