@@ -1,0 +1,14 @@
+USE DATABASE sql_en_llamas;
+/* --semana 2, día 4 - Ingredientes*/
+with ingre as
+(
+SELECT trim(value) as ingrediente , count(*) numero_veces
+FROM case02.pizza_recipes, 
+LATERAL SPLIT_TO_TABLE(toppings, ',')
+group by 1
+)
+select top.topping_id, top.topping_name, numero_veces
+from ingre
+right join case02.pizza_toppings top 
+        on (ingre.ingrediente = top.topping_id)
+
