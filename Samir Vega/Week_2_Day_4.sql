@@ -8,7 +8,7 @@ WITH AUX AS (
 )
 SELECT
     TOPPING_NAME,
-    TO_CHAR(COUNT(PIZZA_ID)) AS CONTEO_INGREDIENTE    
+    TO_CHAR(COUNT(PIZZA_ID)) AS CONTEO_INGREDIENTE        --Lo convierto a CHAR solo para que los registros aparezcan a la izquierda de la columna
 FROM AUX A,
     LATERAL FLATTEN(input=>SPLIT(TOPPINGS, ',')) C
 INNER JOIN PIZZA_TOPPINGS B
