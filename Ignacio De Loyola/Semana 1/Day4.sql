@@ -7,3 +7,14 @@ on a.product_id = b.product_id
 group by product_name
 order by count(*) desc
 ;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Resultados totalmente correctos. Bien!
+
+Aunque yo hubiera usado la funcón RANK() para sascar hipotéticos empates que se puedan dar.
+
+*/
