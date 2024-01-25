@@ -1,0 +1,14 @@
+with A as (
+SELECT pizza_id, C.value::string AS toppings_separated
+FROM pizza_recipes,
+     LATERAL FLATTEN(input=>split(toppings, ',')) C
+     )
+
+
+select 
+    count(topping_id), topping_name
+from A
+left join pizza_toppings
+on A.toppings_separated=pizza_toppings.topping_id
+group by topping_id, topping_name
+;
