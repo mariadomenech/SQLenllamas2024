@@ -15,11 +15,11 @@ GROUP BY members.customer_id;
 /*
 
 El resultado es correcto, pero utilizas FULL JOIN lo cual no es recomendable ya que, en tablas con millones de registros, el rendimiento se ve drásticamente afectado (en nuestro caso no se nota diferencia
-ya que tenemos pocos registros). En este caso, se debería de utilizar RIGHT JOIN:
+ya que tenemos pocos registros). En este caso, se debería de utilizar RIGHT JOIN. Al hacer el control de nulos fuera de la suma puede dar resultado erróneos por lo que usaría IFNULL dentro de la suma.
 
 SELECT 
       members.customer_id
-    , COALESCE(SUM(menu.price),0) AS total_spend
+    , SUM(ifnull(menu.price,0)) AS total_spend
 FROM case01.sales
     INNER JOIN case01.menu
         ON sales.product_id = menu.product_id
