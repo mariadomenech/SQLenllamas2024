@@ -1,8 +1,8 @@
 with tabla_pivoteada as  (
-    select  pizza_id , value as topping_id
+    select  pizza_id , trim(value) as topping_id
     from 
         SQL_EN_LLAMAS.CASE02.PIZZA_RECIPES, 
-        LATERAL SPLIT_TO_TABLE(toppings, ',') ORDER BY SEQ, INDEX
+        LATERAL SPLIT_TO_TABLE(toppings, ',')
         
 )
 SELECT 
