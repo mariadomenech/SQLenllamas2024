@@ -8,7 +8,7 @@ with customer_orders_clean AS (
         pizza_id,
         case 
             when trim(exclusions) = '' or lower(trim(exclusions)) = 'null' then null
-            when trim(exclusions) = 'beef' then '1'
+            when trim(exclusions) = 'beef' then '3'
             else exclusions
         end as exclusions,
         case 
@@ -72,7 +72,7 @@ declare
   res resultset;
   max_size int;
 begin
-    max_size := (select max(tamanio) from pizzas);
+    max_size := (select max(tamanio) from SQL_EN_LLAMAS.CASE02.pizzas);
     sql := 'create or replace temporary table  SQL_EN_LLAMAS.CASE02.pizzas_sin_unpivot as select ';
     FOR i IN 0 TO max_size - 1 DO
             sql := sql || 'INGREDIENTES[' || i || ']::int as topping_'||i||',';
@@ -88,7 +88,7 @@ declare
   max_size int;
   last int;
 begin
-    max_size := (select max(tamanio) from pizzas);
+    max_size := (select max(tamanio) from SQL_EN_LLAMAS.CASE02.pizzas);
     sql := 'create or replace temporary table  SQL_EN_LLAMAS.CASE02.pizzas_unpivot as select order_id, pizza_id, topping_id from SQL_EN_LLAMAS.CASE02.pizzas_sin_unpivot unpivot(topping_id for topping_position in (';
     FOR i IN 0 TO max_size - 2 DO
             sql := sql || 'topping_'|| i ||',';
