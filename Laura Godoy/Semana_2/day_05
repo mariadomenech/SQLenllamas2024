@@ -1,0 +1,44 @@
+with A as (
+SELECT pizza_id,  C.value::string AS toppings_separated
+FROM pizza_recipes,
+     LATERAL FLATTEN(input=>split(toppings, ',')) C
+     ),
+B as (
+SELECT pizza_id,order_id, C.value::string AS extras_separated
+FROM customer_orders,
+     LATERAL FLATTEN(input=>split(extras, ',')) C
+),
+B1 as (
+select pizza_id,order_id, replace(extras_separated, 'null', '') as extras_separated
+from B
+),
+C as (
+SELECT pizza_id, C.value::string AS exclusions_separated
+FROM customer_orders,
+     LATERAL FLATTEN(input=>split(exclusions, ',')) C
+),
+C1 as (
+select pizza_id, replace(exclusions_separated, 'beef','3') as exclusions_separated
+from C
+),
+C2 as (
+select pizza_id, replace(exclusions_separated, 'null', '') as exclusions_separated
+from C1
+),
+D as (
+select C2.pizza_id, extras_separated, exclusions_separated, toppings_separated 
+from C2
+left join B1
+on C2.pizza_id=B1.pizza_id
+left join A
+on C2.pizza_id=A.pizza_id
+left join runner_orders
+on B1.order_id=runner_orders.order_id
+where pickup_time<>'null'
+)
+
+select
+    toppings_separated,
+    count(extras_separated)-count(exclusions_separated)+count(toppings_separated) as total_veces_usado
+from D
+group by toppings_separated
