@@ -3,7 +3,7 @@
 
 
 SELECT B.topping_name
-       ,count(*)
+       ,count(*) AS toppings_used
 FROM case02.pizza_recipes A,
 LATERAL FLATTEN(input=>split(toppings, ', ')) C
 INNER JOIN case02.pizza_toppings B
