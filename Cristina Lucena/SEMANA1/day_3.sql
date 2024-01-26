@@ -8,3 +8,24 @@ AND A.JOIN_DATE = B.ORDER_DATE
 LEFT JOIN SQL_EN_LLAMAS.CASE01.MENU C
 ON B.PRODUCT_ID = C.PRODUCT_ID
 GROUP BY A.CUSTOMER_ID, C.PRODUCT_NAME;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto! Se podría mejorar un poco la salida de la query utilizando LISTAGG, dejando así un unico registro por cliente.
+
+SELECT 
+    A.CUSTOMER_ID, 
+    LISTAGG(DISTINCT IFNULL(C.PRODUCT_NAME, 'SIN PRODUCTO'), ', ') AS PRODUCT_NAME 
+FROM SQL_EN_LLAMAS.CASE01.MEMBERS A
+LEFT JOIN SQL_EN_LLAMAS.CASE01.SALES B
+    ON A.CUSTOMER_ID = B.CUSTOMER_ID
+AND A.JOIN_DATE = B.ORDER_DATE
+LEFT JOIN SQL_EN_LLAMAS.CASE01.MENU C
+    ON B.PRODUCT_ID = C.PRODUCT_ID
+GROUP BY A.CUSTOMER_ID
+ORDER BY A.CUSTOMER_ID ASC;
+
+*/
