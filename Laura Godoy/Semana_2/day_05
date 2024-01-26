@@ -1,3 +1,6 @@
+--SIN EL UNPIVOT--
+
+
 with A as (
 SELECT pizza_id,  C.value::string AS toppings_separated
 FROM pizza_recipes,
