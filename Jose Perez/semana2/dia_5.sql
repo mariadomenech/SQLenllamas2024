@@ -1,6 +1,6 @@
 --Hecho antes de que pasarais más ayuda por el grupo. Está hecho un poco a mi manera y quizás me he liado mucho por querer hacerlo de forma dinámica para
 --no fijar un número máximo de ingredientes
-create or replace temporary table pizzas as 
+create or replace temporary table SQL_EN_LLAMAS.CASE02.pizzas as 
 with customer_orders_clean AS (
     select 
         order_id,
@@ -73,11 +73,11 @@ declare
   max_size int;
 begin
     max_size := (select max(array_size(ingredientes)) from pizzas);
-    sql := 'create or replace temporary table  pizzas_sin_unpivot as select ';
+    sql := 'create or replace temporary table  SQL_EN_LLAMAS.CASE02.pizzas_sin_unpivot as select ';
     FOR i IN 0 TO max_size - 1 DO
             sql := sql || 'INGREDIENTES[' || i || ']::int as topping_'||i||',';
     END FOR;
-    sql := sql || '* from pizzas';
+    sql := sql || '* from SQL_EN_LLAMAS.CASE02.pizzas';
     res := (execute immediate :sql);
     --return sql;
 end;
@@ -89,7 +89,7 @@ declare
   last int;
 begin
     max_size := (select max(array_size(ingredientes)) from pizzas);
-    sql := 'create or replace temporary table  pizzas_unpivot as select order_id, pizza_id, topping_id from pizzas_sin_unpivot unpivot(topping_id for topping_position in (';
+    sql := 'create or replace temporary table  SQL_EN_LLAMAS.CASE02.pizzas_unpivot as select order_id, pizza_id, topping_id from SQL_EN_LLAMAS.CASE02.pizzas_sin_unpivot unpivot(topping_id for topping_position in (';
     FOR i IN 0 TO max_size - 2 DO
             sql := sql || 'topping_'|| i ||',';
     END FOR;
@@ -103,7 +103,7 @@ select
     pt.topping_name,
     count(pt.topping_id) as numero_veces_repetidos
 from 
-    pizzas_unpivot as pu
+    SQL_EN_LLAMAS.CASE02.pizzas_unpivot as pu
 inner join  
     SQL_EN_LLAMAS.CASE02.PIZZA_TOPPINGS as pt on pt.topping_id = pu.topping_id
 group by pt.topping_id, pt.topping_name
