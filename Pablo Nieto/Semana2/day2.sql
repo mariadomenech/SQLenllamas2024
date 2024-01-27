@@ -5,8 +5,8 @@ previamente los caracteres no numéricos y cambiando los 'null' por '0'.
 WITH pedidos_limpios AS (
     SELECT 
         runner_id,
-        TO_NUMBER(RTRIM(DECODE(distance, 'null', '0', distance), 'km')) AS clean_distance_km,
-        TO_NUMBER(LEFT(DECODE(duration, 'null', '0', duration), 2)) AS clean_duration_min
+        TO_NUMBER(RTRIM(DECODE(distance, 'null', '0', distance), 'km'), 10, 2) AS clean_distance_km,
+        TO_NUMBER(LEFT(DECODE(duration, 'null', '0', duration), 2), 10, 2) AS clean_duration_min
     FROM SQL_EN_LLAMAS.CASE02.RUNNER_ORDERS
 )
 /*
