@@ -77,3 +77,20 @@ RIGHT JOIN SQL_EN_LLAMAS.CASE02.RUNNERS R
     ON PR.RUNNER_ID = R.RUNNER_ID
     ;
 ;
+/*
+JUANPE: No te preocupes por entregarlos más tarde, nos preocupaba que la gente se hubiera desanimado, pero si es por falta de tiempo no pasa nada :)
+
+Resultado: Correcto.  
+
+Código: Correcto. Correcto en el sentido de que no has hecho nada que no sea incorrecto o hubiera algo mejor de otra forma. De hecho tú idea 
+de resolverlo es similiar a la que yo tuve, pero se podía haber hecho con menos lineas de código pues al fin y al cabo tus tablas intermedias 
+todas usan las primeras, por tanto los conteos se podían haber hecho con uso de condicionales o "sabiendo que contar exactamente". 
+
+Legibilidad: Correcta. Bien tabulado y ordenado. Aunque los dos with primeros es lioso si se llaman igual que las tablas originales. Personalmetne veo 
+bien el uso de los with, pero cuando son tantos puede ser lioso, yo hubiera preferido alguna tabla temporal, es decir, un CREATE OR REPLACE TEMPORARY TABLE.
+Pero completamente correcto los WITH.
+
+Extra: Muy bien que esté redondeado a dos decimales. Hubiera sido un extra limpiar los resultados finales de nulos,  es decir,
+para en pedidos y pizzas con éxito ver 0 en vez de null y en los porcentajes ver 0.00% en vez de null.
+
+*/
