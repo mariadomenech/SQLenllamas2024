@@ -47,3 +47,23 @@ FROM SQL_EN_LLAMAS.CASE02.RUNNERS r
 LEFT JOIN pedidos_runner pr
        ON r.runner_id = pr.runner_id
 GROUP BY r.runner_id;
+
+
+
+/*
+JUANPE: 
+
+Resultado: Correcto.  
+
+Código: Correcto. La lógica de tu solución me ha gustado mucho, es similar a unas de las solucioens que yo tengo. Usar dos columnas 
+de flag "modificado" y "cancelado" es muy original. Yo prefiero un 1 o 0 en vez de si o no para que en la select final poder ahorrarme 
+tanto case when y jugar con unas multiplicaciones.
+
+Legibilidad: Correcta. Bien tabulado y ordenado. Y bien por lo "corto" que se te ha quedado al usar esas columnas que te han servido de FLAG. 
+En la select final considero mejor una subselect donde tener todos los conteos y luego por fuera dar los resultados y hacer la division para
+los porcentajes, es decir, yo personalmente sacrifico tener unas lineas más de código por no tener la linea de pct_pedidos_ok y pct_pizzas_ok_mod
+tan larga.
+
+Extra: Hubiera estado bien ver los porcentajes redondeados a dos decimales. Muy bien por los resutlados del 4 venir 0 en lugar de nulos.
+
+*/
