@@ -76,3 +76,19 @@ LEFT JOIN PIZZAS_ENTREGADAS C
        ON A.RUNNER_ID = C.RUNNER_ID
 LEFT JOIN PIZZAS_MODIFICADAS D
        ON A.RUNNER_ID = D.RUNNER_ID;
+
+
+/*
+JUANPE:
+
+Resultado: Correcto.  
+
+Código: Correcto. La lógica de tu solución es correcta aunque te podias haber ahorrado alguna select intentado sacar en una misma lo que sacas en varias,
+para tener menos líneas de código pero aún así muy clara la lógdica usada.
+
+Legibilidad: Correcta. Bien tabulado y ordenado. Cuando hay tantos with casi prefiero sustituir alguno por una tabla temporal, pero es una opinión 
+más subjetiva.
+
+Extra: Muy bien que esté redondeado a dos decimales. Y bien limpizados los nulos por 0.
+
+*/
