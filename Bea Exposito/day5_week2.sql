@@ -69,8 +69,8 @@ WITH data AS(
 )
 --SPLIT EXCLUSIONES
  ,exclusions AS (  
-    SELECT 
-        DISTINCT order_id
+    SELECT DISTINCT 
+        order_id
         ,pizza_id
         ,split(exclusions, ', ') C
         ,C[0]::int as exclusion_1
