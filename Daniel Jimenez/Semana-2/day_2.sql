@@ -25,3 +25,12 @@ FROM tabla_runner_sin_nulls tr
 RIGHT JOIN SQL_EN_LLAMAS.CASE02.RUNNERS R
     ON tr.RUNNER_ID = r.RUNNER_ID
 GROUP BY r.RUNNER_ID;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Resultado correcto! Solo comentar que, para hacer el código mas limpio, metería un salto de línea entre CTEs
+
+*/
