@@ -1,0 +1,107 @@
+USE DATABASE sql_en_llamas;
+/* --semana 2, día 5 - Ingredientes en pizzas entregadas*******He usado LATERAL SPLIT_TO_TABLE en lugar de UNPIVOT*********
+Hago el cálculo para la pizza sin tener en cuenta los extras ni exclusiones y luego añado esos cálculos.
+Así que tendré 'lista_base', 'lista_incluido' y 'lista_excluido'.
+*/
+with co  as
+(select order_id,  co.pizza_id
+,case when exclusions='null' then null
+      when exclusions=''     then null
+      when exclusions='beef' then '3'
+      else exclusions end as exclusions_
+,case when extras='null' then null
+      when extras=''     then null
+      else trim(extras) end as extras_
+,case when extras_     is null then 0 else (REGEXP_COUNT( extras_ ,',' )+1)     end as num_extras
+,case when exclusions_ is null then 0 else (REGEXP_COUNT( exclusions_ ,',' )+1) end as num_exclusions
+from case02.customer_orders co
+),
+ro (order_id, cancellation) as
+(
+select order_id
+,case when cancellation='null' then null
+      when cancellation=''     then null
+      else cancellation end as cancellation_
+from case02.runner_orders
+),
+ingre as
+(
+SELECT pizza_id, trim(value) as ingrediente 
+FROM case02.pizza_recipes, 
+LATERAL SPLIT_TO_TABLE(toppings, ',')
+),
+ingre_pizza as
+(
+select *
+from ingre
+right join case02.pizza_toppings top 
+        on (ingre.ingrediente = top.topping_id)
+), -----------------
+pizza_base as(
+select 
+co.ORDER_ID, co.PIZZA_ID, ip.TOPPING_NAME
+from co
+inner join ro on (co.order_id = ro.order_id)
+inner join ingre_pizza ip on (co.pizza_id = ip.pizza_id)
+where ro.cancellation is  null
+),
+lista_base as -----------***********
+(
+select --ORDER_ID ,PIZZA_ID, 
+TOPPING_NAME, count(*) NUM_CONSUMOS
+from pizza_base
+group by 1
+),
+------------------------- EXCLUSIONES -------------------------------
+sel_exclusion as(
+select co.ORDER_ID, co.PIZZA_ID, ll.VALUE modificacion_id
+from co,
+LATERAL SPLIT_TO_TABLE(exclusions_, ',') ll
+where num_exclusions >0 
+																										 
+),
+pizza_exclusion as(
+select 
+se.ORDER_ID, se.PIZZA_ID,se.modificacion_id excluido
+from sel_exclusion se
+    inner join ro on (se.order_id = ro.order_id)
+where ro.cancellation is  null
+),lista_excluido as -----------***********
+(
+select --pp.ORDER_ID, pp.PIZZA_ID,
+top.TOPPING_NAME TOPPING_EXCLUIDO , count(*) NUM_EXCLUSIONES
+								   
+from pizza_exclusion pp
+inner join case02.pizza_toppings top on (pp.excluido = top.topping_id)
+group by 1
+),
+------------------------EXTRAS--------------------------------------
+sel_extras as(
+select co.ORDER_ID, co.PIZZA_ID, ll.VALUE modificacion_id
+from co,
+LATERAL SPLIT_TO_TABLE(extras_, ',') ll
+where num_extras >0 
+),
+pizza_extras as(
+select 
+se.ORDER_ID, se.PIZZA_ID,se.modificacion_id ANADIDO
+from sel_extras se
+    inner join ro on (se.order_id = ro.order_id)
+																															  
+where ro.cancellation is  null
+),lista_incluido as -----------***********
+(
+select --pp.ORDER_ID, pp.PIZZA_ID,
+top.TOPPING_NAME TOPPING_INCLUIDO , count(*) NUM_INCLUSIONES
+								   
+from pizza_extras pp
+inner join case02.pizza_toppings top on (pp.ANADIDO = top.topping_id)
+group by 1
+)
+----------------------
+select bas.TOPPING_NAME, (NUM_CONSUMOS +  nvl(NUM_INCLUSIONES,0) - nvl(NUM_EXCLUSIONES,0)) as NUM_CONSUMOS_TOTALES
+from lista_base bas
+left join lista_excluido exx on (bas.TOPPING_NAME= exx.TOPPING_EXCLUIDO)
+left join lista_incluido inc on (bas.TOPPING_NAME= inc.TOPPING_INCLUIDO)
+order by 2 desc
+;
