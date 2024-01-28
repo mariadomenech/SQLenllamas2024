@@ -17,3 +17,34 @@ LEFT JOIN TempRunner
     ON R.RUNNER_ID = TempRunner.RUNNER_ID;
     
 DROP TABLE IF EXISTS TempRunner;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+La parte de la velocidad media no es correcto. Yo haría directamente el calculo con AVG:
+
+ROUND(AVG(REGEXP_REPLACE(DECODE(DISTANCE, 'null', null, DISTANCE), '[^0-9.]', '') / (REGEXP_REPLACE(DECODE(DURATION, 'null', null, DURATION), '[^0-9.]', '') / 60)), 2)::DECIMAL(5,2) AS VELOCIDAD_MEDIA_KMH
+
+WITH TempRunner AS ( 
+    SELECT
+        RUNNER_ID,
+        SUM(REGEXP_REPLACE(DECODE(DISTANCE, 'null', null, DISTANCE), '[^0-9.]', ''))::DECIMAL(5,2) AS DISTANCIA_ACUM,
+        ROUND(AVG(REGEXP_REPLACE(DECODE(DISTANCE, 'null', null, DISTANCE), '[^0-9.]', '') / (REGEXP_REPLACE(DECODE(DURATION, 'null', null, DURATION), '[^0-9.]', '') / 60)), 2)::DECIMAL(5,2) AS VELOCIDAD_MEDIA_KMH
+    FROM RUNNER_ORDERS
+    GROUP BY 1
+)
+
+SELECT 
+    R.RUNNER_ID,
+    IFNULL(DISTANCIA_ACUM, 0) AS DISTANCIA_ACUM,
+    IFNULL(VELOCIDAD_MEDIA_KMH, 0) AS VELOCIDAD_MEDIA_KMH
+FROM RUNNERS R  
+LEFT JOIN TempRunner
+    ON R.RUNNER_ID = TempRunner.RUNNER_ID;
+
+
+Comentar tambien que los "DROP TABLE IF EXISTS .... ;" no sirven de nada si estas usando CTEs, habría que utilizarlo cuando se hace un "CREATE OR REPLACE TEMPORARY TABLE .... ;"
+
+*/
