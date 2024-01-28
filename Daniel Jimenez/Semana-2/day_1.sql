@@ -68,3 +68,20 @@ LEFT JOIN pedidos_completados e
     ON t.RUNNER_ID = e.RUNNER_ID
 LEFT JOIN pizzas_personalizadas p
     ON t.RUNNER_ID = p.RUNNER_ID;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Resultado correcto! Solo comentar que, para que quede un poco más limpio el código, metería un salto de linea entre CTEs:
+
+WITH runner_pedidos_limpitos AS (
+    SELECT  ....
+),
+
+pedidos_limpitos AS (
+    SELECT  ....
+),
+
+*/
