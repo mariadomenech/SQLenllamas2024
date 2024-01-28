@@ -94,7 +94,7 @@ WITH data AS(
 --TOTAL TOPPINGS UTILIZADOS
 SELECT 
     A.topping_name
-   ,SUM(B.quantity) AS frecuency
+   ,SUM(B.quantity) AS total_quantity
 FROM case02.pizza_toppings A
 LEFT JOIN unions B 
     ON A.topping_id = B.topping
