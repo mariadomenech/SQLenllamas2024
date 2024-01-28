@@ -99,3 +99,13 @@ LEFT JOIN total_exit_pizzas_delivered D
         ON A.runner_id = D.runner_id
 ;
 
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Resultado correcto!
+
+Solo quitaría algunas tabulaciones de más que hay en algunos selects
+
+*/
