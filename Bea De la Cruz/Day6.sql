@@ -48,3 +48,13 @@ from (
         ) c
         on b.runner_id = c.runner_id
     );
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Resultado correcto! Respecto a la lógica del código no hay ninguna pega pero, respecto a la legibilidad del mismo, quizás utilizando CTEs quedaría un codigo más limpio.
+(Con esto no digo que no este bien organizado o no se entienda)
+
+*/
