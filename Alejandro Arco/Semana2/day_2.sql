@@ -37,3 +37,12 @@ FROM RUNNER_ORDERS_CLEAN AS RO
 RIGHT JOIN RUNNERS AS R
     ON RO.RUNNER_ID = R.RUNNER_ID
 GROUP BY R.RUNNER_ID;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Resultado correcto!
+
+*/
