@@ -48,6 +48,20 @@
 					"Tomato Sauce: 1"
 		],
 		"explanation": "La consulta SQL utilizada (ver solution_w2_day4_mat.sql) cuenta la frecuencia de cada ingrediente en las pizzas y devuelve una lista ordenada de TOPPING_ID, TOPPING_NAME y su frecuencia de aparición (CONTEO)."
+	},
+	{
+		"question_week": 2,
+		"question_day": 5,
+		"question": "¿Cuántas veces ha sido usado cada ingrediente sobre el total de piezzas entregadas? Ordena desde el más frecuente al menos frecuente",
+		"answer": [
+					"Bacon: 12 veces",
+					"Mushrooms : 11",
+					"Cheese: 10",
+					"Pepperoni, Chicken, Salami: 9",
+					"BBQ Sauce, Beef: 8",
+					"Onions, Peppers, Tomatoes, Tomato Sauce: 3"
+		],
+		"explanation": "La consulta SQL utilizada (ver solution_w2_day5_mat.sql) proporciona la popularidad de cada topping en las pizzas pedidas (sin contar los pedidos cancelados), considerando exclusiones y extras. La salida muestra el conteo total de cada topping, ordenado por su frecuencia descendente."
 	}
 
 ]
