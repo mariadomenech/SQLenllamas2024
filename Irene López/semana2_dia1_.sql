@@ -83,3 +83,12 @@ FROM PEDIDOS_PIZZAS_OK PO
     LEFT JOIN PIZZAS_MODIF PM
         ON PT.RUNNER_ID = PM.RUNNER_ID
 ;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto! Y muy limpio el resultado final.
+
+*/
