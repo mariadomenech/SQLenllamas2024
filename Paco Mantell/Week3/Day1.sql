@@ -18,17 +18,21 @@ WITH CTE_CLEAN_DATA AS (
     DATEDIFF(DAY,start_date,end_date) daydiff
     FROM CTE_CLEAN_DATA
     WHERE node_id!=next_node
-    ORDER BY 1 ASC
+    
 )
 /*Mostramos la media de dias por cliente y el total en la primera fila*/
-SELECT 'TOTAL' customer_id,
+SELECT 'TOTAL' totals,
 CAST(AVG(daydiff) AS INT) avg_days
 FROM CTE_DAYDIFF
 GROUP BY 1
 
 UNION ALL
-
-SELECT TO_VARCHAR(customer_id) customer_id,
-CAST(AVG(daydiff) AS INT) avg_days
-FROM CTE_DAYDIFF
-GROUP BY 1
+SELECT TO_VARCHAR(customer_id),
+avg_days
+FROM(
+    SELECT customer_id,
+    CAST(AVG(daydiff) AS INT) avg_days
+    FROM CTE_DAYDIFF A
+    GROUP BY 1
+    ORDER BY 1 ASC
+)
