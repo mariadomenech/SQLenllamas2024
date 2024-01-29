@@ -1,24 +1,19 @@
-WITH CTE_STATUS AS(
-/* CREAMOS DOS ESTADOS DE ENTREGA*/
-    SELECT A.runner_id,
-        B.order_id,
-        CASE
-            WHEN B.cancellation = 'Restaurant Cancellation' OR B.cancellation = 'Customer Cancellation' THEN 'C'
-            ELSE 'D'
-        END status
-    FROM sql_en_llamas.case02.runners A
-    LEFT JOIN sql_en_llamas.case02.runner_orders B
-        ON A.runner_id=B.runner_id
-), CTE_DEL_ORDERS AS(
+WITH CTE_DEL_ORDERS AS(
     /*SELECCIONO PEDIDOS ENTREGADOS*/
     SELECT B.order_id,
     pizza_id,
     exclusions,
-    extras
-    FROM sql_en_llamas.case02.customer_orders B
-    LEFT JOIN CTE_STATUS C
+    extras,
+        CASE
+        WHEN B.cancellation = 'Restaurant Cancellation' OR B.cancellation = 'Customer Cancellation' THEN 'C'
+        ELSE 'D'
+    END status
+    FROM sql_en_llamas.case02.runners A
+    LEFT JOIN sql_en_llamas.case02.runner_orders B
+        ON A.runner_id=B.runner_id
+    LEFT JOIN sql_en_llamas.case02.customer_orders C
         ON B.order_id=C.order_id
-    WHERE C.status!='C'
+    WHERE status!='C'
 ),
 CTE_SPLIT_ING AS (
     /*SEPARAMOS CADA INGREDIENTE DE LAS PIZZAS*/
