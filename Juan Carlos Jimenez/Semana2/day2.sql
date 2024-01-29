@@ -1,3 +1,6 @@
+USE SQL_EN_LLAMAS;
+USE SCHEMA CASE02;
+
 ---------DIA2---------
 WITH DISTANCIA AS (
     SELECT TO_DECIMAL(REPLACE(DISTANCE,'km'),9,2) as distancia,
