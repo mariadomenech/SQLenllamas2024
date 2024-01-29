@@ -36,3 +36,12 @@ SELECT  a.runner_id,
             LEFT JOIN t_totales
                 ON a.runner_id
                 GROUP BY a.runner_id
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+¿No está el código acabado? Tiene buena pinta, pero acábame los cruces del final, te va a salir el resultado correcto.
+
+*/
