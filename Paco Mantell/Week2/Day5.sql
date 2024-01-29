@@ -1,20 +1,26 @@
 WITH CTE_STATUS AS(
 /* CREAMOS DOS ESTADOS DE ENTREGA*/
-    SELECT C.order_id,
-        C.pizza_id,
-        C.exclusions,
-        C.extras,
+    SELECT A.runner_id,
+        B.order_id,
         CASE
             WHEN B.cancellation = 'Restaurant Cancellation' OR B.cancellation = 'Customer Cancellation' THEN 'C'
             ELSE 'D'
         END status
-    FROM sql_en_llamas.case02.customer_orders C
+    FROM sql_en_llamas.case02.runners A
     LEFT JOIN sql_en_llamas.case02.runner_orders B
-        ON C.order_id=B.order_id
-    LEFT JOIN sql_en_llamas.case02.runners A
         ON A.runner_id=B.runner_id
-    WHERE status!='C'
-), CTE_SPLIT_ING AS (
+), CTE_DEL_ORDERS AS(
+    /*SELECCIONO PEDIDOS ENTREGADOS*/
+    SELECT B.order_id,
+    pizza_id,
+    exclusions,
+    extras
+    FROM sql_en_llamas.case02.customer_orders B
+    LEFT JOIN CTE_STATUS C
+        ON B.order_id=C.order_id
+    WHERE C.status!='C'
+),
+CTE_SPLIT_ING AS (
     /*SEPARAMOS CADA INGREDIENTE DE LAS PIZZAS*/
     SELECT pizza_id,
     A.value topp_split
@@ -36,10 +42,10 @@ WITH CTE_STATUS AS(
     GROUP BY 1, 2
 ), CTE_SPLIT_EXTRAS AS (
     /*SEPARAMOS CADA UNO DE LOS EXTRAS DE LAS PIZZAS ENTREGADAS*/
-    SELECT A.pizza_id,
+    SELECT pizza_id,
     B.value extra
-    FROM CTE_STATUS A,
-    LATERAL FLATTEN(input=>SPLIT(A.extras,', ')) B
+    FROM CTE_DEL_ORDERS,
+    LATERAL FLATTEN(input=>SPLIT(extras,', ')) B
 ), CTE_PIVOT_EXTRA AS (
     /*CONTAMOS LAS VECES QUE CADA INGREDIENTE SE PIDE COMO EXTRA*/
     SELECT *
