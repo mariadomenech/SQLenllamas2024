@@ -1,0 +1,26 @@
+--SEMANA 3
+--DÍA 1
+--Cuántos días de media se reasignan los clientes a un nodo diferente?
+with A as (
+    select 
+        node_id,
+        customer_id,
+        start_date,
+        end_date,
+        lead(start_date) over (order by customer_id, start_date) as next_start_date --nose bien para que he calculado esto
+    from customer_nodes
+
+),
+B as (
+select
+    min(start_date) as min_start_date,
+    max(end_date) as max_end_date,
+    customer_id,
+    node_id
+from A
+where next_start_date>start_date
+group by customer_id, node_id
+order by customer_id, node_id
+
+)
+ select AVG(timediff(day, min_start_date, max_end_date)) as media from B
