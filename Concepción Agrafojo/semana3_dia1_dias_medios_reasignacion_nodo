@@ -1,0 +1,13 @@
+USE DATABASE sql_en_llamas;
+/* --semana 3, día 1 - Días medios reasignación
+Es decir, diferencia de días entre la fecha de inicio y la fecha de fin de ese nodo.
+Pero OJO a un nodo diferente, no vale contar los días si el siguiente nodo en la línea de tiempo es el mismo nodo.*/
+
+select avg(duracion) as dias_reasignacion_nodo_en_media
+from(
+    select  
+         no.customer_id, no.node_id,LEAD(no.node_id) Over (PARTITION BY no.customer_id ORDER BY no.start_date ) SGTE_NODO
+        ,no.start_date, datediff(days, start_date, end_date) duracion
+    from case03.customer_nodes no
+    qualify no.node_id <> SGTE_NODO
+) cal;
