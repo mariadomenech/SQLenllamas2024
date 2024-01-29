@@ -21,13 +21,13 @@ WITH CTE_CLEAN_DATA AS (
 )
 /*Mostramos la media de dias por cliente y el total en la primera fila*/
 SELECT 'TOTAL' customer_id,
-AVG(daydiff) avg_days
+CAST(AVG(daydiff) AS INT) avg_days
 FROM CTE_DAYDIFF
 GROUP BY 1
 
 UNION ALL
 
 SELECT TO_VARCHAR(customer_id) customer_id,
-AVG(daydiff) avg_days
+CAST(AVG(daydiff) AS INT) avg_days
 FROM CTE_DAYDIFF
 GROUP BY 1
