@@ -10,11 +10,6 @@ WITH CTE_CLEAN_DATA AS (
 ), CTE_DAYDIFF AS(
     /*seleccionamos solo las filas correspondientes a un cambio de nodo y calculamos la diferencia de dias*/
     SELECT customer_id,
-    region_id,
-    start_date,
-    node_id,
-    end_date,
-    next_node,
     DATEDIFF(DAY,start_date,end_date) daydiff
     FROM CTE_CLEAN_DATA
     WHERE node_id!=next_node
