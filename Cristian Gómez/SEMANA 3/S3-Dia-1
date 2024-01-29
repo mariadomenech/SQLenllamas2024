@@ -1,0 +1,14 @@
+-- calculo del promedio de dias entre cambio de nodos
+WITH CalculoFechas AS (
+    SELECT
+        CUSTOMER_ID
+        ,NODE_ID
+        ,START_DATE
+        ,LEAD(START_DATE) OVER (PARTITION BY CUSTOMER_ID ORDER BY START_DATE) AS FECHA_SIGUIENTE_NODO 
+    FROM CUSTOMER_NODES
+)
+
+SELECT
+    ROUND(AVG(DATEDIFF('days', START_DATE, FECHA_SIGUIENTE_NODO)), 2) AS PROMEDIO_DIAS_CAMBIO_NODO
+FROM CalculoFechas 
+WHERE FECHA_SIGUIENTE_NODO IS NOT NULL  -- Para excluir el último cambio que no tiene una fecha siguiente
