@@ -92,11 +92,19 @@ WITH data AS(
     SELECT * FROM exclusions_split
 ) 
 --TOTAL TOPPINGS UTILIZADOS
-SELECT 
-    A.topping_name
-   ,SUM(B.quantity) AS total_quantity
-FROM case02.pizza_toppings A
-LEFT JOIN unions B 
-    ON A.topping_id = B.topping
-GROUP BY 1
+SELECT     
+    LISTAGG(topping_name, ', ') AS toppings_list
+    ,total_quantity
+FROM
+(
+    SELECT 
+        A.topping_name
+       ,SUM(B.quantity) AS total_quantity
+    FROM case02.pizza_toppings A
+    LEFT JOIN unions B 
+        ON A.topping_id = B.topping
+    GROUP BY 1
+)
+GROUP BY 2
 ORDER BY 2 DESC;
+
