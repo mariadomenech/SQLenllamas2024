@@ -1,4 +1,5 @@
---Hecho antes de que pasarais más ayuda por el grupo. Está hecho un poco a mi manera y quizás me he liado mucho por querer hacerlo de forma dinámica para
+----Hecho antes de que pasarais más ayuda por el grupo, por eso no uso split. Aunque tampoco lo veo necesario. 
+--Está hecho un poco a mi manera y quizás me he liado mucho por querer hacerlo de forma dinámica para
 --no fijar un número máximo de ingredientes
 create or replace temporary table SQL_EN_LLAMAS.CASE02.pizzas as 
 with customer_orders_clean AS (
