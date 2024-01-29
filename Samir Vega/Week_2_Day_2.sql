@@ -32,3 +32,25 @@ FROM ESPECIALIDAD_SQL_BRONZE_DB_SVM.PRUEBAS.RUNNER_ORDERS_CLEAN A
 RIGHT JOIN RUNNERS B
     ON A.RUNNER_ID = B.RUNNER_ID
 GROUP BY B.RUNNER_ID;
+
+
+/*JUANPE: 
+
+Resultado: Correcto
+
+Código: Correcto. Aunque correcto te quiero comentar otra forma para la limpieza de los campos DISTANCE y DURATION. Hay unas expresiones que se conocen como
+expresions regulares empiezan por "REGEXP_" son como una versión más "pro" de funciones como replace, substr, count, instr ... De hecho las usas pero no la 
+aprovechas del todo, ya que el 'null' entrecomillado te lo cargas con el replace no hace falta el decode. El uso de try_cast también es otra opción para combinarla
+y realizar la limpieza: 
+    TRY_CAST(REGEXP_REPLACE(DISTANCE, '[a-zA-Z]', '') AS NUMBER(10, 2))
+Otra versión puede ser con la función substr (para substraer), su versión mejorada nos permite:
+    TRY_CAST(REGEXP_SUBSTR(DISTANCE, '[0-9]*[.]*[0-9]') AS NUMBER(10, 2))
+Aquí le estamos diciendo que substraiga cualquier conjunto de dígitos entre el 0 y el 9 seguidos o no de un punto y seguidos o no de otro conjunto de digitos entre 0 y 9.
+La ventaja del try_castes que si hay un registro que no pueda convertir no falla si no que lo convierte a nulo. No es mejor o peor una forma u otra es cuestión de gustos.
+Te lo comento para que veas otras alternativas.
+
+Legibilidad: Correcto
+
+Extra: Bien por limpiar los nulos por 0 y por sacar los resultados con 2 decimales.
+
+*/
