@@ -59,3 +59,37 @@ on runner_orders.order_id=C.order_id
 left join D 
 on runner_orders.runner_id=D.runner_id
 group by A.runner_id, n_orders_exito, porcentaje_exito, n_pizzas_modificadas
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+El resultado es por partes. Me falta una parte de la pregunta: número de pizzas que se han entregado con éxito.
+
+Ese conteo ya lo tienes hecho en la tabla CTE que llamado como ''C'', 
+solo tienes que sacarte al final como columna nueva la sumatoria de c.n_pizzas ---> sum(n_pizzas).
+
+Pero cuidado!! Los porcentajes de pizzas modificadas no son del todo correcto porque no hemos tenido cuidado con una cosa:
+
+Línea 42:  where exclusions<>'null' and exclusions is not null and exclusions<>'' and extras<> 'null' and extras is not null and extras<>''
+    and cancellation <>'Customer Cancellation' and cancellation<>'Restaurant Cancellation' or cancellation is not null
+
+Le estás diciendo que te filtre los resultados cuando ocurra esto:
+
+- exclusions<>'null' and exclusions is not null and exclusions<>'' and extras<> 'null' and extras is not null and extras<>''
+    and cancellation <>'Customer Cancellation' and cancellation<>'Restaurant Cancellation'
+- Ó cuando ocurra 'Restaurant Cancellation' or cancellation is not null
+
+Es decir, en el último OR, le estás diciendo a la máquina que el filtrado de exclusiones y extras no es obligarorio. Tienes que saber dilimitar las condiciones, que son,
+filtrame cuando el campo "exclusiones" y "extras" no estén informados 
++ 
+cuando el campo "cancellation" <>'Customer Cancellation' y <>'Restaurant Cancellation' Ó el campo "cancellation" no sea nulo
+
+Entonces te falta poner un paréntesis entre las condiciones que te pongo antes del + y las condiciones que te pongo después del +.
+
+Quedando la línea 42 así: where (exclusions<>'null' and exclusions is not null and exclusions<>'' and extras<> 'null' and extras is not null and extras<>'')
+    and (cancellation <>'Customer Cancellation' and cancellation<>'Restaurant Cancellation' or cancellation is not null)
+
+
+*/
