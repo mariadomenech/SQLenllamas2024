@@ -28,9 +28,10 @@ FROM
     SELECT 
         node_id
         ,start_date
-        ,end_date
         ,next_start_date - start_date AS difference_days
     FROM Nodes_lead
     WHERE end_date IS NOT NULL AND next_node_id != node_id
-    ORDER BY 1,2,4
+    ORDER BY 1,2,3
 );
+
+ 
