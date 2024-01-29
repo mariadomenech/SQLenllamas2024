@@ -49,3 +49,12 @@ ON P.RUNNER_ID = O.RUNNER_ID
 LEFT JOIN PIZZA_MODIFICADAS M
 ON M.RUNNER_ID = P.RUNNER_ID
 ORDER BY RUNNER_ID;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Correcto!
+
+*/
