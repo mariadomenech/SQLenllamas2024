@@ -12,3 +12,14 @@ FROM customer_orders co
 	JOIN runner_orders ro
 	ON co.order_id = ro.order_id
 GROUP BY ro.runner_id;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto!
+
+Aunque no has sacado al runner que no ha realizado ningun pedido.
+
+*/
