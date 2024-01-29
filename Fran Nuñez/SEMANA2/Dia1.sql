@@ -83,3 +83,13 @@ ON RUNNER_ORDERS_SILVER.RUNNER_ID = RUNNERS.RUNNER_ID
 GROUP BY RUNNERS.RUNNER_ID
 ) B
 ON A.RUNNER_ID = B.RUNNER_ID
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto!
+
+*/
