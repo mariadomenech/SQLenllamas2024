@@ -11,7 +11,7 @@ with previus_and_next_nodes as (
     order by customer_id, end_date, region_id, node_id
 )
 select 
-    avg((end_date + 1) - start_date)::number(10,2)
+    avg((end_date + 1) - start_date)::number(10,2) as average_node_change 
 from previus_and_next_nodes
 where 
     next_node != node_id ; 
