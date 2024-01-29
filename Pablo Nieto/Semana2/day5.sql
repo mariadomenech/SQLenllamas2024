@@ -73,15 +73,23 @@ combined AS (
     SELECT * FROM toppings_and_extras
     UNION ALL
     SELECT * FROM exclusions
-)
+),
 /*
-Obtengo finalmente el nombre del ingrediente y su frecuencia, es decir, el número de veces utilizado en las pizzas que se entregaron.
+Obtengo el nombre del ingrediente y su frecuencia, es decir, el número de veces utilizado en las pizzas que se entregaron.
 Ordeno el resultado por frecuencia de forma descendente.
 */
-SELECT 
-    pt.topping_name,
-    SUM(c.freq) AS frecuencia
-FROM SQL_EN_LLAMAS.CASE02.PIZZA_TOPPINGS pt
-LEFT JOIN combined c USING (topping_id)
-GROUP BY pt.topping_name
+frecuencia_ingrediente AS (
+    SELECT 
+        pt.topping_name,
+        SUM(c.freq) AS frecuencia
+    FROM SQL_EN_LLAMAS.CASE02.PIZZA_TOPPINGS pt
+    LEFT JOIN combined c USING (topping_id)
+    GROUP BY pt.topping_name
+)
+--Utilizo la funcion LISTAGG para mostrar los toppings con la misma frecuencia en la misma fila.
+SELECT
+    LISTAGG(topping_name, ', '),
+    frecuencia
+FROM frecuencia_ingrediente
+GROUP BY frecuencia
 ORDER BY frecuencia DESC;
