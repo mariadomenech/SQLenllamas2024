@@ -9,3 +9,12 @@ from (
 full join pizza_toppings name
     on topping.toppings = name.topping_id
 group by topping_name;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Resultado correcto!
+
+*/
