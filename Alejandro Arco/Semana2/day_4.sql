@@ -20,3 +20,12 @@ FROM PIZZA_TOPPINGS AS P
 LEFT JOIN FLATTEN_TOPPINGS AS F 
     ON P.TOPPING_ID = F.TOPPING_ID
 GROUP BY P.TOPPING_NAME;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Resultado correcto!
+
+*/
