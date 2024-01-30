@@ -9,3 +9,12 @@ LATERAL FLATTEN(input=>split(toppings, ', ')) C
 INNER JOIN case02.pizza_toppings B
        ON C.value::string = B.topping_id
 GROUP BY 1;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Resultado correcto!
+
+*/
