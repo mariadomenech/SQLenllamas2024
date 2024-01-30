@@ -19,3 +19,13 @@ from (
     where lower(ro.cancellation) not like ('%cancellation%') 
         or ro.cancellation is null
     );
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado no es correcto, ya que para pedidos en los que se reparten más de 1 pizza contabilizas varias veces la distancia del reparto (esta es igual independientemente de la cantidad de pizzas repartidas).
+Para solucionar esto habría que calcular de forma independiente las ganancias y los gastos, sumando posteriormente las ganancias de las pizzas de cada pedido.
+
+*/
