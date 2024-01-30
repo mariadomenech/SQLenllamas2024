@@ -1,0 +1,78 @@
+--DÍA 2
+--Para cada mes, ¿Cuántos clientes realizan más de 1 depósito y 1 compra ó 1 retiro en un solo mes?
+
+with A as (
+select 
+    customer_id,
+    MONTH(txn_date) as month,
+    txn_type,
+    txn_amount
+from customer_transactions
+order by customer_id, month
+),
+n_withdrawal as (
+select 
+    customer_id,
+    month,
+    txn_type,
+    count(txn_type) as n_withdrawal
+from A
+where txn_type='withdrawal' 
+group by customer_id, month, txn_type
+order by customer_id, month
+),
+clientes_withdrawal as(
+select 
+    distinct customer_id 
+    
+from n_withdrawal
+where n_withdrawal>1
+),
+n_deposit as (
+select 
+    customer_id,
+    month,
+    txn_type,
+    count(txn_type) as n_deposit
+from A
+where txn_type='deposit' 
+group by customer_id, month, txn_type
+order by customer_id, month
+),
+clientes_deposit as(
+select 
+    distinct customer_id 
+    
+from n_deposit
+where n_deposit>1
+),
+n_purchase as (
+select
+    customer_id,
+    month,
+    txn_type,
+    count(txn_type) as n_purchase
+from A 
+where txn_type='purchase' 
+group by customer_id, month, txn_type
+order by customer_id, month 
+),
+clientes_purchase_deposit as (
+select 
+    distinct clientes_deposit.customer_id 
+    
+from clientes_deposit
+inner join n_purchase
+on clientes_deposit.customer_id=n_purchase.customer_id
+where n_purchase>1
+),
+clientes_total as (
+select
+    clientes_withdrawal.customer_id
+from  clientes_withdrawal
+full join clientes_purchase_deposit
+on clientes_withdrawal.customer_id=clientes_purchase_deposit.customer_id
+)
+select count(customer_id) from clientes_total where customer_id is not null
+;
+
