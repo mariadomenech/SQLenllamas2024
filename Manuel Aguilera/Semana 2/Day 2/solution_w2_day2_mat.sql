@@ -29,9 +29,13 @@ No sé si esto que te he puesto es un poco lioso, si tienes interes lo podemos v
 
 Código: Lo correto en el código para el resultado correct hubiera sido avg(DISTANCE_KM/DURATION_MIN)*60. Me gusta mucho el uso del TRY_CAST(REGEXP_REPLACE()) para
 limpiar las columnas.
-Otra versión puede ser con la función substr (para substraer), pero su versión mejorada de expresion regular, que nos permite hacerlo así:
-    TRY_CAST(REGEXP_SUBSTR(DISTANCE, '[0-9]*[.]*[0-9]') AS NUMBER(10, 2))
-Aquí le estamos diciendo que substraiga cualquier conjunto de dígitos entre el 0 y el 9 seguidos o no de un punto y seguidos o no de otro conjunto de dígitos entre 0 y 9.
+Otra versión puede ser:
+    TRY_CAST(REGEXP_REPLACE(DISTANCE, '[^0-9.]', '') AS NUMBER(10, 2))
+Aquí le estamos diciendo que remplace cualquier caracter menos (^) los digitos del 0 al 9 y el "." y los reemplazmos por nada.
+Otra versión puede ser con la función substr (para substraer), su versión mejorada nos permite:
+    TRY_CAST(REGEXP_SUBSTR(DURATION, '[0-9.]*') AS NUMBER)
+Aquí le estamos diciendo que substraiga cualquier conjunto de dígitos entre el 0 y el 9 y el punto el * es para que cojo todo lo que le pedimos tantas veces como 
+haga falta.
 
 Legibilidad: Correcto
 
