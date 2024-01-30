@@ -33,3 +33,12 @@ FROM RUNNER_ORDERS_SILVER
 RIGHT JOIN RUNNERS
 ON RUNNER_ORDERS_SILVER.RUNNER_ID = RUNNERS.RUNNER_ID
 GROUP BY RUNNERS.RUNNER_ID
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto!
+
+*/
