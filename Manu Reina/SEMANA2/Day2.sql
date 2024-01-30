@@ -47,3 +47,16 @@ FROM ESPECIALIDAD_SQL_BRONZE_DB_MRA.RETO.CLEANED_RUNNER_ORDERS A
 RIGHT JOIN RUNNERS B
         ON A.RUNNER_ID = B.RUNNER_ID
 GROUP BY 1;
+
+/*JUANPE: 
+
+Resultado: Correcto
+
+Código: Correcto. Con las tablas bien limpias una sencilla select es suficiente bien hecho! y además tu forma de limpiar el campo con el uso del
+REGEXP_REPLACE me parece muy limpio otra posible forma hubiera sido REGEXP_SUBSTR(DURATION, '[0-9.]*'), que en vez de reemplazar sustraemos los
+caracteres que queremos conservar.
+
+Legibilidad: Correcto
+
+Extra: Bien en sacar al runner 4 y limpiar los nulos por ceros y redondear a dos decimales. 
+*/
