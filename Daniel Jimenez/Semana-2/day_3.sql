@@ -57,3 +57,13 @@ LEFT JOIN distancia_y_pago d
 
 
 SELECT * FROM SQL_EN_LLAMAS.CASE02.PIZZA_NAMES;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado no es correcto ya que para pedidos en los que se reparten más de 1 pizza contabilizas varias veces la distancia del reparto (esta es igual independientemente de la cantidad de pizzas repartidas).
+Para solucionar esto habría que calcular de forma independiente las ganancias y los gastos, sumando posteriormente las ganancias de las pizzas de cada pedido.
+
+*/
