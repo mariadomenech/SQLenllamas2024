@@ -1,0 +1,41 @@
+USE DATABASE sql_en_llamas;
+/* --semana 3, día 2 - Núm Clientes con ciertas tx:
+al menos (2 depósitos y 2 compras) Ó al menos 2 retiros
+
+*/
+with reti as
+(
+select year(txn_date)||lpad(month(txn_date),2,'0') ano_mes, customer_id, count(*) num_retiros
+    from case03.customer_transactions ct
+    where txn_type ='withdrawal'
+    group by 1,2
+    having num_retiros >=2
+),
+depo as
+(
+select year(txn_date)||lpad(month(txn_date),2,'0') ano_mes, customer_id, count(*) num_depo
+    from case03.customer_transactions ct
+    where txn_type ='deposit'
+    group by 1,2
+    having num_depo >=2
+),
+com as
+(
+select year(txn_date)||lpad(month(txn_date),2,'0') ano_mes, customer_id, count(*) num_compras
+    from case03.customer_transactions ct
+    where txn_type ='purchase'
+    group by 1,2
+    having num_compras >=2
+)
+select ano_mes, count(distinct customer_id) num_clientes
+from 
+(
+    select depo.ano_mes, depo.customer_id
+    from depo
+    inner join com  on (depo.ano_mes= com.ano_mes  and depo.customer_id = com.customer_id )
+    union
+    select reti.ano_mes, reti.customer_id
+    from reti
+) aux
+group by 1
+order by 1;
