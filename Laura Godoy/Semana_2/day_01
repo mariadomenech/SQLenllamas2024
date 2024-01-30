@@ -39,13 +39,14 @@ D as (select
     from customer_orders
     left join runner_orders
     on customer_orders.order_id=runner_orders.order_id
-    where exclusions<>'null' and exclusions is not null and exclusions<>'' and extras<> 'null' and extras is not null and extras<>''
-    and cancellation <>'Customer Cancellation' and cancellation<>'Restaurant Cancellation' or cancellation is not null
+    where (exclusions<>'null' and exclusions is not null and exclusions<>'' and extras<> 'null' and extras is not null and extras<>'')
+    and (cancellation <>'Customer Cancellation' and cancellation<>'Restaurant Cancellation' or cancellation is not null)
     group by runner_id
     )
 
 select 
 (n_orders_exito/n_orders_total)*100 as porcentaje_exito,
+NVL(n_orders_exito,0) as n_orders_exito,
 n_orders_exito,
 A.runner_id,
 (n_pizzas_modificadas/sum(n_pizzas))*100 as porcentaje_pizzas_modificadas
@@ -93,3 +94,5 @@ Quedando la línea 42 así: where (exclusions<>'null' and exclusions is not null
 
 
 */
+
+///////////corregido///////////
