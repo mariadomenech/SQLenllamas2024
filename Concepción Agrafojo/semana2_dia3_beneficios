@@ -58,3 +58,12 @@ select (sum(precio_pedido_2)  -sum(PAGO_RUNNER))as beneficio_total
 from sel0_runners
 
 ;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Resultado correcto! Mejoraría la legibilidad del código.
+
+*/
