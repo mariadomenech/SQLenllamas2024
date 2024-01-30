@@ -48,3 +48,30 @@ Legibilidad: Correcto
 Extra: Bien en redondear a dos decimales el resultado y limpiar los nulos por ceros para el runner 4. 
 
 */
+
+/*
+Toda la razón Juanpe, lamentable por mi parte haberme equivocado calculando la media. Adjunto solución corregida utilizando también las expresiones regulares. ¡Gracias!
+*/
+/*
+Limpiamos las columnas distancia y duración casteándolas a number habiendo eliminado
+previamente los caracteres no numéricos y cambiando los 'null' por '0'.
+*/
+WITH pedidos_limpios AS (
+    SELECT 
+        *,
+        TRY_CAST(REGEXP_REPLACE(distance, '[^0-9.]', '') AS NUMBER(10, 2)) AS clean_distance_km,
+        TRY_CAST(REGEXP_REPLACE(duration, '[^0-9.]', '') AS NUMBER(10, 2)) AS clean_duration_min
+    FROM SQL_EN_LLAMAS.CASE02.RUNNER_ORDERS
+    WHERE cancellation IS NULL OR cancellation IN ('', 'null')
+)
+/*
+Calculamos la distancia acumulada de cada rider y su velocidad media en km/h
+*/
+SELECT 
+    r.runner_id,
+    NVL(SUM(pl.clean_distance_km), 0) AS km_recorridos,
+    ROUND(NVL(AVG(pl.clean_distance_km / NULLIF(pl.clean_duration_min, 0) * 60), 0), 2) AS velocidad_media_km_h
+FROM SQL_EN_LLAMAS.CASE02.RUNNERS r
+LEFT JOIN pedidos_limpios pl
+       ON r.runner_id = pl.runner_id
+GROUP BY r.runner_id;
