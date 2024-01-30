@@ -69,3 +69,34 @@ CREATE OR REPLACE TEMPORARY TABLE ESPECIALIDAD_SQL_BRONZE_DB_BEA.RETO.RUNNER_ORD
          ON C.pizza_id = D.pizza_id   
     WHERE B.cancellation IS NULL
     )A
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Hay algunos errores que hace que no se ejecute el código, estos son:
+
+
+        ,CASE
+            WHEN trim(exclusions) IS NULL OR TRIM(exclusions) IN ('', 'null')  THEN NULL
+            ELSE exclusions
+        END AS exclusions, <-- Esa coma da error ya que extras tiene la suya delante
+        ,extras
+
+
+        ,CASE
+              WHEN TRIM(extras) IS NULL OR TRIM(extras) IN ('', 'null')  THEN NULL
+              ELSE ARRAY_SIZE(SPLIT(extras,','))
+         END AS num_extras
+        ,CASE 
+              WHEN C.num_extras IS NULL THEN 0
+              ELSE COALESCE((C.num_extras),0)*1
+         END AS extra_pizza_price -->Utilizas el campo NUM_EXTRAS (generado anteriormente) pero le referencias como que es procedente de la tabla con alias C, por lo que da error ya que no existe en la tabla C.
+
+
+Corrigiendo esto el resultado no es correcto ya que, para pedidos en los que se reparten más de 1 pizza contabilizas varias veces la distancia del reparto (esta es igual independientemente de la cantidad
+de pizzas repartidas).
+Para solucionar esto habría que calcular de forma independiente las ganancias y los gastos, sumando posteriormente las ganancias de las pizzas de cada pedido.
+
+*/
