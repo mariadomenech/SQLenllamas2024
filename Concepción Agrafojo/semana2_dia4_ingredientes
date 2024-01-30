@@ -12,3 +12,11 @@ from ingre
 right join case02.pizza_toppings top 
         on (ingre.ingrediente = top.topping_id)
 
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Resultado correcto! Mejoraría la legibilidad del código.
+
+*/
