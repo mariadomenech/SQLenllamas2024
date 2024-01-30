@@ -58,6 +58,6 @@ FULL OUTER JOIN SUM_EUR_KM;
 /*********************************************************/
 /*
 
-Resultado correcto!
+Resultado correcto! Comentar que el uso de FULL OUTER JOIN no sería necesario, y debería evitarse siempre que fuese posible.
 
 */
