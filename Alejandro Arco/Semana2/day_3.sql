@@ -52,3 +52,12 @@ SELECT
     TOTAL_PRICE - TOTAL_EUR_KM_RUNNERS AS DINERO_SOBRANTE_GIUSEPPE_EUROS
 FROM TOTAL_PIZZA_PRICES
 FULL OUTER JOIN SUM_EUR_KM;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Resultado correcto!
+
+*/
