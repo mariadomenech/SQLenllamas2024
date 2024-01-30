@@ -12,3 +12,12 @@ FROM SQL_EN_LLAMAS.CASE02.PIZZA_TOPPINGS
 LEFT JOIN toppings_separados
     ON PIZZA_TOPPINGS.TOPPING_ID = toppings_separados.TOPPING_ID
 GROUP BY PIZZA_TOPPINGS.TOPPING_NAME;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Resultado correcto!
+
+*/
