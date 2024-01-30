@@ -22,3 +22,13 @@ left join (
     group by runner_id
     ) b
     on a.runner_id = b.runner_id
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado no es correcto del todo, ya que la parte de la velocidad promedio no es correcta. Quitando ese detalle, todo esta correcto.
+Esto se debe a que consideras que la velocidad promedio es la distancia promedio entre el tiempo promedio, pero no es así. (Reflexión de Juanpe)
+
+*/
