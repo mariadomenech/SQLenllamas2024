@@ -105,3 +105,12 @@ left join lista_excluido exx on (bas.TOPPING_NAME= exx.TOPPING_EXCLUIDO)
 left join lista_incluido inc on (bas.TOPPING_NAME= inc.TOPPING_INCLUIDO)
 order by 2 desc
 ;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto, se podría mejorar la salida de la query utilizando LISTAGG. Ademas, mejoraría la legibilidad del código.
+
+*/
