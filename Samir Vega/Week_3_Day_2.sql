@@ -1,0 +1,22 @@
+--------------------------------------------------------------DIA_2----------------------------------------------------------
+
+CREATE OR REPLACE TEMP TABLE TXN_PIVOT AS
+    SELECT
+        *
+    FROM CUSTOMER_TRANSACTIONS
+        PIVOT (COUNT(TXN_TYPE)
+                 FOR TXN_TYPE IN ('deposit','purchase','withdrawl'))
+                    AS A (CUSTOMER_ID, TXN_DATE, TXN_AMOUNT, DEPOSIT, PURCHASE, WITHDRAWL);
+
+WITH AUX AS (
+    SELECT
+        CUSTOMER_ID,
+        MONTHNAME(TXN_DATE) AS MES
+    FROM TXN_PIVOT 
+    GROUP BY CUSTOMER_ID, MES
+    HAVING (SUM(DEPOSIT)>1 AND SUM(PURCHASE)>1) OR SUM(WITHDRAWL)>1)
+SELECT
+    MES,
+    COUNT(CUSTOMER_ID)
+FROM AUX
+GROUP BY MES;
