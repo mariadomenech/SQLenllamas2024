@@ -69,3 +69,25 @@ LEFT JOIN TempExclusions
     ON TempIngredientes.TOPPING_ID = TempExclusions.EXCLUSIONS;
 
 --ESTÁ INACABADO, EL CRUCE DE TOPPING_ID CON EXTRAS Y EXCLUSIONS ME DA EL SIGUIENTE ERROR: Numeric value '' is not recognized, QUE AUN NO HE CONSEGUIDO RESOLVER
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El error sale a raíz de que alguno de los campos del cruce es de distinto formato, he visto que los casteas como STRING (yo lo haría como INT). Al ya ser algunos texto, si conviertes a varchar los campos
+del cruce deja de darte el error.
+
+...
+SELECT
+    TempIngredientes.TOPPING_NAME
+    , TempIngredientes.CONTEO_INGREDIENTES+TempExtras.CONTEO_EXTRAS-TempExclusions.CONTEO_EXCLUSIONS
+FROM TempIngredientes
+LEFT JOIN TempExtras
+    ON TempIngredientes.TOPPING_ID::varchar = TempExtras.EXTRAS::varchar
+LEFT JOIN TempExclusions
+    ON TempIngredientes.TOPPING_ID::varchar = TempExclusions.EXCLUSIONS::varchar;
+
+Comentarte también que utilizas lateral flatten, en este ejercicio en concreto pedimos que se utilice la funcion UNPIVOT.
+
+*/
