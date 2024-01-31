@@ -9,6 +9,7 @@ WITH runner_pedidos_limpitos AS (
         ,   CASE WHEN CANCELLATION = 'null' OR CANCELLATION = '' THEN NULL ELSE CANCELLATION END AS pedido_cancelado
     FROM SQL_EN_LLAMAS.CASE02.RUNNER_ORDERS
 ),
+    
 pedidos_limpitos AS (
     SELECT  ORDER_ID
         ,   CUSTOMER_ID
@@ -17,8 +18,8 @@ pedidos_limpitos AS (
         ,   CASE WHEN EXTRAS = 'null' OR EXTRAS = '' THEN NULL ELSE EXTRAS END AS ingredientes_extras
         ,   ORDER_TIME
     FROM SQL_EN_LLAMAS.CASE02.CUSTOMER_ORDERS
-
 ),
+    
 pedidos_pizza AS (
     SELECT  ORDER_ID
         ,   COUNT(PIZZA_ID) AS num_pizzas
@@ -26,6 +27,7 @@ pedidos_pizza AS (
     GROUP BY ORDER_ID
     ORDER BY ORDER_ID
 ),
+    
 pizzas_personalizadas AS (
     SELECT  r.RUNNER_ID
         ,   COUNT(*) AS num_pizzas_personalizadas
@@ -35,6 +37,7 @@ pizzas_personalizadas AS (
     WHERE r.hora_recogida IS NOT NULL AND (ingredientes_excluidos IS NOT NULL OR ingredientes_extras IS NOT NULL)
     GROUP BY r.RUNNER_ID
 ),
+    
 pedidos AS (
     SELECT  r.RUNNER_ID
         ,   COUNT(ro.ORDER_ID) AS num_pedidos_totales
@@ -46,6 +49,7 @@ pedidos AS (
         ON ro.RUNNER_ID = r.RUNNER_ID
     GROUP BY r.RUNNER_ID
 ),
+    
 pedidos_completados as (
     SELECT r.RUNNER_ID
         ,  COUNT(ro.ORDER_ID) AS pedidos_completados
@@ -58,6 +62,7 @@ pedidos_completados as (
     WHERE hora_recogida IS NOT NULL
     GROUP BY r.RUNNER_ID
 )
+    
 SELECT  t.RUNNER_ID
     ,   NVL(total_pizzas_completadas,0) AS total_pizzas_exito
     ,   NVL(pedidos_completados,0) AS total_pedidos_exito
