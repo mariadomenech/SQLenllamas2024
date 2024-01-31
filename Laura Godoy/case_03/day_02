@@ -1,6 +1,5 @@
 --DÍA 2
 --Para cada mes, ¿Cuántos clientes realizan más de 1 depósito y 1 compra ó 1 retiro en un solo mes?
-
 with A as (
 select 
     customer_id,
@@ -23,8 +22,8 @@ order by customer_id, month
 ),
 clientes_withdrawal as(
 select 
-    distinct customer_id 
-    
+    distinct customer_id, 
+    month
 from n_withdrawal
 where n_withdrawal>1
 ),
@@ -41,7 +40,8 @@ order by customer_id, month
 ),
 clientes_deposit as(
 select 
-    distinct customer_id 
+    distinct customer_id,
+    month
     
 from n_deposit
 where n_deposit>1
@@ -59,7 +59,8 @@ order by customer_id, month
 ),
 clientes_purchase_deposit as (
 select 
-    distinct clientes_deposit.customer_id 
+    distinct clientes_deposit.customer_id,
+    clientes_deposit.month
     
 from clientes_deposit
 inner join n_purchase
@@ -68,11 +69,14 @@ where n_purchase>1
 ),
 clientes_total as (
 select
-    clientes_withdrawal.customer_id
+    clientes_withdrawal.customer_id,
+    clientes_withdrawal.month
 from  clientes_withdrawal
 full join clientes_purchase_deposit
 on clientes_withdrawal.customer_id=clientes_purchase_deposit.customer_id
 )
-select count(customer_id) from clientes_total where customer_id is not null
+select count(customer_id),
+clientes_total.month
+from clientes_total where customer_id is not null group by month
 ;
 
