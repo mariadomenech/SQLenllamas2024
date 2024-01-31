@@ -1,0 +1,27 @@
+
+--DÍA 3
+--Crear un proedimiento almacenado que al introducir el identificador del cliente y el mes, calcule el total de compras (purchase) y que te devuelva el siguiente mensaje: "El cliente 1 se ha gastado un total de 1276 eur en compras de productos en el mes de marzo"
+
+
+CREATE OR REPLACE PROCEDURE laura (number_1 INTEGER, number_2 INTEGER)
+RETURNS varchar
+LANGUAGE SQL
+AS
+DECLARE number_3 INTEGER;
+BEGIN
+with A as (
+select 
+    customer_id,
+    MONTH(txn_date) as month,
+    txn_type,
+    sum(txn_amount) as suma
+from customer_transactions
+where txn_type='purchase'
+group by customer_id, month, txn_type)
+SELECT suma INTO :number_3
+FROM A
+WHERE  month = :number_1
+AND customer_id = :number_2;
+RETURN 'El cliente '|| :number_2 || ' se ha gastado un total de ' || :number_3 || ' eur en compras de productos en el mes '||:number_1 ;
+END;
+ call laura (2, 203);
