@@ -1,0 +1,13 @@
+
+	{
+		"question_week": 3,
+		"question_day": 2,
+		"question": "Para cada mes, ¿cuántos clientes realizan más de 1 depósito y 1 compra ó 1 retiro en un solo mes?",
+		"answer": 	[
+					"Enero: 110 clientes",
+					"Febrero : 177 clientes",
+					"Marzo: 208 clientes",
+					"Abril: 63 clientes"
+		],
+		"explanation": "La consulta SQL utilizada (ver solution_w3_day2_mat.sql) identifica y cuenta el número de clientes distintos por mes que han realizado más de un depósito y al menos una compra o retiro. La tabla temporal CUSTOMER_TRANSACTIONS_PIVOT se utiliza para facilitar la manipulación y análisis de los datos de transacciones de los clientes."
+	}

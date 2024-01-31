@@ -3,6 +3,6 @@
 		"question_week": 3,
 		"question_day": 1,
 		"question": "¿En cuántos días de media se reasignan los clientes a un nodo diferente?",
-		"answer": 	"17.358964",
+		"answer": 	"17.865859",
 		"explanation": "La consulta SQL utilizada (ver solution_w3_day1_mat.sql) calcula la media de días en las que un nodo ha sido reasignado usando la función LEAD() y teniendo en cuanta si la siguiente asignación es el mismo nodo"
 	}
