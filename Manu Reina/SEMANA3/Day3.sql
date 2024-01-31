@@ -39,7 +39,8 @@ BEGIN
         FROM CUSTOMER_TRANSACTIONS CT
         LEFT JOIN  ESPECIALIDAD_SQL_BRONZE_DB_MRA.RETO.MESES M
                ON MONTH(CT.TXN_DATE) = M.MONTH_NUMBER
-        WHERE CUSTOMER_ID = :id_cliente
+        WHERE CT.TXN_TYPE = 'purchase'
+        AND CUSTOMER_ID = :id_cliente
         AND MONTH_NAME = :mes
     );
 
