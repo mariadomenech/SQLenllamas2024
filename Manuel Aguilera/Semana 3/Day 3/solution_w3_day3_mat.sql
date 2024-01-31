@@ -1,0 +1,34 @@
+--Declaracion procedimiento
+CREATE OR REPLACE PROCEDURE PROCEDIMIENTO_DAY3_WEEK3_MAT(customer INTEGER, mes INTEGER)
+RETURNS VARCHAR
+LANGUAGE SQL
+AS
+DECLARE
+  TOTAL_COMPRAS NUMERIC;
+  MES_FINAL STRING;
+
+BEGIN
+  SELECT
+    SUM(TXN_AMOUNT) AS TOTAL_COMPRAS,
+    MONTHNAME(TXN_DATE) AS MES_FINAL 
+  INTO
+    :TOTAL_COMPRAS,
+    :MES_FINAL
+  FROM
+    SQL_EN_LLAMAS.CASE03.CUSTOMER_TRANSACTIONS
+  WHERE
+    CUSTOMER_ID = :customer
+    AND TXN_TYPE = 'purchase'
+    AND EXTRACT(MONTH, TXN_DATE) = :mes
+  GROUP BY 2;
+
+  IF (:TOTAL_COMPRAS IS NULL OR :MES_FINAL IS NULL) THEN 
+    RETURN 'Cliente o mes no encontrado';
+  END IF;
+
+  RETURN 'El cliente ' || customer || ' se ha gastado un total de ' || :TOTAL_COMPRAS || 
+         ' EUR en compras de productos en el mes de ' || :MES_FINAL || '.';
+END;
+
+--Llamada al procedimiento
+CALL SQL_EN_LLAMAS.CASE03.PROCEDIMIENTO_DAY3_WEEK3_MAT(1,3);

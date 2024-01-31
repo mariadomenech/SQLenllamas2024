@@ -5,6 +5,27 @@
 		"question": "¿En cuántos días de media se reasignan los clientes a un nodo diferente?",
 		"answer": 	"17.358964",
 		"explanation": "La consulta SQL utilizada (ver solution_w3_day1_mat.sql) calcula la media de días en las que un nodo ha sido reasignado usando la función LEAD() y teniendo en cuanta si la siguiente asignación es el mismo nodo"
+	},
+	{
+		"question_week": 3,
+		"question_day": 2,
+		"question": "Para cada mes, ¿cuántos clientes realizan más de 1 depósito y 1 compra ó 1 retiro en un solo mes?",
+		"answer": 	[
+					"Enero: 110 clientes",
+					"Febrero : 177 clientes",
+					"Marzo: 208 clientes",
+					"Abril: 63 clientes"
+		],
+		"explanation": "La consulta SQL utilizada (ver solution_w3_day2_mat.sql) identifica y cuenta el número de clientes distintos por mes que han realizado más de un depósito y al menos una compra o retiro. La tabla temporal CUSTOMER_TRANSACTIONS_PIVOT se utiliza para facilitar la manipulación y análisis de los datos de transacciones de los clientes."
+	},
+
+	{
+		"question_week": 3,
+		"question_day": 3,
+		"question": "Crea un procedimiento almacenado que al introducir el identificador del cliente y el mes, calcule el total de compras (purchase) y que te devuelva el siguiente mensaje: el cliente 1 se ha gastado un total de 1276€ en compras de productos en el mes de marzo",
+		"answer": 	"El cliente X se ha gastado un total de Y€ en compras de productos en el mes de Z",
+		"explanation": "La consulta SQL utilizada (ver solution_w3_day3_mat.sql) es un procedimiento almacenado que calcula la suma de las compras realizadas por un cliente en un mes específico y retorna un mensaje informativo sobre el gasto total en ese periodo. Si no se encuentran datos para el cliente o el mes proporcionado, se devuelve un mensaje indicando que no se encontraron resultados."
 	}
+
 
 ]
