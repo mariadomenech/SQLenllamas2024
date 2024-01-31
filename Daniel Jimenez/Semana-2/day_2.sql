@@ -9,6 +9,7 @@ WITH tabla_runner_limpita AS (
         ,   CASE WHEN CANCELLATION = 'null' OR CANCELLATION = '' THEN NULL ELSE CANCELLATION END AS pedido_cancelado
     FROM SQL_EN_LLAMAS.CASE02.RUNNER_ORDERS
 ),
+    
 tabla_runner_sin_nulls AS (
     SELECT  ORDER_ID
         ,   RUNNER_ID
@@ -18,6 +19,7 @@ tabla_runner_sin_nulls AS (
         ,   pedido_cancelado
     FROM tabla_runner_limpita
 )
+    
 SELECT  r.RUNNER_ID
     ,   COALESCE(SUM(tr.distancia_kilometros), 0) AS distancia_acumulada_reparto
     ,   ROUND(AVG(tr.distancia_kilometros / NULLIF(duracion_minutos, 0) * 60), 2) AS velocidad_promedia_kmh
