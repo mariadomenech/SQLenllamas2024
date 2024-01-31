@@ -44,7 +44,7 @@ BEGIN
         AND MONTH_NAME = :mes
     );
 
-    RETURN 'EL CLIENTE ' ||:id_cliente|| ' HA GASTADO UN TOTAL DE ' ||:GASTO_TOTAL|| ' EUR EN COMPRAS DE PRODUCTOS EN EL MES DE ' ||:mes||'.';
+    RETURN 'EL CLIENTE ' ||:id_cliente|| ' SE HA GASTADO UN TOTAL DE ' ||:GASTO_TOTAL|| ' EUR EN COMPRAS DE PRODUCTOS EN EL MES DE ' ||:mes||'.';
 
 END;
 
