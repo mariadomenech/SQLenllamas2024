@@ -16,7 +16,7 @@ with runner_orders_clean as (
 )
 select 
     runner_id,
-    sum(distance),0 as total_distance,
+    sum(distance) as total_distance,
     (sum(distance)/sum(duration))*60 as speed_kh
 from runner_orders_clean
 group by 
