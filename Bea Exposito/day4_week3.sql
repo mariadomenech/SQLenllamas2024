@@ -61,9 +61,12 @@ BEGIN
                 );
 
         CASE
-            WHEN UPPER(TRIM(:txn_choose)) = 'BALANCE' AND (TOTAL_DEPOSITADO IS NOT NULL OR TOTAL_COMPRAS IS NOT NULL OR TOTAL_RETIRADO IS NOT NULL)
+            WHEN UPPER(TRIM(:txn_choose)) = 'BALANCE' AND (TOTAL_DEPOSITADO IS NOT NULL OR TOTAL_COMPRAS IS NOT NULL OR TOTAL_RETIRADO IS NOT NULL) and balance < 0
                 THEN
-                    RETURN 'El Balance del cliente ' || :customer_ident || ' en ' || INITCAP(:month_name) || ' es de ' || BALANCE|| ' euros.';      
+                    RETURN 'El Balance del cliente ' || :customer_ident || ' en ' || INITCAP(:month_name) || ' es de ' || BALANCE|| ' euros. El cliente presenta pérdidas';     
+            WHEN UPPER(TRIM(:txn_choose)) = 'BALANCE' AND (TOTAL_DEPOSITADO IS NOT NULL OR TOTAL_COMPRAS IS NOT NULL OR TOTAL_RETIRADO IS NOT NULL) and balance > 0
+                THEN
+                    RETURN 'El Balance del cliente ' || :customer_ident || ' en ' || INITCAP(:month_name) || ' es de ' || BALANCE|| ' euros. El cliente presenta ganancias';                      
             WHEN UPPER(TRIM(:txn_choose)) = 'TOTAL_DEPOSITADO' AND TOTAL_DEPOSITADO IS NOT NULL
                 THEN
                     RETURN 'El cliente ' || :customer_ident || ' ha depositado un total de ' || TOTAL_DEPOSITADO || ' euros en ' || INITCAP(:month_name) || '.';    
