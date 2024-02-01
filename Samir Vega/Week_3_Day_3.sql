@@ -23,14 +23,20 @@ BEGIN
         AND MONTH(TXN_DATE) = :MES
         AND PURCHASE = 1
     GROUP BY CUSTOMER_ID, MONTH(TXN_DATE);
-
+    
     SELECT TOP 1
         MONTHNAME(TXN_DATE) INTO nombre_mes
     FROM ESPECIALIDAD_SQL_BRONZE_DB_SVM.PRUEBAS.TXN_PIVOT
     WHERE MONTH(TXN_DATE) = :MES;
     
-    RETURN 'El cliente '||:CUSTOMER_ID||' se ha gastado un total de '||total_compras||' euros en compras durante el mes de '||nombre_mes||'.';
-
+    CASE
+        WHEN total_compras IS NULL
+            THEN RETURN 'No hay compras para el cliente '||:CUSTOMER_ID||' durante el mes de '||nombre_mes||'.';
+        ELSE
+            RETURN 'El cliente '||:CUSTOMER_ID||' se ha gastado un total de '||total_compras||' euros en compras durante el mes de '||nombre_mes||'.';
+    END CASE;
 END;
 
+-----------------------------------COMPROBACIÓN-------------------------------------
+CALL  ESPECIALIDAD_SQL_BRONZE_DB_SVM.PRUEBAS.COMPRAS_X_CLIENTE_Y_MES (1,2);
 CALL  ESPECIALIDAD_SQL_BRONZE_DB_SVM.PRUEBAS.COMPRAS_X_CLIENTE_Y_MES (1,3);
