@@ -80,7 +80,7 @@ BEGIN
 					message_ret := '¡El cliente ' || customer_id || ' no ha realizado ninguna compra en el mes de ' || literal_month || '!';
 				END IF;
 			ELSE
-				message_ret := '¡La operación (' || operation || ') indicada en la llamada al procedimiento almacenado no es válido (VALORES VÁLIDOS: 1-4)!\n123';
+				message_ret := '¡La operación (' || operation || ') indicada en la llamada al procedimiento almacenado no es válido (VALORES VÁLIDOS: 1-4 (1: Balance, 2: Depósitos (deposit), 3: Compras (purchase), 4: Retiros (withdrawal)))!';
 			END IF;
         ELSE
             message_ret := '¡El mes (' || month || ') indicado en la llamada al procedimiento almacenado no es válido (VALORES VÁLIDOS: 1-12)!';
