@@ -1,0 +1,72 @@
+ CREATE OR REPLACE PROCEDURE laura2 (number_1 INTEGER, number_2 INTEGER, number_4 varchar)
+RETURNS varchar
+LANGUAGE SQL
+AS
+DECLARE number_3 INTEGER;
+BEGIN
+
+--with deposito as(
+--select 
+--    sum(txn_amount) as suma_deposito,
+--     customer_id,
+--    MONTH(txn_date) as month
+--from customer_transactions
+--where txn_type='deposit'
+--group by customer_id, month
+--),
+--compra as (
+--select 
+ --   sum(txn_amount) as suma_compra,
+--     customer_id,
+ --   MONTH(txn_date) as month
+--from customer_transactions
+--where txn_type='purchase'
+--group by customer_id, month
+--),
+--retiro as (
+--select 
+--sum(txn_amount) as suma_retiro,
+-- customer_id,
+--MONTH(txn_date) as month
+--from customer_transactions
+--where txn_type='withdrawal'
+--group by customer_id, month
+--),
+--balance as(
+--select 
+--suma_deposito-suma_compra-suma_retiro as balance,
+--deposito.customer_id,
+--deposito.month
+--from deposito
+--left join compra
+--on deposito.customer_id=compra.customer_id
+--left join retiro
+--on deposito.customer_id=retiro.customer_id
+--),
+with A as (
+select 
+    customer_id,
+    MONTH(txn_date) as month,
+    txn_type,
+    sum(txn_amount) as suma
+    
+    
+from customer_transactions
+where txn_type=:number_4
+group by customer_transactions.customer_id,txn_type, month
+)
+
+SELECT suma INTO :number_3
+FROM A
+WHERE  month = :number_1
+AND customer_id = :number_2
+and txn_type= :number_4;
+
+RETURN 'El cliente '|| :number_2 || ' se ha gastado un total de ' || :number_3 || ' euros en ' || :number_4 || ' en el mes '||:number_1 ;
+END;
+
+--purchase/deposit/withdrawal/balance
+ call laura2 (2, 200, 'withdrawal');
+
+
+///// NO CONSIGO HACER LO DEL BALANCE ASÍ QUE POR AHORA LO SUBO ASÍ./////
