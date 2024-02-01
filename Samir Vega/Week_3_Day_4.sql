@@ -1,3 +1,12 @@
+-----------------------------------TABLA ORIGEN-------------------------------------
+CREATE OR REPLACE TEMP TABLE ESPECIALIDAD_SQL_BRONZE_DB_SVM.PRUEBAS.TXN_PIVOT AS
+    SELECT
+        *
+    FROM CUSTOMER_TRANSACTIONS
+        PIVOT (COUNT(TXN_TYPE)
+                 FOR TXN_TYPE IN ('deposit','purchase','withdrawal'))
+                    AS A (CUSTOMER_ID, TXN_DATE, TXN_AMOUNT, DEPOSIT, PURCHASE, WITHDRAWAL);
+
 --------------------------------------------------------------DIA_4----------------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE ESPECIALIDAD_SQL_BRONZE_DB_SVM.PRUEBAS.CALCULOS_X_CLIENTE_Y_MES (TIPO CHAR(20), CUSTOMER_ID INT, MES INT)
