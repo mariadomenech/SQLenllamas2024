@@ -25,7 +25,13 @@
 		"question": "Crea un procedimiento almacenado que al introducir el identificador del cliente y el mes, calcule el total de compras (purchase) y que te devuelva el siguiente mensaje: el cliente 1 se ha gastado un total de 1276€ en compras de productos en el mes de marzo",
 		"answer": 	"El cliente X se ha gastado un total de Y€ en compras de productos en el mes de Z",
 		"explanation": "La consulta SQL utilizada (ver solution_w3_day3_mat.sql) es un procedimiento almacenado que calcula la suma de las compras realizadas por un cliente en un mes específico y retorna un mensaje informativo sobre el gasto total en ese periodo. Si no se encuentran datos para el cliente o el mes proporcionado, se devuelve un mensaje indicando que no se encontraron resultados."
+	},
+	{
+		"question_week": 3,
+		"question_day": 4,
+		"question": "Evoluciona el procedimiento de ayer para que podamos elegir el tipo de cálculo que nos devuelva por mes y cliente: balance (deposito-compra-retiros), total depositado, total de compras, total de retiros",
+		"answer": 	"El cliente 1 tiene un total de  1276 EUR en compras en el mes de Marzo. Siendo el balance total -952.",
+		"explanation": "La consulta SQL utilizada (ver solution_w3_day4_mat.sql) es un procedimiento almacenado que calcula la suma del tipo de calculo que se le pase por parámetro por un cliente en un mes específico y retorna un mensaje informativo sobre el gasto total en ese periodo. Tambien calcula el balance total de ese cliente. Si no se encuentran datos para el cliente o el mes proporcionado, se devuelve un mensaje indicando que no se encontraron resultados."
 	}
-
 
 ]
