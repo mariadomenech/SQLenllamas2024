@@ -7,7 +7,7 @@ EXECUTE AS CALLER
 AS
 BEGIN
     LET mes_desc VARCHAR :=
-    (SELECT DISTINCT MONTHNAME(txn_date)
+    (SELECT DISTINCT TO_CHAR(txn_date, 'MMMM')
         FROM sql_en_llamas.case03.customer_transactions
         WHERE MONTH(txn_date)= :mes);
         
@@ -28,4 +28,4 @@ BEGIN
 END;
 
 
-CALL customer_purchase_pmz(1,3);
+CALL customer_purchase_pmz(100,3);
