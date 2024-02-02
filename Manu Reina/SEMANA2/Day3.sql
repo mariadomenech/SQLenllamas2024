@@ -68,4 +68,16 @@ FROM (
         JOIN ESPECIALIDAD_SQL_BRONZE_DB_MRA.RETO.CLEANED_RUNNER_ORDERS B
           ON A.ORDER_ID = B.ORDER_ID
          AND B.CANCELLATION IS NULL)A;
+/*
+COMENTARIO JUANPE:
+
+RESULTADO: Incorrecto. El problema está en el gasto por km. Este gasto solo cuenta una vez por pedido, no una vez por pizza, que es lo que has hecho.
+Si ejecutas solo tu subselect lo puedes comprobar. Ya que si una pedido tiene varias 3 pizzas no recorre la distancia 3 veces pues las lleva juntas.
+
+CÓDIGO: Muy bien visto el ARRAY_SIZE(SPLIT()) pero dado el problema que te he comentaod en el RESULDATO, el código no es correcto.
+
+LEGIBILIDD: Correcta y poco que decir me gusta no solo que haces tabulaciones si no que además alineas estas para mejor legibilidad.
+
+EXTRA: Poco que comentar.
+*/
 
