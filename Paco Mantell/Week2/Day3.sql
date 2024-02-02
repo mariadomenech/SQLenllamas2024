@@ -162,3 +162,18 @@ SELECT TOTALES,
     TOTAL_COST,
     TOTAL_PROFIT
 FROM CTE_TOTALES
+
+/*
+COMENTARIOS JUANPE: no hacia falta cambiar lo de las unidades el comentario del otro ejercicio era informativo no era que hacer lo de las unidades este mal 
+pero aún así bien :)
+
+RESULTADO: Correcto y me gusta como lo has presentado con el union para desglosar los distintos runner y el total.
+
+CODIGO: Correcto aunque con unas pocas menos select se hubiera conseguido.
+
+LEGIBLIDAD: Correcto. Me gusta que este tabulado los campos de las select y la sentencia ON de los JOIN y los case when, parece que no pero cuando los códigos
+son tan largos la vista agradece estos detalles.
+
+EXTRA: Me gusta el tema de las unidades y buen uso de las expresiones regulares, REGEXP_COUNT entre otras bien pensado para ver la cantidad de extras sin
+necesidad de convertir a vector y contar elementos que era la otra opción, pero me resulta más "elegante" las expresiones regulares 
+*/
