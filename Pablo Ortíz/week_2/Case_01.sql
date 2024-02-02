@@ -132,3 +132,33 @@ from resumen
 
 -- He estado muy liado con el trabajo la semana pasada y el finde, intentare ponerme al día esta semana, lo siento! 
 -- Pero no penseis que estoy desanimado, me está pareciendo muy chulo el reto :)
+
+
+/*
+COMENTARIOS JUANPE: me alegra saber que te está gustando el reto :) y no te  preocupes si por falta de tiempo entregas más tarde, me gusta saber que al 
+menos es por eso y no por abandono del reto.
+
+RESULTADO: Correcto
+
+CÓDIGO: Correcto. Y sencillo, has usado una lógica sencilla para resolver paso a paso cada uno de los parametros que hacen falta, muy bien pues 
+ha quedado muy clara tu propuesta.
+
+LEGIBILIDAD: este punto siempre es subjetivo pero te doy unos tips en los que los evaludares del reto estamos de acuerdo. Los campos de cada select deben 
+tener al menos una tabulación, a los ON de los JOIN también suele ser recomendable añadir una tabulación. Por la parte de los case when en los primeros pones 
+el when el else y el end en distintas lineas (lo cual veo genial) en otro has peusto el end en la misma del else y en el los ultimos case va todo en una
+misma linea, un tips que te diría es que uses siempre un formato igual yo por ejemplo suelo hacerlo así:
+    case when ......
+         then ......
+         when ......
+         then ......
+         else ......
+         end as X
+Hay quien no le presta mucha atención a estas cosas pero no está de más intentar cuidar estos aspectos de legibildad.
+
+EXTRAS: bien por hacer la salida de los resultados con dos decimales. Como consejo cuando haces esto:
+        ,case 
+            when pizzas_modificadas is null then 0 else pizzas_modificadas end as pizzas_modificadas
+es completamente correcto pero por lo general cuando vas a convertir un nulo en 0 hay funciones que te lo hacen y no hace falta montar el case when
+funciones como nvl, ifnull, zeroifnull... Pero bueno, es completamente válido el uso de case when.
+
+*/
