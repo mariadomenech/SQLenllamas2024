@@ -46,3 +46,14 @@ INNER JOIN (
     GROUP BY 1
 ) B --Calculamos el precio total de cada pizza en cada pedido
 ON A.ORDER_ID = B.ORDER_ID;
+
+/*
+COMENTARIOS JUANPE: 
+
+RESULTADO: Correcto, hubiera faltado hacer la suma total pero aún así correcto.
+
+CODIGO: Correcto, se puede hacer con menos pasos pero tu lógica para resolverla es correcta.
+
+LEGIBILIDAD: Correcta bien tabulado.
+
+*/
