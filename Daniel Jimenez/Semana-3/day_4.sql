@@ -4,6 +4,7 @@
 -TOTAL DE COMPRAS
 -TOTAL DE RETIROS*/
 
+
 CREATE OR REPLACE PROCEDURE calcular_compras_daniel_jimenez_2(CUSTOMER_ID INT, mes INT)
 RETURNS VARCHAR
 LANGUAGE SQL
@@ -21,7 +22,7 @@ BEGIN
   FROM (
     SELECT TXN_AMOUNT
     FROM SQL_EN_LLAMAS.CASE03.CUSTOMER_TRANSACTIONS
-    WHERE CUSTOMER_ID = :CUSTOMER_ID AND TXN_TYPE = 'deposit'
+    WHERE CUSTOMER_ID = :CUSTOMER_ID AND TXN_TYPE = 'deposit' AND EXTRACT(MONTH FROM TXN_DATE) = :mes
     UNION ALL
     SELECT 0 --He tenido que insertar registros a 0 en aquellos customer que no tenían registros de tal tipo, de esta forma he manejado el control de campos inexistentes
   );
@@ -41,7 +42,7 @@ BEGIN
   FROM (
     SELECT TXN_AMOUNT
     FROM SQL_EN_LLAMAS.CASE03.CUSTOMER_TRANSACTIONS
-    WHERE CUSTOMER_ID = :CUSTOMER_ID AND TXN_TYPE = 'withdrawal'
+    WHERE CUSTOMER_ID = :CUSTOMER_ID AND TXN_TYPE = 'withdrawal' AND EXTRACT(MONTH FROM TXN_DATE) = :mes
     UNION ALL
     SELECT 0
   );
@@ -66,6 +67,3 @@ BEGIN
   
   RETURN 'El cliente ' || :CUSTOMER_ID || ' se ha gastado un total de ' || :total_compras || ' EUR en compras de productos en el mes de ' || :mes_nombre || '. Su balance actual es de ' || :balance || ' EUR, habiendo depositado un total de ' || :total_depositado || ' EUR y retirado un total de ' || :total_retiros || ' EUR.';
 END;
-
-
-CALL calcular_compras_daniel_jimenez_2(1,3);
