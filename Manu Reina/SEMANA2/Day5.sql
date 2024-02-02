@@ -116,3 +116,18 @@ FROM PIZZA_TOPPINGS A
 LEFT JOIN FREQ_TOTAL B
        ON A.TOPPING_ID = B.INGREDIENTE
 ORDER BY 2 DESC;
+
+
+
+/*
+COMENTARIOS JUANPE: MUY BIEN
+
+RESULTADO: CORRECTO.
+
+CODIGO: CORRECTO. Bien resuelto y la lógica usada es muy sencilla, buen trabajo
+
+LEGIBILIDAD: CORRECTA
+
+EXTRAS: Hubiera sido perfecto si usaras un listagg para agrupar los resultados finales
+
+*/
