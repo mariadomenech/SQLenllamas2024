@@ -72,3 +72,18 @@ FROM(
 )
 GROUP BY 1,2
 ORDER BY 3 DESC;
+
+/*
+
+COMENTARIOS JUANPE: MUY BIEN!
+
+RESULTADO: CORRECTO.
+
+CÓDIGO: CORRECTO y bien usada la función unpivot. Aunque no era tu idea la que los evaluadores teniamos en mente cuando queriamos que usarias el unpivot
+pero muy bien por buscar una lógica para resolverlo en la que tambien use el unpivot. Realmente el uso del unpivot lo hemos puesto para que lo practicasesis 
+pero no era realmente necesario usarlo, se puede resovler de otras formas. Muy muy bien.
+
+LEGIBILIDAD: CORRECTA
+
+EXTRA: Solo te hubiera faltado usar el listag para una salida más limpia pero todo correcto.
+*/
