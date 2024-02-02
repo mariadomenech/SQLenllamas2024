@@ -38,3 +38,23 @@ CROSS JOIN (
         REPLACE(CONCAT('"',REPLACE(LISTAGG(TOPPINGS, ','),',','","'), '"'),' ','') AS TOPPINGS_TOTALES
     FROM SQL_EN_LLAMAS.CASE02.PIZZA_RECIPES
 ) A;
+
+
+/*
+COMENTARIOS JUANPE: ¡GUAU! no solo por ofrecer dos soluciones si no por la segunda pues yo tenia varias propuesta de solucines y no cai en esa y considero una 
+solución muy sencilla de entender y explicar.
+
+RESULTADOS: CORRECTOS.
+
+CÓDIGO: CORRECTOS
+        - El segundo genial como te he dicho, me gusta la lógica usada para resolverlo
+        - El primero como bien dices tiene el problema de que implica conecer la cantidad de ingredientes (igual que si se hace con un unpivot, 
+          tiene ese invonveniente, para el ejercicio 5 que pediamos el uso del unpivot era solo para que lo practiqueis pero realmente no es 
+          lo más genérico debido a ese problema)
+
+LEGIBILIDAD: CORRECTA
+
+EXTRAS: genial por las dos propuesta explicando la ventaja de la segunda y el inconveniente de la primera.
+
+*/
+
