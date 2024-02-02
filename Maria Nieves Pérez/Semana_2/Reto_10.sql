@@ -91,4 +91,21 @@ cuarta AS (
 
 SELECT * FROM cuarta
 
+/*
+COMENTARIOS JUANPE: creo que lo tienes sin acabar no? pues en ningun momento trabajas con los extras ni las exclusiones. Parto de eso y te corrigo lo que tienes:
 
+RESULTADO: incorrecto y no por que te falte sumar los extras y restar las exclusiones si no por lo que te ha salido de resultados... 
+¿498 veces se ha usado el queso? uff eso no pinta bien. He revisado tu código y el problema es que el case when de la linea 65 a 77 tengo un par de cosas que 
+comentarte. Un case when donde todos los HTEN son exactamente iguales es un absurdo ese case when se puede sustituir simplemente por:
+        sum(ingrediente) OVER (PARTITION BY pizza_id) AS cantidad_cada_ingrediente   
+ya está pero aún más ese sum no es correcto, primero usar la función ventana y el distinct no es incorrecto pero si lioso un group by lo mismo lo hubieras visto 
+mejor. Primero en el partition te falta el otro campo y realmente no es un sum lo que debes hacer si no un count, deberias tener esto:
+        count(ingrediente) OVER (PARTITION BY pizza_id,ingrediente) cantidad_cada_ingrediente
+aun así recalco que si quitas el distinct y usas el group by te hubiera valido con count(ingrediente).
+
+Con esto ya tendrías al menos la cantidad de cada ingrediente de las pizzas entregadas sin tener en cuenta extras y exclusiones.
+
+Te animo a que lo corrigas e intentes sacar los extras y exclusiones. Caulquier cosa no dudes en contactar
+
+
+*/
