@@ -34,3 +34,22 @@ BENEFICIO_LIMPIO_POR_PEDIDO AS (
 
 SELECT SUM(BENEFICIO_LIMPIO) AS BENEFICIO_TOTAL
 FROM BENEFICIO_LIMPIO_POR_PEDIDO;
+
+
+/*
+COMENTARIOS JUANPE:
+
+RESULTADO: Correcto
+
+CODIGO: Correcto pero para el precio de los extras... te sirve porque el id de los extras es de un digito y por ello LENGTH(REPLACE(....) te sirve
+pero si uno de los extras hubiera sido Tomate que tiene el el id 10 hubieras contado el lengh uno más. Esto hubiera sido más correcto:
+    ARRAY_SIZE(SPLIT(DECODE(A.EXTRAS,'',NULL,'null',NULL,A.EXTRAS),','))
+con el decode limpio el campo pero una vez esta limpio con split convertimos la lista en vector indicando que cada elemento del vector es donde la lista separa 
+por ',' y luego el array_size para decirmeel tamaño de ese vector. O con el uso de expresiones regulares puedes contar cuantas veces aparece la ',' y le sumas 1
+ya que habrá tantos ingredietes como ',' +1:
+     REGEXP_COUNT(EXTRAS,',')+1
+
+LEGIBIIDAD: Correcto bien tabulado y ordenado (aunque no esta de más darle una tabulación a las sentencias ON de los JOIN)
+
+EXTRA: Muy clara tu forma de resolverlo.
+*/
