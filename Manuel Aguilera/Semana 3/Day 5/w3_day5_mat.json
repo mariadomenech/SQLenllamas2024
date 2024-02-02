@@ -1,0 +1,8 @@
+
+	{
+		"question_week": 3,
+		"question_day": 5,
+		"question": "Guarda el cálculo del balance, total depositado, total de compras y total de retiros en distintas funciones y aplícalas en el procedimiento de ayer. Recordatorio: el procedimiento debe dejarnos elegir la operación, el mes y cliente.",
+		"answer": 	"El cliente 1 tiene un total de  1276 EUR en compras en el mes de Marzo. Siendo el balance total -952.",
+		"explanation": "La consulta SQL utilizada (ver solution_w3_day5_mat.sql) es un procedimiento almacenado que llama dos funciones que calcula la suma del tipo de calculo que se le pase por parámetro por un cliente en un mes específico y el balance total."
+	}
