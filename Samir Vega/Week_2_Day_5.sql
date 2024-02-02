@@ -68,3 +68,20 @@ SELECT
     LISTAGG( DISTINCT TOPPING_NAME, ' ,') AS INGREDIENTES
 FROM CONTEO
 GROUP BY CONTEO_TOTAL;
+
+
+/*
+RESULTADO: INCORRECTO, Bacon son 12. El extra de bacon de la pizza del pedido 7 no te sale en tu query.
+
+CÓDIGO: INCORRECTO. Pues en tu logica que la idea es bueana ya que va poniendo una flag si el ingredinete se pone o se quita PERO lo haces a los ingredientes de
+base de cada pizza, eso hace que una pizza vegetariana no tiene bacon en su receta pero si alguien le añade bacon no te está saliendo, que es el caso de la pizza
+del pedido 7. Tú idea parece buena pero tendrías que matizar. Bien usado el unpivot y de hecho podrias haberlo usado el unpivot para la columna extra y exclusiones
+teniendo en cuenta claro si hay alguna cancelada no contarla. De hecho mi versión del ejercicio es 3 tablas donde en cada una pivoto los ingredintes una los extras
+otra las exclusiones y otra la receta. Luego jugando bien con las que se cancelan y cuantas veces esta cada pizza acabo haciendo las suma y resta de ingredientes.
+
+LEGIBILIDAD: CORRECTA
+
+EXTRA: Bien mostrada la salida usando el listagg.
+
+Si no eres capaz de sacar el bacon que te falta dimelo y lo vemos, pues no se si para tenerlo en cuenta se puede adaptar tu query o implica un cambio mayor.
+*/
