@@ -14,3 +14,13 @@ FROM pizza_recipes,
      left join pizza_toppings 
      on ingredientes.ingrediente=pizza_toppings.topping_id
      group by 1;
+/*
+COMENTARIOS JUANPE: 
+
+RESULTADO: CORRECTO.
+
+CÓDIGO: CORRECTO.
+
+LEGIBILIDAD: CORRECTA
+
+*/
