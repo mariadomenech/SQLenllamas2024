@@ -116,4 +116,18 @@ from gasto_total
 full join
  beneficio_total
 ;
- 
+
+
+/*
+COMENTARIOS JUANPE:
+
+RESULTADO: incorrecto, te ha faltado sumar 1€ por cada ingrediente extra
+
+CODIGO: incorrecto, auqnue correcto si obviamos el que te falte el euros por ingrediente auqnue si decirte que haces demasiadas select no es que sea incorrecto
+pero es inncesario. Por ejemplo Gasto_runner y gasto_total directamente puedes sacar el gasto total idem con Beneficio_pizzas y beneficio_total, y la tabla
+Runnersorder la has puesto dos veces. 
+
+LEGIBILIDAD: A parte de lo comentaod en anteriores ejercicios si te digo que tantas tablas dentro del with (y encima algunas como te he dicho antes innecesarias)
+hace que sea un poco tedioso leer el código. A parte de aquellas select que se pueden agrupar otra opción es usar alguna subselect para no tener tanto with,
+no estoy en contra de los with jaja pero si veo que en general no os gusta usar subelect pero es otra opción tan válida como cualquiera si esta bien tabulado
+*/
