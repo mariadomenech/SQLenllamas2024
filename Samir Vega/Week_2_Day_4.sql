@@ -37,3 +37,21 @@ FROM AUX
 RIGHT JOIN PIZZA_TOPPINGS B
     ON A.TOPPING_ID = B.TOPPING_ID
 GROUP BY TOPPING_NAME;
+
+
+
+/*
+COMENTARIOS JUANPE: 
+
+RESULTADOS: CORRECTOS.
+
+CÓDIGOS: CORRECTOS (No entiendo porque poner el with en el primer código, concatenas un espacio en blanco pero realmente puedes no hacerlo,
+no sé si se me esacapa algo que no veo)
+
+LEGIBILIDAD: CORRECTA
+
+EXTRAS: Genial por las dos soluiciones muy bien por la primera con el uso del lateral flatten y muy bien por el uso del unpivot que realmente no es 
+necesario para ejercicio incluso para descomponer una lista no es ni siquiera lo mejor porque implica conecer el tamaña de todas las listas pero
+el objetivo de usarlo era que os familiarizarais con él y veo que no has tenido problema asique genial!
+
+*/
