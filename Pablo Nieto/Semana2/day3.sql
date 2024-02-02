@@ -31,3 +31,20 @@ precios_distancias AS (
 SELECT
     ROUND(SUM(precio_pizzas) - SUM(clean_distance) * 0.3, 2) AS balance_total
 FROM precios_distancias;
+
+
+/*
+COMENTARIOS JUANPE: 
+
+RESULTADO: Correcto.
+
+CODIGO: Correcto pero para el precio de los extras... te sirve porque el id de los extras es de un digito y por ello LENGTH(REPLACE(extras, ', ', '')) te sirve
+pero si uno de los extras hubiera sido Tomate que tiene el el id 10 hubieras contado el lengh uno más. Esto hubiera sido más correcto:
+    ARRAY_SIZE(SPLIT(DECODE(A.EXTRAS,'',NULL,'null',NULL,A.EXTRAS),','))
+con el decode limpio el campo pero una vez esta limpio con split convertimos la lista en vector indicando que cada elemento del vector es donde la lista separa 
+por ',' y luego el array_size para decirmeel tamaño de ese vector.
+
+LEGIBIIDAD: Correcto bien tabulado y ordenado
+
+EXTRA: Poco que decir en este caso.
+*/
