@@ -45,3 +45,18 @@ RIGHT JOIN ESPECIALIDAD_SQL_BRONZE_DB_SVM.PRUEBAS.RUNNER_ORDERS_CLEAN B
 INNER JOIN PIZZA_NAMES C
     ON A.PIZZA_ID = C.PIZZA_ID
 WHERE CANCELLATION IS NULL;
+
+
+/*
+COMENTARIO JUANPE:
+
+RESULTADO: Incorrecto. El problema está en el gasto por km. Este gasto solo cuenta una vez por pedido, no una vez por pizza, que es lo que has hecho.
+Ya que si una pedido tiene 3 pizzas no recorre la distancia 3 veces pues las lleva juntas.
+
+CÓDIGO: Muy original el uso del REGEXP_COUNT(EXTRAS,',')+1) para saber la cantidad de extras pero dado el problema que te he comentaod en el RESULDATO, 
+el código no es correcto.
+
+LEGIBILIDD: Correcta y poco que decir me gusta como está tabulado.
+
+EXTRA: Poco que comentar.
+*/
