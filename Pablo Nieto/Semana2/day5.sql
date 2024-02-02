@@ -93,3 +93,38 @@ SELECT
 FROM frecuencia_ingrediente
 GROUP BY frecuencia
 ORDER BY frecuencia DESC;
+
+/*
+COMENTARIOS JUANPE: MUY BIEN! Me gusta que expliques el código sobre todo en estos casos de códigos extensos
+
+RESULTADO: CORRECTO
+
+CÓDIGO: CORRECTO. Me ha gustado mucho la lógica de tu propusta. Pero te doy respuesta a tus comentarios:
+      PABLO: No sé cómo hacerlo de forma dinámica (supongo que con un bucle en PL/SQL) por si hubieran muchos ingredientes y dejara de ser
+             razonable hacer tantos SPLIT_PART's.
+      JUANPE: Lo del bucle que comentar si podría ser una solución pero inncesaria. El unpivot para este ejercicio esta metido con calzador. Los unpivot
+              no se usan para desglosar una lista y luego pivotarla. Para eso esta la solución del ejercicio 4 haciendo uso de LATERAL SPLIT_TO_TABLE o 
+              LATERAL FLATTEN SPLIT... es mucho más optimo y no implica concoer el tamaño de los ingredintes. El unpivot por lo general cuando tengas que
+              usarlo sera para pivotar algo que tienes controlado, y no una lista, pero queriamos que lo usarais para que lo practicaseis. Dicho esto 
+              la solución "dinámica" sería realmente estática solo que GENERICA para cualquier tamaño de lista que es como el ejercicio del dia anterior. 
+              En tu caso muy bien usado el unpivot que era lo que buscabamos.
+
+      PABLO: si hubiera más registros con el nombre del ingrediente en lugar de su id habría que cruzar la tabla con la de ingredientes, lo cual intenté 
+             pero sin éxito.
+      JUANPE: yo en mi propuesta de solución hago una condición de cruce con un OR donde o bien cruza por ID o bien cruza por NAME este además lo pongo en 
+              mayuscula para que no falle. La tabla A (PEDIDOS) es la CUSTOMER_ORDERS pero limpia la B (es la A pivoteada pero sí por no poner un código 
+              muy largo uso flatten que es más directo, por tanto en B tengo cada ingrediente en una sola columna VALUE (esta columna tiene ID y un NAME)
+              por eso luego cruzo con la condición OR
+                 FROM PEDIDOS A
+                 INNER JOIN LATERAL FLATTEN(SPLIT(A.EXCLUSIONS, ', ')) B
+                 LEFT JOIN PIZZA_TOPPINGS C
+                        ON REGEXP_REPLACE(B.VALUE, '"') = TO_CHAR(C.TOPPING_ID)
+                        OR UPPER(REGEXP_REPLACE(B.VALUE, '"')) = UPPER(TO_CHAR(C.TOPPING_NAME))
+             No es exactamente lo que preguntas creo pero puede que te sirva de idea, este es un frragmetne de mi propuesta de solución.
+
+LEGIBILIDAD: CORRECTA
+
+EXTRAS: Me ha gustado la lógica de tu prouesta es sencilla aunque lo del beef no lo hayas podido hacer genérico. Me gsuta que uses el LISTAGG te da una salida
+más limpia. Buen uso del unpivot como ya te he dicho no era obligatorio para resolverlo pero queriamos que lo usarais.
+
+*/
