@@ -94,3 +94,24 @@ LEFT JOIN CTE_UNPIVOT_EXTRA C
 LEFT JOIN CTE_UNPIVOT_EXCL D
     ON B.topping_id=D.exclusion
 ORDER BY 2 DESC
+
+
+/*
+COMENTARIOS JUANPE: uy casii
+
+RESULTADOS: INCORRECTO te falta un queso, por muy poco mira tu linea 61 y linea 42 cuando sacar CTE_SPLIT_EXCL y CTE_SPLIT_EXTRAS respectivamente. 
+En la 42 has puesto FROM CTE_DEL_ORDERS que es correcto pues en esa tienes filtradas las canceladas pero en la 61 has puesto 
+FROM sql_en_llamas.case02.customer_orders, que es la tabla original y por tanto estan teniendo en cuetna las canceladas y resulta que hay un 
+queso que se excluey en una cancelada y no deberiamos de contarlo como excluyente
+
+CÓDIGO: CORRECTO. A pesar del fallo que te comento en resultdos dado que es más un despiste te lo doy por correcto pero si decirte que aunque lo haces bien
+haces algo raro. Si tu primer paso es despivotar tu lista usando el split flatten que sentido tiene pivotar y leugo despivotar otra vez? en tu caso aprovechas
+para en cada paso ir quedandote con lo que te interesa pero realmente son pasos innecesarios pero como no estan mal. Y de hecho si exigiamos el unpivot
+no era porque hiciera falta era para que lo vierais y practicaseis con el flatten te hbuiera bastado. Como en tu caso usas tanto pivot como unpvito y en varias
+ocasiones eso suma puntos extra 
+
+LEGIBILIDAD: CORRECTA. Es dificil cuando es tan largo pero al menos has tabulado y más facil leer el código.
+
+EXTRA: A parte de lo que te he cometnado en CÓDIGO, hubiera sido buena idea agrupar los resultados finales con un listagg
+
+*/
