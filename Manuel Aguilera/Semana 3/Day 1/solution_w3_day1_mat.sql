@@ -37,3 +37,17 @@ FROM CUSTOMER_NODES_CLEAN
 WHERE 
     END_DATE <> '9999-12-31' 
     AND ACTUAL_NODO <> PROXIMO_NODO;
+
+
+/*
+COMENTARIOS JUANPE:
+
+RESULTADO: CORRECTO
+
+CÓDIGO: CORRECTO. Nada que comentar salvo que para el nodo anterior usas lead ordenando por DESC y es totalmente válido pero aprovecho para decirte 
+una función ánaloga a LEAD que es LAG, esta mira el anterior ordenando de forma ASC).
+
+LEGIBILIDAD: CORRECTO
+
+EXTRA: Muy bien resuelto. Bien jugado con los nodos anteriores y posteriores para establecer las fechas reales de cambio de nodo.
+*/
