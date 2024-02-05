@@ -2,6 +2,7 @@
 --DAY 1-- 
 /*crea un procedimiento almacenado
 que informando el nombre de la tabla, nos devuelva el número de posibles duplicados.*/
+USE SCHEMA SQL_EN_LLAMAS.CASE04;
 
 CREATE OR REPLACE PROCEDURE SQL_EN_LLAMAS.CASE04.MRA_CALCULO_DUPLICADOS(tabla STRING)
 RETURNS VARCHAR
@@ -35,8 +36,6 @@ BEGIN
                       WHERE TABLE_CATALOG='SQL_EN_LLAMAS'
                       AND TABLE_SCHEMA='CASE04'
                       AND table_name = UPPER(TRIM(:tabla)));
-
-    USE SCHEMA SQL_EN_LLAMAS.CASE04;
 
     query := '
                 SELECT 
