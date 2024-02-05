@@ -1,3 +1,4 @@
+--NO CORREGIR AÚN, QUIERO DARLE UNA VUELTA CUANDO TENGA UN HUECO
 --------------------------------------------------------------DIA_1----------------------------------------------------------
 
 WITH AUX AS (
