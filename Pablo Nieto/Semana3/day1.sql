@@ -33,3 +33,20 @@ SELECT
     ROUND(AVG(dias_en_nodo), 2) AS dias_reasignacion_media,
     CONCAT('Los clientes se reasignan a un nodo diferente cada ' || ROUND(AVG(dias_en_nodo)) || ' días de media.') AS texto
 FROM dias_cambio;
+
+
+/*
+COMENTARIOS JUANPE: GENIAL!
+
+RESULTADO: CORRECTO
+
+CÓDIGO: CORRECTO. Aunque hay una función para saber los dias/meses/años entre dos fechas DATEDIFF() invesigala puede serte útil. Pero restando fechas y
+restando ese menos 1 (muy bien visto) también es igualmente válido.
+
+LEGIBILIDAD: CORRECTA
+
+EXTRAS: Tu solución me ha gustado mucho más que la mía, la tuya es más simple y eso me gusta es más directa, yo dí alguna que otra pirueta para llegar y no ví
+este camino que tu has usado el cual como te digo me parece mejor alternativa por la simpleza de la lógica usada, es más fácil de entender y eso siempre es
+importante cuando se monta cualquier código. 
+
+*/
