@@ -1,0 +1,9 @@
+[
+	{
+		"question_week": 4,
+		"question_day": 1,
+		"question": "Las tablas no están muy limpias, crea un procedimiento almacenado que informando el nombre de la tabla, nos devuelva el número de posibles duplicados",
+		"answer": 	"La tabla SALES tiene duplicados.",
+		"explanation": "La consulta SQL utilizada (ver solution_w4_day1_mat.sql) crea un procedimiento para ver si una tabla pasada por parametro tiene duplicados, para ello hacemos uso de INFORMATION_SCHEMA para obtener las columnas de cada tabla y luego agrupando por todas las columnas y having vemos si hay duplicados"
+	}
+]
