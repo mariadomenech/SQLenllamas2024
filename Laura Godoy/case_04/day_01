@@ -1,0 +1,51 @@
+CREATE OR REPLACE PROCEDURE lauraduplicados(nombre_tabla VARCHAR)
+  RETURNS FLOAT
+  LANGUAGE SQL
+  EXECUTE AS CALLER
+AS
+DECLARE
+  numero_duplicados FLOAT;
+BEGIN
+  CASE nombre_tabla
+    WHEN 'product_details' THEN
+      SELECT COUNT(*) INTO numero_duplicados
+      FROM (
+        SELECT product_id, price, product_name, category_id, segment_id, style_id, category_name, segment_name, style_name
+        FROM product_details
+        GROUP BY product_id, price, product_name, category_id, segment_id, style_id, category_name, segment_name, style_name
+        HAVING COUNT(*) > 1
+      );
+    WHEN 'product_hierarchy' THEN
+      SELECT COUNT(*) INTO numero_duplicados
+      FROM (
+        SELECT id, parent_id, level_text, level_name
+        FROM product_hierarchy
+        GROUP BY id, parent_id, level_text, level_name
+        HAVING COUNT(*) > 1
+      );
+    WHEN 'product_prices' THEN
+      SELECT COUNT(*) INTO numero_duplicados
+      FROM (
+        SELECT id, product_id, price
+        FROM product_prices
+        GROUP BY id, product_id, price
+         HAVING COUNT(*) > 1
+      );
+      WHEN 'sales' THEN
+      SELECT COUNT(*) INTO numero_duplicados
+      FROM (
+        SELECT PROD_ID, QTY, price,DISCOUNT,MEMBER,TXN_ID,START_TXN_TIME
+        FROM sales
+        GROUP BY PROD_ID, QTY, price,DISCOUNT,MEMBER,TXN_ID,START_TXN_TIME
+         HAVING COUNT(*) > 1
+      );
+    ELSE
+      numero_duplicados := NULL;
+  END CASE;
+  
+  RETURN numero_duplicados;
+END;
+
+
+
+ call lauraduplicados('sales');
