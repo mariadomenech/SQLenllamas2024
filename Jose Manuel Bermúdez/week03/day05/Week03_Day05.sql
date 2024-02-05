@@ -41,11 +41,7 @@ DECLARE
 	num_ocur_user INTEGER DEFAULT 0;
     total INTEGER DEFAULT 0;
 BEGIN
-
-	--Llamada funcion total calculo
     SELECT JMBA_CALCULATE_EXIST_USER (:customer_id) INTO :num_ocur_user;
-
-    --    let num_ocur_user int := (SELECT count(*) FROM customer_transactions WHERE customer_id = :customer_id);
 
     IF (num_ocur_user > 0) THEN
         IF (month > 0 AND month < 13) THEN
@@ -88,17 +84,8 @@ BEGIN
 					CASE
 						WHEN operation = 1 THEN
 							SELECT JMBA_CALCULATE_SUM_AMOUNT_BALANCE_BY_CUSTOMERID_MONTH (:customer_id, :month) INTO :total;
---							(SELECT SUM(CASE WHEN txn_type='deposit' THEN txn_amount ELSE -txn_amount END) INTO total
---								FROM customer_transactions
---								WHERE customer_id = :customer_id AND
---										month(txn_date) = :month);
 						WHEN operation in (2, 3, 4) THEN
 							SELECT JMBA_CALCULATE_SUM_AMOUNT_OPERATION_BY_CUSTOMERID_MONTH (:customer_id, :month, :literal_operation) INTO :total;
---							(SELECT SUM(txn_amount) INTO total
---								FROM customer_transactions
---								WHERE customer_id = :customer_id AND
---										month(txn_date) = :month AND
---										txn_type = :literal_operation);
 					END;
 													
 					CASE operation
