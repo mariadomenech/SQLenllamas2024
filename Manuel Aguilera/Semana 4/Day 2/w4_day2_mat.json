@@ -1,0 +1,8 @@
+
+	{
+		"question_week": 4,
+		"question_day": 2,
+		"question": "¿Cuál es la combinación de productos distintos más repetida en una sola transacción? La combinación debe ser de al menos 3 productos distintos",
+		"answer": 	"5 repeticiones de  [2feb6b,   5d267b,   9ec847,   c4a632,   c8d436,   e31d39,   e83aa3,   f084eb] ",
+		"explanation": "La consulta SQL utilizada (ver solution_w4_day2_mat.sql) da la combinación de productos distintos más repetida en una sola transacción, siempre que haya al menos 3 productos distintos en esa transacción."
+	}
