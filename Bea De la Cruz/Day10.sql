@@ -70,3 +70,5 @@ from (
     )
 group by num_ingredientes
 order by num_ingredientes desc;
+
+-- Nota: sé que me falta un bacon pero no sé cómo sacarlo...
