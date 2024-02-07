@@ -1,0 +1,8 @@
+
+	{
+		"question_week": 4,
+		"question_day": 3,
+		"question": "Crea una única consulta sql para replicar la tabla product_details, hay que transformar los conjuntos de datos Product_hierarchy y product_prices",
+		"answer": 	" SELECT * FROM SQL_EN_LLAMAS.CASE04.DAY3_WEEK_4_MAT;",
+		"explanation": "La consulta SQL utilizada (ver solution_w4_day3_mat.sql) crear la tabla PRODUCT_DETAILS desde 0 haciendo uso de los conjuntos de datos PRODUCT_PRICES y PRODUCT_HIERARCHY, para ello previamente la tabla PRODUCT_HIERARCHY se normaliza"
+	}
