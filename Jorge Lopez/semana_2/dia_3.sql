@@ -1,6 +1,71 @@
 /*Día 3: Una pizza meat lovers(1) cuesta 12 y la vegetariana(2) 10. Cada ingrediente extra 1 euros Cada 
 runner se le paga 0.30 km ¿Cuánto dinero queda de ganancia después de las entregas?*/
 
+--------------------------------------------------------------------------------------
+CREATE TEMPORARY TABLE RUNNER_ORDERS_OK 
+AS 
+    SELECT * FROM CASE02.RUNNER_ORDERS;
+
+UPDATE RUNNER_ORDERS_OK AS RO
+SET 
+    RO.PICKUP_TIME = NULL,
+    RO.DURATION = NULL,
+    RO.DISTANCE = NULL
+WHERE 
+    RO.PICKUP_TIME = 'null';
+
+UPDATE RUNNER_ORDERS_OK AS RO
+SET 
+    RO.CANCELLATION = NULL
+WHERE 
+    RO.CANCELLATION = 'null' 
+    OR RO.CANCELLATION = '';
+
+UPDATE RUNNER_ORDERS_OK AS RO
+SET RO.DISTANCE = CAST(REPLACE(RO.DISTANCE, 'km', '') AS FLOAT)
+FROM RUNNER_ORDERS_OK;
+--------------------------------------------------------------------------------------
+CREATE TEMPORARY TABLE CUSTOMER_ORDERS_OK 
+AS 
+    SELECT * FROM CASE02.CUSTOMER_ORDERS;
+
+UPDATE CUSTOMER_ORDERS_OK AS CO
+SET 
+    CO.EXCLUSIONS = NULL
+WHERE 
+    CO.EXCLUSIONS = 'null'
+    OR CO.EXCLUSIONS = '';
+    
+UPDATE CUSTOMER_ORDERS_OK AS CO
+SET 
+    CO.EXTRAS = NULL
+WHERE 
+    CO.EXTRAS = 'null'
+    OR CO.EXTRAS = '';
+--------------------------------------------------------------------------------------
+SELECT * FROM RUNNER_ORDERS_OK;
+
+UPDATE RUNNER_ORDERS_OK AS RO
+SET RO.DISTANCE = CAST(REPLACE(RO.DISTANCE, 'km', '') AS FLOAT)
+FROM RUNNER_ORDERS_OK;
+
+UPDATE RUNNER_ORDERS_OK AS RO
+SET RO.DURATION = REPLACE(RO.DURATION, 'mins', '')
+FROM RUNNER_ORDERS_OK;
+
+UPDATE RUNNER_ORDERS_OK AS RO
+SET RO.DURATION = REPLACE(RO.DURATION, 'minutes', '')
+FROM RUNNER_ORDERS_OK;
+
+UPDATE RUNNER_ORDERS_OK AS RO
+SET RO.DURATION = REPLACE(RO.DURATION, 'minute', '')
+FROM RUNNER_ORDERS_OK;
+
+UPDATE RUNNER_ORDERS_OK AS RO
+SET RO.DURATION = CAST(RO.DURATION AS FLOAT)
+FROM RUNNER_ORDERS_OK;
+--------------------------------------------------------------------------------------
+
 SELECT 
     (SUM(DINERO_GENERADO + EXTRAS_OK)) - (SUM(KM_TOTALES * 0.30)) AS BENEFICIO_TOTAL
 FROM(
