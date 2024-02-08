@@ -55,3 +55,22 @@ ON RUNNER_ORDERS_SILVER.ORDER_ID = CUSTOMER_ORDERS_SILVER.ORDER_ID
 WHERE CANCELLATION IS NULL
 GROUP BY PIZZA_ID, EXTRAS
 )A
+
+
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto Fran pero has tenido un fallo que incluso yo tuve cuando planteé el ejericicio.
+Si un  pedido tiene dos pizzas, la distancia solo la cuentas una vez. Ten cuidado porque has contado como si cada pizza fuera un viaje diferente.
+El gasto total debe salir  43.56.
+
+Por tanto, puedes hacerte un indicador que te diga cuantas pizzas hay por pedido, y te quedas solo con el registro cuando el contador sea 1.
+
+
+Por lo demás genial!
+
+*/
