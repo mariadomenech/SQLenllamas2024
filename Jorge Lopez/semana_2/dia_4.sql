@@ -18,3 +18,12 @@ INNER JOIN (SELECT
 ON PT.TOPPING_ID = T1.TOPPINGS_VALUE::INTEGER 
 GROUP BY PT.TOPPING_ID, PT.TOPPING_NAME
 ORDER BY PT.TOPPING_ID;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto, si te aburres algún día inténtalo con el UNPIVOT ;) 
+
+*/
