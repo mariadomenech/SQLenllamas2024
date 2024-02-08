@@ -183,3 +183,16 @@ SELECT Ranking AS RANKING,
 FROM SUM_TOTAL_TOPPINGS_ORDERS_DELIVERED_BY_NAME
 GROUP BY Ranking, Total
 ORDER BY Ranking, Total DESC;
+
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto!! Me interesaba el uso del UNPIVOT más que nada, y lo has entendido perfectamente. 
+También me ha gustado que te hayas trabajado la salida para que no sea dificil de leer.
+Enhorabuena!
+
+*/
