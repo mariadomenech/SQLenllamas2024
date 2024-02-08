@@ -8,3 +8,13 @@ FROM pizza_recipes pr,
 INNER JOIN pizza_toppings pt ON CAST(value AS int) = pt.topping_id
 GROUP BY "Ingrediente"
 ORDER BY "Número Veces Se Repite" DESC, "Ingrediente" ASC;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto, si te aburres algún día inténtalo con el UNPIVOT ;) 
+
+*/
