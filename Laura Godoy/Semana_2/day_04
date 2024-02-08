@@ -12,3 +12,15 @@ left join pizza_toppings
 on A.toppings_separated=pizza_toppings.topping_id
 group by topping_id, topping_name
 ;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto, si te aburres algún día inténtalo con el UNPIVOT ;) 
+
+Recuerda darle nombre a todas las columnas!
+
+*/
