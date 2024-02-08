@@ -22,3 +22,18 @@ from runner_orders_clean
 group by 
     runner_id
 ;
+
+
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+No es del todo correcto el código, se pedía velocidad promedio. Una vez que calculas los km/hora de cada pedido, haz la media por runner.
+
+Me gusta que hayas usado expresiones regulares para limpiar los campos, también podías haber usado: REGEXP_REPLACE(DISTANCE, '[a-zA-Z]', '')!
+
+*/
+
