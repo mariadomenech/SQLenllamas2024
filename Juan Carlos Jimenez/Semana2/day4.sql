@@ -9,3 +9,12 @@ INNER JOIN PIZZA_TOPPINGS T
 ON VALUE::INT = T.TOPPING_ID
 GROUP BY 1
 ORDER BY 2 DESC;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto, si te aburres algún día inténtalo con el UNPIVOT ;) 
+
+*/
