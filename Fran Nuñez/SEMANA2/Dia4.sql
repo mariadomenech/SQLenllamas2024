@@ -22,6 +22,6 @@ GROUP BY PIZZA_TOPPINGS.TOPPING_NAME
 /*********************************************************/
 /* 
 
-Perfecto, si te aburres algún día inténtalo con el UNPIVOT ;)
+Perfecto, si te aburres algún día inténtalo con el UNPIVOT ;) 
 
 */
