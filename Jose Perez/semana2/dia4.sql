@@ -17,3 +17,12 @@ group by
     pt.topping_id,
     pt.topping_name
 ;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto Jose, si te aburres algún día inténtalo con el UNPIVOT ;)
+
+*/
