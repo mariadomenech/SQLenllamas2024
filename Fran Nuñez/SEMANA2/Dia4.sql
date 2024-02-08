@@ -15,3 +15,13 @@ GROUP BY PIZZA_ID,
 JOIN PIZZA_TOPPINGS
 ON A.TOPPING_ID = PIZZA_TOPPINGS.TOPPING_ID
 GROUP BY PIZZA_TOPPINGS.TOPPING_NAME
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto, si te aburres algún día inténtalo con el UNPIVOT ;)
+
+*/
