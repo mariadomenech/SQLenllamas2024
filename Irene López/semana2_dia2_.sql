@@ -70,3 +70,18 @@ FROM
     LEFT JOIN KM_H_PROMEDIO KHP
         ON DR.RUNNER_ID = KHP.RUNNER_ID
 ;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Muy buen intento, pero el resultado final no es del todo correcto.
+
+Te explico, al hacer un tratamiento de nulo en la CTE KM_H, estás haciendo media con los pedidos que no se han entregado 
+y eso baja la media de la velocidad promedio del runner. Ejemplo: el runner 3 tiene 2 pedidos, uno lo entrega y el otro no.
+
+Si filtras por los pedidos no cancelados, te saldrá la solución correcta!!
+
+*/
