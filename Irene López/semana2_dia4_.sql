@@ -27,3 +27,13 @@ FROM
 JOIN
     PIZZA_TOPPINGS PT
 ON TOPPING = TOPPING_ID;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto, si te aburres algún día inténtalo con el UNPIVOT ;) 
+
+*/
