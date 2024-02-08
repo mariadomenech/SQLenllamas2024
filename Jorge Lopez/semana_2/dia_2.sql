@@ -86,3 +86,15 @@ FROM
         LEFT JOIN RUNNER_ORDERS_OK ro 
             ON r.RUNNER_ID = ro.RUNNER_ID 
     GROUP BY 1);
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+No es del todo correcto el código, se pedía velocidad promedio. Una vez que calculas los km/hora de cada pedido, haz la media por runner AVG.
+
+Te chivo un método para limpiar los campos usando expresiones regulares: REGEXP_REPLACE(DISTANCE, '[a-zA-Z]', '') 
+
+*/
