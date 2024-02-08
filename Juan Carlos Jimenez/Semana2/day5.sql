@@ -99,3 +99,19 @@ TOTAL AS (
     ORDER BY FREC_TOTAL DESC
 )
 SELECT * FROM TOTAL;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Muy buen intento, pero los conteos finales no son del todo correctos. Intenta separar de la CTE COUNT_TOPPINGS los ingredientes extras, 
+como has hecho con los excluidos. Te condiciona el conteo si lo haces juntos ya que no todos tienen ingredientes extras, y tu le estas poniendo 
+la condición  WHERE INGREDIENTE IS NOT NULL.
+
+Otra cosilla, ten cuidado con los 'NULL', son cadenas de texto y si lo pones en mayúsculas no los detecta, porque en la tabla viene como 'null'.
+
+Pero muy bien entendido el UNPIVOT!!
+
+*/
