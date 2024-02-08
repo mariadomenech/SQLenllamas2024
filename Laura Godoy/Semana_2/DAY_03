@@ -44,3 +44,21 @@ select
     sum(total_price_pizza)-sum(C.distance*0.3) as dinero_que_le_sobra_a_giuseppe
 from B LEFT JOIN C ON b.ORDER_ID=C.ORDER_ID;
 
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+No es del todo correcto el código.
+
+Los costes están bien calculados, pero no los ingresos. 
+
+Te recomiendo que separes la consulta de ingredientes extra de los ingresos. 
+Todas las pizzas tienen su precio que ingresamos, pero solo me estás contando en función de los ingredientes extras.
+
+Te debe dar 138 euros de ingresos de pizzas y 4 euros de ingredientes extra.
+
+*/
+
