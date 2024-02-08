@@ -54,3 +54,15 @@ from
     metricas_pedidos as mp
 inner join
     runner_orders_clean as ro on mp.order_id = ro.order_id and ro.cancellation is null;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto Jose!!
+
+Me gusta que hayas usado expresiones regulares para limpiar los campos, también podías haber usado: REGEXP_REPLACE(DISTANCE, '[a-zA-Z]', '').
+
+*/
