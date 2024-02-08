@@ -36,3 +36,15 @@ TOTAL_INGRESOS AS
 SELECT ROUND(TOT-DISTANCIA,2) as BENEFICIO
 FROM TOTAL_INGRESOS
 FULL OUTER JOIN DISTANCIA;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+No es del todo correcto el código, te has liado con el precio de las pizzas, el id_pizza = 1 son 12 euros y la otra 10.
+
+Para limpiar campos puedes usar expresiones regulares: REGEXP_REPLACE(DISTANCE, '[a-zA-Z]', '').
+
+*/
