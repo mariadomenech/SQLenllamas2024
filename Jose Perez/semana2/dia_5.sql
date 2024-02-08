@@ -109,3 +109,14 @@ inner join
     SQL_EN_LLAMAS.CASE02.PIZZA_TOPPINGS as pt on pt.topping_id = pu.topping_id
 group by pt.topping_id, pt.topping_name
 order by 1;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Como dices el SPLIT no era totalmente necesario, me interesaba el uso del UNPIVOT más que nada. Y lo has entendido perfectamente y llevado a otro nivel!!
+Enhorabuena!
+
+*/
