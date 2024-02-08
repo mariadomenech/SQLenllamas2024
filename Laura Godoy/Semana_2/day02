@@ -47,3 +47,17 @@ on B.runner_id=runner_orders.runner_id
 left join E
 on B.runner_id=E.runner_id
 group by B.runner_id
+
+
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+No es del todo correcto el código, se pedía velocidad promedio. Una vez que calculas los km/hora de cada pedido, haz la media por runner.
+
+Te chivo un método para limpiar los campos usando expresiones regulares: REGEXP_REPLACE(DISTANCE, '[a-zA-Z]', '') 
+
+*/
