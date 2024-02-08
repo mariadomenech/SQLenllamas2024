@@ -4,6 +4,47 @@
   consulta.*/
 
 --------------------------------------------------------------------------------------
+CREATE TEMPORARY TABLE RUNNER_ORDERS_OK 
+AS 
+    SELECT * FROM CASE02.RUNNER_ORDERS;
+
+UPDATE RUNNER_ORDERS_OK AS RO
+SET 
+    RO.PICKUP_TIME = NULL,
+    RO.DURATION = NULL,
+    RO.DISTANCE = NULL
+WHERE 
+    RO.PICKUP_TIME = 'null';
+
+UPDATE RUNNER_ORDERS_OK AS RO
+SET 
+    RO.CANCELLATION = NULL
+WHERE 
+    RO.CANCELLATION = 'null' 
+    OR RO.CANCELLATION = '';
+
+UPDATE RUNNER_ORDERS_OK AS RO
+SET RO.DISTANCE = CAST(REPLACE(RO.DISTANCE, 'km', '') AS FLOAT)
+FROM RUNNER_ORDERS_OK;
+--------------------------------------------------------------------------------------
+CREATE TEMPORARY TABLE CUSTOMER_ORDERS_OK 
+AS 
+    SELECT * FROM CASE02.CUSTOMER_ORDERS;
+
+UPDATE CUSTOMER_ORDERS_OK AS CO
+SET 
+    CO.EXCLUSIONS = NULL
+WHERE 
+    CO.EXCLUSIONS = 'null'
+    OR CO.EXCLUSIONS = '';
+    
+UPDATE CUSTOMER_ORDERS_OK AS CO
+SET 
+    CO.EXTRAS = NULL
+WHERE 
+    CO.EXTRAS = 'null'
+    OR CO.EXTRAS = '';
+--------------------------------------------------------------------------------------
 SELECT * FROM RUNNER_ORDERS_OK;
 
 UPDATE RUNNER_ORDERS_OK AS RO
