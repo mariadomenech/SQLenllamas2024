@@ -9,3 +9,20 @@ FROM runner_orders ro
 INNER JOIN customer_orders co
     ON ro.order_id = co.order_id
 WHERE NOT (ro.cancellation <> 'null' AND ro.cancellation <> '' AND ro.cancellation IS NOT NULL);
+
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Has tenido un fallo que incluso yo tuve cuando planteé el ejercicio.
+
+Si un  pedido tiene dos pizzas, la distancia solo la cuentas una vez. Ten cuidado porque has contado como si cada pizza fuera un viaje diferente.
+El gasto total debe salir  43.56.
+
+Por tanto, puedes hacerte un indicador que te diga cuántas pizzas hay por pedido, y te quedas solo con el registro cuando el contador sea 1.
+
+Lo demás perfecto!
+*/
