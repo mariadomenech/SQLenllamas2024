@@ -130,3 +130,26 @@ GROUP BY OPN.ORDER_ID
 )
 SELECT CONCAT(SUM(GANANCIAS_TOTALES),'€') GANANCIAS_FINALES
 FROM SUMAS_TOTALES;
+
+
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Has tenido un fallo que incluso yo tuve cuando planteé el ejericicio.
+
+Si un  pedido tiene dos pizzas, la distancia solo la cuentas una vez. Ten cuidado porque has contado como si cada pizza fuera un viaje diferente.
+El gasto total debe salir  43.56.
+
+Por tanto, puedes hacerte un indicador que te diga cuántas pizzas hay por pedido, y te quedas solo con el registro cuando el contador sea 1.
+
+Los ingresos tampoco sale lo que debería hay que darle una vuelta. Debe de salir 138 euros de ingresos. En algún momento estás sumando de más.
+
+Lo demás bien!
+
+Te chivo una expresión regular para limpiarte los valores string de los campos, para que no te quede tan largo y denso el código:  REGEXP_REPLACE(DISTANCE, '[a-zA-Z]', '') 
+
+*/
