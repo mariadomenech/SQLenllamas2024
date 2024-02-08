@@ -32,3 +32,14 @@ LEFT JOIN TIEMPO T
 ON D.RUNNER_ID = T.RUNNER_ID
 AND T.ORDER_ID = D.ORDER_ID
 GROUP BY R.RUNNER_ID;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto Juanqui! Me gusta que hayas utilizado expresiones regulares para limpiar los campos!
+También podías haber usado: REGEXP_REPLACE(DISTANCE, '[a-zA-Z]', '')!
+
+*/
