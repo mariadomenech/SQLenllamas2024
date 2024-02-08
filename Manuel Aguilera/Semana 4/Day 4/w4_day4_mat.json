@@ -1,0 +1,8 @@
+
+	{
+		"question_week": 4,
+		"question_day": 4,
+		"question": "Cuáles son los valores (importe) de los percentiles 25, 50 y 75 para los ingresos por transacción",
+		"answer": 	"Lanzar query para ver resultados",
+		"explanation": "La consulta SQL utilizada (ver solution_w4_day4_mat.sql) hace una limpieza para eliminar duplicados de la tabla, calcula el ingreso de cada linea y luego el percentil 25,50,75 de cada transacción"
+	}
