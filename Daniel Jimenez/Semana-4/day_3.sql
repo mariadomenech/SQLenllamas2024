@@ -34,9 +34,9 @@ SELECT  CAST(P.PRODUCT_ID AS VARCHAR) AS PRODUCT_ID
     ,   S.STYLE_NAME
 FROM 
   PRODUCT_PRICES P
-JOIN 
-  STYLE S --He usado un full outer join con mucho recelo, ya que tengo que enlazar la tabla PRICES y HIERARCHY y no tienen claves que las comunique he optado por esta opción antes que crear una tabla intermedia y lograr la integridad referencial. No sé si es buena práctica :(
-JOIN 
+LEFT JOIN 
+  STYLE S ON S.STYLE_ID = P.ID 
+LEFT JOIN 
   SEGMENT SEG ON S.SEGMENT_ID = SEG.SEGMENT_ID
-JOIN 
+LEFT JOIN 
   CATEGORY C ON SEG.CATEGORY_ID = C.CATEGORY_ID;
