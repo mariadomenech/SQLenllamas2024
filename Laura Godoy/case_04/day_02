@@ -1,0 +1,30 @@
+with A as (
+  select 
+    count(distinct(prod_id)) as n_productos,
+    txn_id
+  from SQL_EN_LLAMAS.CASE04.SALES 
+  group by txn_id
+),
+B as (
+  select
+    A.txn_id
+  from A
+  where n_productos>2),
+C as (
+  select 
+    LISTAGG(prod_id, ', ') WITHIN GROUP(ORDER BY prod_id) over (partition by B.txn_id) as lista,
+    B.txn_id 
+  from SQL_EN_LLAMAS.CASE04.SALES
+  inner join B 
+  on sales.txn_id=B.txn_id),
+D as (
+select * 
+from C 
+group by txn_id, lista)
+
+select 
+  top 1 count(lista) as combinacion_mas_repetida,
+  lista
+from D
+group by lista
+order by combinacion_mas_repetida desc
