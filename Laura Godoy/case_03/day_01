@@ -24,3 +24,70 @@ order by customer_id, node_id
 
 )
  select AVG(timediff(day, min_start_date, max_end_date)) as media from B
+
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Muy buen intento, pero el resultado no es del todo correcto. Hay un par de matices que estropean el resultado final:
+
+- El último nodo del cliente no cuenta para ver la diferencia de días. Y el max(end_date) as max_end_date que realizas en la CTE B 
+auna este nodo que no tienes que coger, con el que sí.
+
+RESULTADO CORRECTO: 17.865859.
+
+CÓDIGO: te explico con un ejemplo. Cogemos el customer_id = 1:
+-----------------------------------------------------------
+NODO    START        END           D1             D2        
+----------------------------------------------------------
+4	    02/01/2020    03/01/2020	1
+                                                 12            
+4	    04/01/2020    14/01/2020	10	
+-----------------------------------------------------------
+2	    15/01/2020    16/01/2020	1	          1
+------------------------------------------------------------
+5	    17/01/2020    28/01/2020	11	          11                
+------------------------------------------------------------
+3	    29/01/2020    18/02/2020	20	          20               
+--------------------------------------------------------------
+2	    19/02/2020    16/03/2020	26	
+                                                  26+X+1
+2	    17/03/2020    31/12/9999	X	
+---------------------------------------------------------------
+D1 sería la diferencia de días por cada registro, y D2 es la diferencia de días hasta que cambia el nodo. 
+
+La siguiente tabla contiene la diferencia de días que tú has calculado:
+
+------------------------------------------------------------
+NODO    START        END           D1             D2           
+------------------------------------------------------------
+4	    02/01/2020    03/01/2020	1
+                                                 12             
+4	    04/01/2020    14/01/2020	10	
+------------------------------------------------------------
+2	    15/01/2020    16/01/2020	1	          
+
+2	    19/02/2020    16/03/2020	26	           61
+                                                  
+2	    17/03/2020    31/12/9999	X	
+-------------------------------------------------------------
+5	    17/01/2020    28/01/2020	11	          11             
+-------------------------------------------------------------
+3	    29/01/2020    18/02/2020	20	          20          
+
+Tú código está haciendo esto:
+(12+61+11+20)=104/4= 89
+
+¿Que sería lo correcto? La tabla de arriba, no puedes asumir la fecha máxima del nodo 2, ya que hay otros nodos entre medias, hasta que vuele a ser 2 de nuevo:
+(12+1+11+20) =44/4=11
+
+Te animo a que lo rehagas de nuevo teniendo esto en cuenta, puedes hacer la prueba con algunos concretos por ejemplo customer (1,24,62,447),
+ver a mano que debe de salir y ver si te sale.
+
+A parte del lead también existe el lag que en vez del siguiente te mira el anterior, te lo digo porque puede ayudarte a identificar las casuisticas
+a tener en cuenta para resolverlo.
+
+*/
