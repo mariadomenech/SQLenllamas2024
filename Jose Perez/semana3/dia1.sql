@@ -43,3 +43,47 @@ get_date_ranges as (
 select 
     avg( (new_end_date + 1) - new_start_date)::number(10,2) as average_node_change
 from get_date_ranges;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Muy buen intento, bien el tratamiento para cuando un nodo está varios registros.
+Pero el resultado no es del todo correcto. Hay un par de matices que estropean el resultado final:
+
+- Nos quedamos solo con los inicios en cada nodo y restamos las fechas de inicio del siguiente tramo con el actual
+menos 1 porque la fecha fin en el tramo es el día anterior a la del comienzo en el siguiente nodo. Por lo que: new_end_date - new_start_date.
+
+- El último nodo del cliente no cuenta para ver la diferencia de días.
+
+RESULTADO CORRECTO: 17.865859.
+
+CÓDIGO: te explico con un ejemplo. Asumimos que ya hemos corregido el día de más. Cogemos el customer_id = 1:
+-------------------------------------------------------
+NODO    START        END           D1             D2
+------------------------------------------------------
+4	    02/01/2020    03/01/2020	1
+                                                 12
+4	    04/01/2020    14/01/2020	10	
+------------------------------------------------------
+2	    15/01/2020    16/01/2020	1	          1
+------------------------------------------------------
+5	    17/01/2020    28/01/2020	11	          11
+------------------------------------------------------
+3	    29/01/2020    18/02/2020	20	          20
+-------------------------------------------------------
+2	    19/02/2020    16/03/2020	26	
+                                                  26+X+1
+2	    17/03/2020    31/12/9999	X	
+--------------------------------------------------------
+D1 sería la diferencia de días por cada registro, y D2 es la diferencia de días hasta que cambia el nodo. Tú código está haciendo esto:
+(12+1+11+20+26)=69/5= 14
+¿Que sería lo correcto?:
+(12+1+11+20) =44/4=11
+
+Te animo a que lo rehagas de nuevo teniendo esto en cuenta, puedes hacer la prueba con algunos concretos por ejemplo customer (1,24,62,447),
+ver a mano que debe de salir y ver si te sale.
+
+*/
