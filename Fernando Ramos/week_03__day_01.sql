@@ -49,7 +49,7 @@ NODO    START        END           D1     D2
 D1 sería la diferencia de días por cada registro, y D2 es la diferencia de días hasta que cambia el nodo. Tú código está haciendo esto:
 (10+1+11+20)=42/4=10.5
 ¿Que sería lo correcto?:
-(12+1+11+20)/4=44/4=11
+(12+1+11+20)=44/4=11
 
 Te animo a que lo rehagas de nuevo teniendo esto en cuenta, puedes hacer la prueba con algunos concretos por ejemplo customer (1,24,62,447),
 ver a mano que debe de salir y ver si te sale.
