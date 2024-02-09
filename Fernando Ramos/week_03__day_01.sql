@@ -27,7 +27,7 @@ La lógica del ejercicio es tal cual la planteas empieza bien, pero, pasas por a
 
 RESULTADO CORRECTO: 17.865859.
 
-CÓDIGO: te explico con un ejemplo. Cojemos el customer_id = 1:
+CÓDIGO: te explico con un ejemplo. Cogemos el customer_id = 1:
 -------------------------------------------------
 NODO    START        END           D1     D2
 -------------------------------------------------
