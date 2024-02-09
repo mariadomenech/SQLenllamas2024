@@ -23,11 +23,12 @@ where
 /* 
 
 La lógica del ejercicio es tal cual la planteas empieza bien, pero, pasas por alto una cosilla que hace que el resultado no sea correcto:
+ - No hay que tener en cuenta el dia de inicio para realizar el cálculo. En vez de (end_date + 1) - start_date    es     (end_date) - start_date
  - Cuando un nodo está varios registros solo cuenta uno de los registros en vez del primero al ultimo
 
 RESULTADO CORRECTO: 17.865859.
 
-CÓDIGO: te explico con un ejemplo. Cogemos el customer_id = 1:
+CÓDIGO: te explico con un ejemplo. Cogemos el customer_id = 1, corrigiendo ese día de más que estabas incluyendo:
 -------------------------------------------------
 NODO    START        END           D1     D2
 -------------------------------------------------
@@ -46,7 +47,7 @@ NODO    START        END           D1     D2
 2	    17/03/2020    31/12/9999	X	
 -------------------------------------------------
 D1 sería la diferencia de días por cada registro, y D2 es la diferencia de días hasta que cambia el nodo. Tú código está haciendo esto:
-(10+1+11+20)/4=42/4=10.5
+(10+1+11+20)=42/4=10.5
 ¿Que sería lo correcto?:
 (12+1+11+20)/4=44/4=11
 
