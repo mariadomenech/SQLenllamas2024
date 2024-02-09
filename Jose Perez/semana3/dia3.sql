@@ -45,3 +45,14 @@ BEGIN
     --if (purchase_number) 
     return message;
 END;
+
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Me ha gustado mucho que lo hayas hecho dinámico!! Perfecto.
+
+*/
