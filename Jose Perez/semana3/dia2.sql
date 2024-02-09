@@ -25,3 +25,14 @@ from
     total_txn_type
 group by 
     year_month;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto Jose!! Para sacar los meses, en vez de splitear la fecha también puedes hacer uso de la función MONTHNAME(TXN_DATE)
+
+
+*/
