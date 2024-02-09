@@ -31,3 +31,12 @@ END;
 /*EJEMPLO PARA COMPROBAR QUE EFECTIVAMENTE DEVUELVE LO CORRESPONDIENTE
 INTRODUCIMOS EL ID DE CLIENTE Y EL MES ABREVIADO (Jan, Feb, Mar...)*/
 CALL SQL_EN_LLAMAS.CASE03.GASTO_COMPRAS_FNM(5,'Mar')
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+PERFECTO, te da el resultado corrrecto.
+
+*/
