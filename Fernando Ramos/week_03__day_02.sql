@@ -22,3 +22,12 @@ select
 from cuenta
     group by month
     order by mes asc
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Muy bien Fernando, resultado correcto. Y guay que hayas utilizado el pivot!! 
+
+*/
