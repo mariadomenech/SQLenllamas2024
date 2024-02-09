@@ -55,7 +55,7 @@ BEGIN
     RETURN nombre_mes;
 END;
 
-CREATE OR REPLACE PROCEDURE jorgelopez_cliente_compras(cliente INTEGER, mes INTEGER, tipo CHAR)
+CREATE OR REPLACE PROCEDURE jorgelopez_cliente_opciones(cliente INTEGER, mes INTEGER, tipo CHAR)
     RETURNS STRING
     LANGUAGE SQL
 AS
@@ -142,19 +142,19 @@ END;
 
 --EJEMPLOS:
 
-CALL jorgelopez_cliente_compras(422342349,8,'B'); -- Número de cliente erróneo.
-CALL jorgelopez_cliente_compras(429,15,'C'); -- Número de mes erróneo.
-CALL jorgelopez_cliente_compras(429,1,'K'); -- Opción incorrecta.
-
-CALL jorgelopez_cliente_compras(429,1,'B'); -- Con valor positivo en balance para un mes.
-CALL jorgelopez_cliente_compras(429,3,'B'); -- Con valor negativo en balance para un mes.
-CALL jorgelopez_cliente_compras(429,8,'B'); -- Sin valor en balance para un mes.
-
-CALL jorgelopez_cliente_compras(429,2,'D'); -- Cliente con depositos para ese mes.
-CALL jorgelopez_cliente_compras(429,8,'D'); -- Cliente sin depositos para ese mes.
-
-CALL jorgelopez_cliente_compras(429,2,'C'); -- Cliente con compras para ese mes.
-CALL jorgelopez_cliente_compras(429,8,'C'); -- Cliente sin compras para ese mes.
-
-CALL jorgelopez_cliente_compras(429,3,'R'); -- Cliente con retiros para ese mes.
-CALL jorgelopez_cliente_compras(429,8,'R'); -- Cliente sin retiros para ese mes.
+CALL jorgelopez_cliente_opciones(422342349,8,'B'); -- Número de cliente erróneo.
+CALL jorgelopez_cliente_opciones(429,15,'C'); -- Número de mes erróneo.
+CALL jorgelopez_cliente_opciones(429,1,'K'); -- Opción incorrecta.
+						
+CALL jorgelopez_cliente_opciones(429,1,'B'); -- Con valor positivo en balance para un mes.
+CALL jorgelopez_cliente_opciones(429,3,'B'); -- Con valor negativo en balance para un mes.
+CALL jorgelopez_cliente_opciones(429,8,'B'); -- Sin valor en balance para un mes.
+						
+CALL jorgelopez_cliente_opciones(429,2,'D'); -- Cliente con depositos para ese mes.
+CALL jorgelopez_cliente_opciones(429,8,'D'); -- Cliente sin depositos para ese mes.
+						
+CALL jorgelopez_cliente_opciones(429,2,'C'); -- Cliente con compras para ese mes.
+CALL jorgelopez_cliente_opciones(429,8,'C'); -- Cliente sin compras para ese mes.
+						
+CALL jorgelopez_cliente_opciones(429,3,'R'); -- Cliente con retiros para ese mes.
+CALL jorgelopez_cliente_opciones(429,8,'R'); -- Cliente sin retiros para ese mes.
