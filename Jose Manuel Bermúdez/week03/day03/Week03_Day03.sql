@@ -55,3 +55,14 @@ BEGIN
 END;
 
 CALL JMBA_CALCULATE_PURCHASES_BY_CUSTOMERID_AND_MONTH(429, 2);
+
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Me ha gustado mucho que lo hayas hecho dinámico!! Perfecto.
+
+*/
