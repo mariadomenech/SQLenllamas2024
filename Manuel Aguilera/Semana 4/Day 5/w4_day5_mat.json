@@ -1,0 +1,8 @@
+
+	{
+		"question_week": 4,
+		"question_day": 5,
+		"question": "Crea una función que, introduciéndole una categoría y segmento, muestre el producto más vendido de cada categoría y segmento",
+		"answer": 	"SELECT * FROM TABLE(SQL_EN_LLAMAS.CASE04.FUNCION_DAY5_WEEK4_MAT(1,3));",
+		"explanation": "La consulta SQL utilizada (ver solution_w4_day5_mat.sql) calcula el producto más vendido de cada categoría y segmento"
+	}
