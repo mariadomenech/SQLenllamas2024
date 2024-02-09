@@ -100,3 +100,14 @@ CALL jorgelopez_cliente_compras(429,8); -- Cliente sin compras para ese mes.
 CALL jorgelopez_cliente_compras(429,1); -- Cliente con compras para ese mes.
 CALL jorgelopez_cliente_compras(422342349,8); -- Número de cliente erróneo.
 CALL jorgelopez_cliente_compras(429,15); -- Número de mes erróneo.
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Me ha gustado mucho que lo hayas hecho dinámico!! Perfecto, solo un detalle de nada, TXN_TYPE = 'Purchase' nunca te va a devolver nada, porque el campo
+viene como 'purchase', en minúscula. Puedes jugar con la función UPPER o LOWER para que no te la líen las mayúsculas y minúsculas.
+
+*/
