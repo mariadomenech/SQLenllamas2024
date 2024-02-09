@@ -32,3 +32,24 @@ Estas diciendo que para un cliente X en febrero, el registro que es TIPO = 'purc
 Tu fallo está en que al crear la tabla temporal agrupas por TXT_TYPE, por tipo de transacción.Si quitas esa columna, te da el resultado corrrecto.
 
 */
+
+/*CAMBIOS TRAS COMENTARIO*/
+
+CREATE OR REPLACE TEMP TABLE COUNT_TRANS_TYPE
+AS
+SELECT CUSTOMER_ID AS CLIENTE,
+   SUBSTR(TXN_DATE,6,2) AS MES,
+    TXN_TYPE AS TIPO,
+    COUNT(TXN_TYPE) AS NUM_TRANS,
+    COUNT(CASE WHEN TIPO = 'purchase' THEN 1 END) AS NUM_COMPRAS, 
+    COUNT(CASE WHEN TIPO = 'withdrawal' THEN 1 END) AS NUM_RETIROS,
+    COUNT(CASE WHEN TIPO = 'deposit' THEN 1 END) AS NUM_DEPOSITOS
+FROM CUSTOMER_TRANSACTIONS
+GROUP BY CLIENTE, MES;
+
+SELECT MES,
+    COUNT(CLIENTE) AS NUM_CLIENTES
+FROM COUNT_TRANS_TYPE
+WHERE (NUM_COMPRAS > 1 AND NUM_DEPOSITOS >1) OR NUM_RETIROS > 1
+GROUP BY MES
+ORDER BY MES ASC
