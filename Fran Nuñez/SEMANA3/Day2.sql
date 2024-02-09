@@ -19,3 +19,16 @@ FROM COUNT_TRANS_TYPE
 WHERE (NUM_COMPRAS > 1 AND NUM_DEPOSITOS >1) OR NUM_RETIROS > 1
 GROUP BY MES
 ORDER BY MES ASC
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Caaaaaaaasi Fran. Pero solo estás contando cuando NUM_RETIROS > 1, porque NUM_COMPRAS > 1 AND NUM_DEPOSITOS >1 nunca se va a dar.
+Estas diciendo que para un cliente X en febrero, el registro que es TIPO = 'purchase'  sea también TIPO = 'deposit'. Nunca se va a dar.
+
+Tu fallo está en que al crear la tabla temporal agrupas por TXT_TYPE, por tipo de transacción.Si quitas esa columna, te da el resultado corrrecto.
+
+*/
