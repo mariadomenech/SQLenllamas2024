@@ -80,3 +80,49 @@ clientes_total.month
 from clientes_total where customer_id is not null group by month
 ;
 
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Hola Laura! El resultado no es correcto.
+
+Lo haces muy lioso. Se está liando el conteo a la hora de hacer el conteo, aparte los full join son muy peligrosos. No se sabe qué estás contando de más o de menos.
+
+Es más sencillo de como lo planteas. Te planteo empezar de 0 y en una misma consulta sacar 3 contadores por cliente.
+Si estamos ante un TXN_TYPE = 'deposit' ponemos 1 y si no 0, esto es el indicador de depósitos. Luego sumas por cliente.
+
+Algo así:
+
+SELECT MONTHNAME(TXN_DATE) AS MES
+		,EXTRACT(YEAR FROM TXN_DATE) AS ANIO
+		,CUSTOMER_ID
+		,SUM(CASE 
+				WHEN TXN_TYPE = 'deposit'
+					THEN 1
+				ELSE 0
+				END) NUM_DEPOSIT
+		,SUM(CASE 
+				WHEN TXN_TYPE = 'purchase'
+					THEN 1
+				ELSE 0
+				END) NUM_PURCHASE
+		,SUM(CASE 
+				WHEN TXN_TYPE = 'withdrawal'
+					THEN 1
+				ELSE 0
+				END) NUM_withdrawal
+	FROM CUSTOMER_TRANSACTIONS
+	GROUP BY CUSTOMER_ID
+		,MES
+		,ANIO;
+
+Una vez sacasda esta información solo tienes que sumar aquellos clientes que:
+(
+NUM_DEPOSIT > 1
+AND NUM_PURCHASE > 1
+)
+OR NUM_withdrawal > 1
+
+*/
+
