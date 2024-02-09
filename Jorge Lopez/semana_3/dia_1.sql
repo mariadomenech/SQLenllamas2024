@@ -46,7 +46,7 @@ NODO    START        END           D1     D2
 2	    17/03/2020    31/12/9999	X	
 -------------------------------------------------
 D1 sería la diferencia de días por cada registro, y D2 es la diferencia de días hasta que cambia el nodo. Tú código está haciendo esto:
-(10+1+11+20)=42/4=10.5
+(1+10+1+11+20+26)=69/6=11.5
 ¿Que sería lo correcto?:
 (12+1+11+20)=44/4=11
 
