@@ -5,6 +5,16 @@ con esa consulta me sale que no tengo permisos así que he tenido que crear la t
 
 --drop table tabla_global
 create or replace temp table tabla_global as -- la he borrado para que no haya problemas
+with tabla as (
+    select 
+        customer_id,
+        txn_date,
+        txn_amount,
+        iff(txn_type = 'deposit',txn_amount,0) as deposit,
+        iff(txn_type = 'purchase',txn_amount,0) as purchase,
+        iff(txn_type = 'withdrawal',txn_amount,0) as withdrawal
+    from customer_transactions
+)
 select
     customer_id,
     month(txn_date) as mes,
@@ -25,16 +35,7 @@ select
     zeroifnull(sum(deposit)) as total_depositado,
     zeroifnull(sum(purchase)) as total_compras,
     zeroifnull(sum(withdrawal)) as total_retiros
-from (
-    select 
-        customer_id,
-        txn_date,
-        txn_amount,
-        iff(txn_type = 'deposit',txn_amount,0) as deposit,
-        iff(txn_type = 'purchase',txn_amount,0) as purchase,
-        iff(txn_type = 'withdrawal',txn_amount,0) as withdrawal
-    from customer_transactions
-    )
+from tabla
 group by customer_id,month(txn_date);
 
 
