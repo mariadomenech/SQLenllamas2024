@@ -4,8 +4,8 @@ create or replace temporary table especialidad_sql_bronze_db_beacruz.reto.tabla_
 con esa consulta me sale que no tengo permisos así que he tenido que crear la tabla así:
 */
 
---drop table beacruz
-create or replace temp table beacruz as -- la he borrado para que no haya problemas
+--drop table tabla_global
+create or replace temp table tabla_global as -- la he borrado para que no haya problemas
 select
     customer_id,
     month(txn_date) as mes,
@@ -43,19 +43,19 @@ begin
     select
         distinct customer_id
     into customer
-    from beacruz
+    from tabla_global
     where customer_id = :cliente;
 
     select 
         distinct nom_mes
     into nombre_mes
-    from beacruz
+    from tabla_global
     where mes = :mes;
 
     select 
         total_compras
     into total_compras
-    from beacruz
+    from tabla_global
     where customer_id = :cliente
         and mes = :mes;
     
