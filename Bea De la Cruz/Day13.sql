@@ -29,7 +29,7 @@ group by customer_id,month(txn_date);
 
 -- Procedure
 
-create or replace procedure bcm_compras_por_cust_mes(cliente int,mes varchar)
+create or replace procedure bcm_compras_por_cust_mes(cliente int,mes int)
 returns varchar
 language sql
 as
