@@ -65,3 +65,18 @@ CALL CALCULO_FNM ('BALANCE',5,'Mar');
 CALL CALCULO_FNM ('TOTAL_COMPRAS',5,'Mar');
 CALL CALCULO_FNM ('TOTAL_DEPOSITADO',5,'Mar');
 CALL CALCULO_FNM ('TOTAL_RETIRADO',5,'Mar');
+
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+PERFECTO Fran!!! Muy bien salvado el ejercicio!
+
+Legibilidad: Yo hubiera tabulado algo más las subconsultas, y los RETUURN de los CASE WHEN del final, me resulta más sencillo de leer. 
+
+
+
+*/
