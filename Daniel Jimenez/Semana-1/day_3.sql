@@ -7,7 +7,7 @@ WITH PrimerPedido AS (
 )
 
 SELECT  members.customer_id ,
-        COALESCE(menu.product_name, 'No ha hecho pedidos') as product_name
+        LISTAGG(distinct COALESCE(menu.product_name, 'No ha hecho pedidos'), ',') as product_name
         --COALESCE(CAST(menu.price AS VARCHAR), 'No ha hecho pedidos') as price,
         --COALESCE(CAST(pp.PrimerFecha AS VARCHAR), 'No ha hecho pedidos') as PrimerFecha
 FROM SQL_EN_LLAMAS.CASE01.MEMBERS
