@@ -93,3 +93,12 @@ BEGIN
 END;
 
 CALL JMBA_CALCULATE_PURCHASES_BY_CUSTOMERID_MONTH_AND_OP(429, 2, 1);
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Muy bien!! Me he tenido que aprender los codiguillos de las operaciones, pero bien :')
+
+*/
