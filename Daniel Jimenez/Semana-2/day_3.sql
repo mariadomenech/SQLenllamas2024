@@ -12,6 +12,7 @@ WITH pedidos_limpitos AS (
         ,   ORDER_TIME
     FROM SQL_EN_LLAMAS.CASE02.CUSTOMER_ORDERS
 ),
+
 runner_pedidos_limpitos AS (
     SELECT  ORDER_ID
         ,   RUNNER_ID 
@@ -21,6 +22,7 @@ runner_pedidos_limpitos AS (
         ,   CASE WHEN CANCELLATION = 'null' OR CANCELLATION = '' THEN NULL ELSE CANCELLATION END AS pedido_cancelado
     FROM SQL_EN_LLAMAS.CASE02.RUNNER_ORDERS
 ),
+
 tabla_runner_sin_nulls AS (
     SELECT  ORDER_ID
         ,   RUNNER_ID
@@ -30,33 +32,51 @@ tabla_runner_sin_nulls AS (
         ,   pedido_cancelado
     FROM runner_pedidos_limpitos
 ),
+
 distancia_y_pago AS (
     SELECT  RUNNER_ID
          ,  ORDER_ID
          ,  distancia_kilometros
          ,  distancia_kilometros * 0.30 AS pago_total
-    FROM 
-        tabla_runner_sin_nulls
+    FROM    tabla_runner_sin_nulls
+),
+
+pizzas_por_pedido AS(
+    SELECT  ORDER_ID
+        ,   COUNT(*) AS num_pizzas
+    FROM    pedidos_limpitos
+    GROUP BY ORDER_ID
+),
+
+beneficio_por_pizza AS (
+    SELECT  p.ORDER_ID
+         ,  p.PIZZA_ID
+         ,  (CASE 
+                WHEN pn.PIZZA_NAME = 'Meatlovers' THEN 12
+                WHEN pn.PIZZA_NAME = 'Vegetarian' THEN 10
+            END + CASE 
+                WHEN p.ingredientes_extras IS NOT NULL THEN LENGTH(p.ingredientes_extras) - LENGTH(REPLACE(p.ingredientes_extras, ',', '')) + 1
+                ELSE 0
+            END) AS beneficio
+    FROM    pedidos_limpitos p
+    LEFT JOIN SQL_EN_LLAMAS.CASE02.PIZZA_NAMES pn 
+        ON p.PIZZA_ID = pn.PIZZA_ID
+),
+
+beneficio_por_pedido AS (
+    SELECT  b.ORDER_ID
+        ,   SUM(b.beneficio) AS beneficio_total
+    FROM    beneficio_por_pizza b
+    GROUP BY b.ORDER_ID
 )
-SELECT SUM(COALESCE(CAST(((CASE 
-            WHEN pn.PIZZA_NAME = 'Meatlovers' THEN 12
-            WHEN pn.PIZZA_NAME = 'Vegetarian' THEN 10
-        END + CASE 
-            WHEN p.ingredientes_extras IS NOT NULL THEN LENGTH(p.ingredientes_extras) - LENGTH(REPLACE(p.ingredientes_extras, ',', '')) + 1
-            ELSE 0
-        END) - d.pago_total) AS FLOAT), 0)) AS suma_total_beneficio_por_envio
-FROM 
-    pedidos_limpitos p
-LEFT JOIN SQL_EN_LLAMAS.CASE02.PIZZA_NAMES pn 
-    ON p.PIZZA_ID = pn.PIZZA_ID
-LEFT JOIN tabla_runner_sin_nulls r 
-    ON p.ORDER_ID = r.ORDER_ID
+
+SELECT  bp.ORDER_ID
+     ,  bp.beneficio_total
+     ,  d.pago_total AS costo_runner
+     ,  (bp.beneficio_total - d.pago_total) AS beneficio_por_envio
+FROM    beneficio_por_pedido bp
 LEFT JOIN distancia_y_pago d
-    ON r.RUNNER_ID = d.RUNNER_ID AND r.ORDER_ID = d.ORDER_ID;
-
-
-
-SELECT * FROM SQL_EN_LLAMAS.CASE02.PIZZA_NAMES;
+    ON bp.ORDER_ID = d.ORDER_ID;
 
 /*********************************************************/
 /***************** COMENTARIO ÁNGEL *********************/
