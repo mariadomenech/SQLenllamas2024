@@ -55,9 +55,10 @@ Finalmente, realizamos los cruces necesarios para mostrar los nombres de los pro
 conjuntamente más veces.
 */
 SELECT
-    pd.product_name
+    LISTAGG(DISTINCT pd.product_name, '\n') WITHIN GROUP (ORDER BY pd.product_name) AS combinacion_mas_repetida,
+    cmf.apariciones
 FROM combinacion_mas_frecuente cmf
 JOIN combinacion_id ci USING (combinacion_id)
 LEFT JOIN PRODUCT_DETAILS pd
        ON ci.prod_id = pd.product_id
-GROUP BY pd.product_name;
+GROUP BY cmf.apariciones;
