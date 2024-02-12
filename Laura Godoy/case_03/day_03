@@ -25,3 +25,15 @@ AND customer_id = :number_2;
 RETURN 'El cliente '|| :number_2 || ' se ha gastado un total de ' || :number_3 || ' eur en compras de productos en el mes '||:number_1 ;
 END;
  call laura (2, 203);
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/*
+
+Muy bien Laura!!
+
+Legibilidad: Intenta poner saltos de líneas entre sentencias enteras. Cuesta leer el código.
+
+*/
