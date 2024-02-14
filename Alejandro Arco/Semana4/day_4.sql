@@ -8,7 +8,8 @@ USE SCHEMA CASE04;
 WITH importe_transaccion AS (
     SELECT --distinct si hubiera duplicados
         txn_id,
-        SUM(qty * price - discount) AS total_transaccion  -- He puesto el descuento como cantidad, si fuera un porcentaje tendría que cambiar la fórmula para calcular este total
+        --SUM(qty * price - discount) AS total_transaccion -- Con el descuento como cantidad
+        SUM(price*qty*(1-discount/100)) AS total_transaccion -- Con el descuento como porcentaje
     FROM sales
     GROUP BY txn_id
 )
