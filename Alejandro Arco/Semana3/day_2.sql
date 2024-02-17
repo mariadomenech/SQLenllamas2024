@@ -37,3 +37,12 @@ FROM COUNT_CUSTOMER
 WHERE (deposit_count > 1 AND purchase_count > 1)
     OR withdrawal_count > 1
 GROUP BY txn_month;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado no es correcto del todo ya que, al agrupar por txn_type, pierdes registros y la suma no da el resultado esperado.
+
+*/
