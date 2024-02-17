@@ -40,3 +40,12 @@ RETURN 'El cliente ' || :c_id || ' se ha gastado un total de ' || total || ' eur
 END;
 
 CALL alejandroarco_gastos_cliente_mes (429,02); -- Ejemplo
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Resultado correcto!
+
+*/
