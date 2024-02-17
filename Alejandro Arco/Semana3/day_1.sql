@@ -29,3 +29,17 @@ SELECT
     ),2) AS avg_days
 FROM NODES_DATA
 WHERE current_node_id != next_node_id;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado no es correcto. 
+
+Revisando el codigo no estas contando el primer dia, ya que al filtrar que el nodo actual sea distinto que el siguiente te quitas registros que tienen varias fechas para el mismo nodo,
+para ello te recomiendo calcular en una primera cte si la fecha es la primera fecha registrada con la función LAG (es similar a LEAD pero en lugar de buscar el siguiente registro busca el anterior). 
+Una vez que tenemos identificados los primeros registros de cada cliente, ya podemos realizar el LEAD y los calculos posteriores. 
+Tambien te recomiendo calcular los dias desde la primera fecha del nodo hasta la siguiente fecha de inicio (LEAD), para por último realizar la media.
+
+*/
