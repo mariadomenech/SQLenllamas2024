@@ -102,3 +102,12 @@ RETURN mensaje;
 END;
 
 CALL alejandroarco_gastos_cliente_mes_detalles (1,03,'balance'); -- Ejemplo
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+Resultado correcto!
+
+*/
