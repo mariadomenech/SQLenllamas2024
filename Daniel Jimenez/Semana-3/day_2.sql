@@ -47,3 +47,12 @@ FROM conteo_limpio
 JOIN conteo_adicional USING (MES)
 GROUP BY MES, num_customers_compra_o_deposito, num_customers_retiro, total_customers
 ORDER BY MES;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto. Aunque se podría hacer de forma mas simple.
+
+*/
