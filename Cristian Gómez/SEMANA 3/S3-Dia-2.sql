@@ -14,3 +14,24 @@ FROM (
 WHERE (AUX.CONTEO_COMPRAS > 1 AND AUX.CONTEO_RETIROS >1) OR AUX.CONTEO_RETIROS > 1
 GROUP BY 1 
 ORDER BY 1 ASC
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado no es correcto. 
+
+En lugar de hacer el calculo sobre los clientes que quedan al filtrar, haría el cálculo sobre los conteadores creados (sin filtrarlos):
+
+    SUM(CASE 
+			WHEN (
+                CONTEO_DEPOSITOS > 1
+                AND CONTEO_COMPRAS > 1
+                )
+            OR CONTEO_RETIROS > 1
+            THEN 1
+        ELSE 0
+        END) NUM_CLIENTES
+
+*/
