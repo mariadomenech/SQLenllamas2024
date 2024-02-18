@@ -19,3 +19,15 @@ fecha_cambio_nodos AS (
 )
 SELECT  ROUND(AVG(dias_para_nuevo_nodo), 2) as media_dias_cambio_de_nodo
 FROM    fecha_cambio_nodos;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado no es correcto. 
+
+Te recomendaría calcular en una primera cte cuales son los primeros nodos de cada cliente con la función LAG (es similar a LEAD pero en lugar de buscar el siguiente registro busca el anterior). 
+Una vez que tenemos identificados los primeros registros de cada cliente, ya podemos realizar el LEAD y los calculos posteriores.
+
+*/
