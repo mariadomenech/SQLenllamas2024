@@ -46,4 +46,13 @@ BEGIN
 
 END;
 
-CALL SQL_EN_LLAMAS.CASE03.BEA_EXPOSITO_TOTAL_PURCHASE (1, 'marzo')
+CALL SQL_EN_LLAMAS.CASE03.BEA_EXPOSITO_TOTAL_PURCHASE (1, 'marzo');
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto. 
+
+*/
