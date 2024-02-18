@@ -49,3 +49,17 @@ CALL calculos_daniel_jimenez('Balance' ,  250, 2);
 CALL calculos_daniel_jimenez('purchase' ,  250, 2);
 CALL calculos_daniel_jimenez('deposit' ,  250, 2);
 CALL calculos_daniel_jimenez('withdrawal' ,  250, 2);
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado no es correcto. No aislas los calculos en funciones como se pide, además al probar el balance para el cliente 1 y mes de marzo me devuelve los depositos y las compras
+por separado en lugar de hacer el blance (-952).
+
+TIPO_TRANSACCION    TOTAL
+purchase	        1276
+deposit	            324
+
+*/
