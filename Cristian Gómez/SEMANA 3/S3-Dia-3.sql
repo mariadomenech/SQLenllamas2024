@@ -22,3 +22,15 @@ BEGIN
     RETURN 'El cliente ' || :CUSTOMER_ID || ' se ha gastado un total de ' || :TOTAL_AMOUNT || ' euros en compras de productos en el mes de ' || :MES_NAME;
  
 END;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto pero he tenido que corregir una errata:
+
+Antes: AND (MONTH, TXN_DATE) = :MES; --Da error
+Ahora: AND MONTH(TXN_DATE) = :MES;
+
+*/
