@@ -82,3 +82,12 @@ BEGIN
 END;
 
 CALL SQL_EN_LLAMAS.CASE03.BEA_EXPOSITO_CALCULATIONS (1, 'marzo','BALANCE');
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto. 
+
+*/
