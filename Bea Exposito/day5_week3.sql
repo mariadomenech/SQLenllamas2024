@@ -137,3 +137,12 @@ END;
 
 
 CALL SQL_EN_LLAMAS.CASE03.BEA_EXPOSITO_CALCULATIONS_UDF(1, 'marzo', 'balance');
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto. 
+
+*/
