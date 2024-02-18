@@ -12,3 +12,15 @@ SELECT
     ROUND(AVG(DATEDIFF('days', START_DATE, FECHA_SIGUIENTE_NODO)), 2) AS PROMEDIO_DIAS_CAMBIO_NODO
 FROM CalculoFechas 
 WHERE FECHA_SIGUIENTE_NODO IS NOT NULL  -- Para excluir el último cambio que no tiene una fecha siguiente
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado no es correcto. 
+
+Te recomendaría calcular en una primera cte cuales son los primeros nodos de cada cliente con la función LAG (es similar a LEAD pero en lugar de buscar el siguiente registro busca el anterior). 
+Una vez que tenemos identificados los primeros registros de cada cliente, ya podemos realizar el LEAD y los calculos posteriores.
+
+*/
