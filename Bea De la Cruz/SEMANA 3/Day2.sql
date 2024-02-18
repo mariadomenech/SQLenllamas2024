@@ -18,3 +18,12 @@ with tabla as(
 select mes,count(*) as num_clientes
 from tabla
 group by mes;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto!
+
+*/
