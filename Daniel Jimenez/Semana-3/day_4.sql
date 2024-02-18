@@ -67,3 +67,12 @@ BEGIN
   
   RETURN 'El cliente ' || :CUSTOMER_ID || ' se ha gastado un total de ' || :total_compras || ' EUR en compras de productos en el mes de ' || :mes_nombre || '. Su balance actual es de ' || :balance || ' EUR, habiendo depositado un total de ' || :total_depositado || ' EUR y retirado un total de ' || :total_retiros || ' EUR.';
 END;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto a medias ya que, aunque los cálculos son correctos, se pedía poder eligir el tipo de operación.
+
+*/
