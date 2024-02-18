@@ -11,3 +11,15 @@ from(
     from case03.customer_nodes no
     qualify no.node_id <> SGTE_NODO
 ) cal;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado no es correcto. 
+
+Te recomendaría calcular en una primera cte cuales son los primeros nodos de cada cliente con la función LAG (es similar a LEAD pero en lugar de buscar el siguiente registro busca el anterior). 
+Una vez que tenemos identificados los primeros registros de cada cliente, ya podemos realizar el LEAD y los calculos posteriores.
+
+*/
