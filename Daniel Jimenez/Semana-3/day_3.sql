@@ -34,3 +34,12 @@ BEGIN
   RETURN 'El cliente ' || :CUSTOMER_ID || ' se ha gastado un total de ' || :total_compras || ' EUR en compras de productos en el mes de ' || :mes_nombre;
 END;
 CALL calcular_compras_daniel_jimenez (1,3);--Es un ejemplo, se pueden cambiar los parámetros de entrada para que el PROCEDURE actúe según lo que el usuario requiera. Vaya, lo que hace un procedure jajaja
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto. 
+
+*/
