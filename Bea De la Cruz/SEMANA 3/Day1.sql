@@ -15,3 +15,16 @@ with tmp as (
 )
 select round(avg(dias)) as media_nodos
 from tmp;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado no es correcto. Tal cual esta el código no ejecuta ya que el from de la CTE Temp llama a Tabla la cual no existe, entiendo que deberia llamar a CUSTOMER_NODES.
+
+Intentas controlar muchos casos en un case cuando no sería necesario, lo que te recomendaría sería crear en una primera CTE un indicador para aquellos nodos que son el primer registro del cliente 
+(con la ayuda de la función LAG), posteriormente en una 2ª CTE utilizaría esos primeros registros para a raíz de ahí contar los días respecto a las siguientes fechas (función LEAD), y por último
+una vez que ya tenemos los días transcurridos de una fecha a otra, haría la media.
+
+*/
