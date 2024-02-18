@@ -141,3 +141,12 @@ call bcm_calculo_por_cust_mes(1,3,'compras');
 call bcm_calculo_por_cust_mes(429,1,'retiros');
 call bcm_calculo_por_cust_mes(0,1,'retiros');
 call bcm_calculo_por_cust_mes(1,3,'retiros');
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto. 
+
+*/
