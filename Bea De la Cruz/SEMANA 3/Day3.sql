@@ -76,3 +76,12 @@ end;
 call bcm_compras_por_cust_mes(429,1);
 call bcm_compras_por_cust_mes(0,1);
 call bcm_compras_por_cust_mes(1,3);
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto. 
+
+*/
