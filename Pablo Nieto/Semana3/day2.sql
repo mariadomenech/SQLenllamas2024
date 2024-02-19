@@ -52,3 +52,31 @@ FROM meses
 LEFT JOIN mov_mensuales USING (mes)
 GROUP BY mes
 ORDER BY mes;
+
+
+/*COMENTARIOS JUANPE
+
+RESULTADO: CORRECTO
+
+CÓDIGO: CORRECTO.
+
+LEGIBILIDAD: CORRECTA
+
+EXTRA: Bien visto lo del año y bien explicado los pasos solo comentar que se podía resolver con menos líneas de código
+
+SELECT ANYO
+     , MES
+     , COUNT(CUSTOMER_ID) AS CLIENTES
+FROM (SELECT CUSTOMER_ID
+           , EXTRACT(YEAR FROM TXN_DATE) AS ANYO
+           , EXTRACT(MONTH FROM TXN_DATE) AS MES
+           , SUM(DECODE(TXN_TYPE,'deposit',1,0))    AS DEPOSITO
+           , SUM(DECODE(TXN_TYPE,'purchase',1,0))   AS COMPRA
+           , SUM(DECODE(TXN_TYPE,'withdrawal',1,0)) AS RETIRO
+       FROM CUSTOMER_TRANSACTIONS
+       GROUP BY ANYO, MES, CUSTOMER_ID
+      ) A
+WHERE (DEPOSITO > 1 AND COMPRA > 1) OR RETIRO > 1
+GROUP BY ANYO, MES
+ORDER BY ANYO, MES;
+*/
