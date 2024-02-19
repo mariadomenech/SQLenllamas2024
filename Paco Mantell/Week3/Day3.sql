@@ -29,3 +29,9 @@ END;
 
 
 CALL customer_purchase_pmz(100,3);
+
+
+/*
+COMEMENTARIOS JUANPE:
+Todo correcto aunque hubiera estado bien un mensaje de error si se pide un cliente que no existe.
+*/
