@@ -50,3 +50,8 @@ END;
 
 -- EJEMPLO PARA EL CLIENTE 1 Y EL MES DE MARZO--
 CALL SQL_EN_LLAMAS.CASE03.MRA_CALCULAR_COMPRAS(1, 'MARZO');
+/*
+COMEMENTARIOS JUANPE:
+Todo correcto aunque la tabla temporal la podrías meter dentro del procedure para no tener que llamarla cada vez que tengas que ejecutar, también hubiera estado
+bien un mensaje de error si se marca un cliente que no existe.
+*/
