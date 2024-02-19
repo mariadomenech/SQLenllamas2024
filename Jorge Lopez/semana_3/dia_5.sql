@@ -196,3 +196,14 @@ CALL jorgelopez_cliente_opciones(429,8,'C'); -- Cliente sin compras para ese mes
 						
 CALL jorgelopez_cliente_opciones(429,3,'R'); -- Cliente con retiros para ese mes.
 CALL jorgelopez_cliente_opciones(429,8,'R'); -- Cliente sin retiros para ese mes.
+
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto Jorge!! aunque me tienes que explicar por qué cogemos el primer y último día para buscar en las funciones?
+
+*/
