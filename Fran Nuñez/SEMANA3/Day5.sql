@@ -85,3 +85,25 @@ CALL SQL_EN_LLAMAS.CASE03.PROCEDURE_TITAN_FNM ('BALANCE',5,'Mar');
 CALL SQL_EN_LLAMAS.CASE03.PROCEDURE_TITAN_FNM ('TOTAL_COMPRAS',5,'Mar');
 CALL SQL_EN_LLAMAS.CASE03.PROCEDURE_TITAN_FNM ('TOTAL_DEPOSITADO',5,'Mar');
 CALL SQL_EN_LLAMAS.CASE03.PROCEDURE_TITAN_FNM ('TOTAL_RETIRADO',5,'Mar');
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Muy bien Fran, va tomando forma el titán.
+
+Tienes que revisar la función de balance, con las prisas nos hemos liado con la fórmula: BALANCE= DEPOSITADO-COMPRADO-RETIRADO.
+Ten cuidado con los nulos a la hora de restar valores, cuando estamos operando con importes intenta siempre poner alguna función de tratamientos de nulos.
+Por ejemplo:
+
+SELECT
+(SQL_EN_LLAMAS_FNM.CASE03.FUNCION_TOTAL_DEPOSITADO(CLIENTE, MES) -
+IFNULL(SQL_EN_LLAMAS_FNM.CASE03.FUNCION_TOTAL_COMPRAS(CLIENTE, MES),0) -
+IFNULL(SQL_EN_LLAMAS_FNM.CASE03.FUNCION_TOTAL_RETIRADO(CLIENTE, MES),0))
+
+Legibilidad: bien! 
+
+
+
+*/
