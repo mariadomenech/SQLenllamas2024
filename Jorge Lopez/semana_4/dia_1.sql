@@ -75,3 +75,12 @@ END;
 CALL jorgelopez_duplicados_tabla('SALES');
 CALL jorgelopez_duplicados_tabla('PRODUCT_DETAILS');
 CALL jorgelopez_duplicados_tabla('ASD');
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto Jorge
+
+*/
