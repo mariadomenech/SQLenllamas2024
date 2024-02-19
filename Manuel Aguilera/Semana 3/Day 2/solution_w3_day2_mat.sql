@@ -22,3 +22,14 @@ FROM(
 WHERE DEPOSIT>1 AND PURCHASE>1 OR WITHDRAWAL>1
 GROUP BY 1
 ORDER BY 1;
+
+/*COMENTARIOS JUANPE
+
+RESULTADO: CORRECTO
+
+CÓDIGO: CORRECTO. Y muy bien el uso del pivot.
+
+LEGIBILIDAD: CORRECTA
+
+EXTRA: Me ha gustado el uso del pivot para resolver el ejercicio
+*/
