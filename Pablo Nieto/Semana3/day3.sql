@@ -34,3 +34,10 @@ CALL SQL_EN_LLAMAS.CASE03.compras_cliente_pnieto(1, 3);
 
 --Borramos el proceso.
 --DROP PROCEDURE SQL_EN_LLAMAS.CASE03.compras_cliente_pnieto(INT, INT);
+
+
+/*COMENTARIOS JUANPE
+
+TODO CORRECTO. Muy bien por los mensajes de error para los que no existe.
+
+*/
