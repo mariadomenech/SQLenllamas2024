@@ -24,3 +24,13 @@ FROM
         LISTADO)
 WHERE
     RANKING = 1;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto Jorge, pero ten cuidado!! estás trabajando con uan tabla con duplicados. No deberías de haberla limpiado primero? aún así el resultado es correcto.
+
+*/
