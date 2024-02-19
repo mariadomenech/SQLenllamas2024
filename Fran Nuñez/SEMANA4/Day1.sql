@@ -44,3 +44,14 @@ END;
 CALL DUPLICATES_FNM ('SALES');
 CALL DUPLICATES_FNM ('PRODUCT_DETAILS');
 CALL DUPLICATES_FNM ('CONSUMERS')
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+perfecto!
+
+
+
+*/
