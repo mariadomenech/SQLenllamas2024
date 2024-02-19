@@ -20,3 +20,14 @@ SELECT
     COUNT(CUSTOMER_ID)
 FROM AUX
 GROUP BY MES;
+
+/*COMENTARIOS JUANPE
+
+RESULTADO: CORRECTO
+
+CÓDIGO: CORRECTO. Y muy bien el uso del pivot.
+
+LEGIBILIDAD: CORRECTA
+
+EXTRA: Me ha gustado el uso del pivot para resolver el ejercicio
+*/
