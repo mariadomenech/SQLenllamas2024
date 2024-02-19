@@ -35,3 +35,9 @@ END;
 
 
 CALL MNievesPerez_compras_por_cliente_mes (6,3);
+
+
+/*
+COMEMENTARIOS JUANPE:
+Todo correcto aunque hubiera estado bien un mensaje de error si se pide un cliente que no existe.
+*/
