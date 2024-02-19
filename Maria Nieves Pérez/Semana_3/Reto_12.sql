@@ -33,3 +33,27 @@ tercera AS (
 )
 
 select * from tercera;
+/*COMENTARIOS JUANPE
+
+RESULTADO: INCORRECTO
+
+CÓDIGO: INCORRECTO. En la CTE primera en el partition by te falta txn_date y en la CTE segunda te falta GROUP BY customer_id,mes y cada uno de los CASE WHEN meterlos dentro de un SUM.
+
+LEGIBILIDAD: CORRECTA
+
+EXTRA: lo haces un poco enrevesado te paso una solución más simple:
+
+SELECT MES
+     , COUNT(CUSTOMER_ID) AS CLIENTES
+FROM (SELECT CUSTOMER_ID
+           , EXTRACT(MONTH FROM TXN_DATE) AS MES
+           , SUM(CASE WHEN TXN_TYPE = 'deposit'    THEN 1 ELSE 0 END) AS DEPOSITO
+           , SUM(CASE WHEN TXN_TYPE = 'purchase'   THEN 1 ELSE 0 END) AS COMPRA
+           , SUM(CASE WHEN TXN_TYPE = 'withdrawal' THEN 1 ELSE 0 END) AS RETIRO
+       FROM CUSTOMER_TRANSACTIONS
+       GROUP BY MES, CUSTOMER_ID
+      ) A
+WHERE (DEPOSITO > 1 AND COMPRA > 1) OR RETIRO > 1
+GROUP BY MES
+ORDER BY MES;
+*/
