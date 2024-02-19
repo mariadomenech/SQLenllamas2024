@@ -40,3 +40,10 @@ END;
 -----------------------------------COMPROBACIÓN-------------------------------------
 CALL  ESPECIALIDAD_SQL_BRONZE_DB_SVM.PRUEBAS.COMPRAS_X_CLIENTE_Y_MES (1,2);
 CALL  ESPECIALIDAD_SQL_BRONZE_DB_SVM.PRUEBAS.COMPRAS_X_CLIENTE_Y_MES (1,3);
+
+
+/*
+COMEMENTARIOS JUANPE:
+Todo correcto aunque la tabla temporal estaría bien que estubiera dentro del procedure para no tener que llamarla cada vez que tengas que ejecutar, 
+bien el mensaje de que un cliente para un mes no tiene compras pero también hubiera estado bien un mensaje de error si se marca un cliente que no existe.
+*/
