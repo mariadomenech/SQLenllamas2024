@@ -43,3 +43,31 @@ Una vez que tenemos identificados los primeros registros de cada cliente, ya pod
 Tambien te recomiendo calcular los dias desde la primera fecha del nodo hasta la siguiente fecha de inicio (LEAD), para por último realizar la media.
 
 */
+
+--Obtenemos la tupla que supone el primer tramo de fechas en un nodo determinado con la función de ventana LAG.
+
+-- Añadida solución de Ángel
+WITH inicio_nodo AS (
+    SELECT
+        *,
+        CASE
+            WHEN LAG(NODE_ID) OVER (PARTITION BY customer_id ORDER BY start_date) = node_id THEN 0
+            ELSE 1
+        END AS tramo_inicial
+    FROM SQL_EN_LLAMAS.CASE03.CUSTOMER_NODES
+),
+
+dias_cambio AS (
+    SELECT
+        customer_id,
+        LEAD(start_date) OVER (PARTITION BY customer_id ORDER BY start_date) - start_date - 1 AS dias_en_nodo
+    FROM inicio_nodo
+    WHERE tramo_inicial = 1
+    QUALIFY LEAD(start_date) OVER (PARTITION BY customer_id ORDER BY start_date) IS NOT NULL
+    ORDER BY customer_id, start_date
+)
+
+SELECT
+    ROUND(AVG(dias_en_nodo), 2) AS dias_reasignacion_media,
+    CONCAT('Los clientes se reasignan a un nodo diferente cada ' || ROUND(AVG(dias_en_nodo)) || ' días de media.') AS texto
+FROM dias_cambio;
