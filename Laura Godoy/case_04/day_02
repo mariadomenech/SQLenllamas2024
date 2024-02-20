@@ -28,3 +28,13 @@ select
 from D
 group by lista
 order by combinacion_mas_repetida desc
+
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto Laura, aunque si me hubieras hecho el JOIN en la CTE C con PRODUCTS_DETAILS podríamos haber sacado el nombre del producto, que es más entendible.
+*/
