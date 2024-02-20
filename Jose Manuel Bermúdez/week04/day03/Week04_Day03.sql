@@ -50,3 +50,12 @@ CREATE TEMPORARY TABLE SQL_EN_LLAMAS.CASE04.JMBA_PRODUCT_DETAILS AS (
 );
 
 SELECT * FROM JMBA_PRODUCT_DETAILS;
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto
+*/
