@@ -18,3 +18,12 @@ CREATE OR REPLACE FUNCTION JMBA_GET_MOST_SOLD_PRODUCT_CATEG_AND_SEGM (category_i
 	;
 
 SELECT * FROM TABLE(JMBA_GET_MOST_SOLD_PRODUCT_CATEG_AND_SEGM(1, 3));
+
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Perfecto!
+*/
