@@ -32,3 +32,16 @@ SELECT TXN_ID,
     PERCENTILE_CONT(0.75)WITHIN GROUP (ORDER BY TOTAL) AS PERC_75
 FROM PERC_TABLE
 GROUP BY TXN_ID;
+
+/*********************************************************/
+/***************** COMENTARIO MARÍA *********************/
+/*********************************************************/
+/* 
+
+Muy bien Fran, ten cuidado con la fórmula del TOTAL debe ser. SUM(PRICE*QTY*((100-DISCOUNT)/100)) AS TOTAL
+Los descuentos no está en puntos porcentuales sino sobre 100, entonces es 100-DISCOUNT, no 1-DISCOUNT.
+
+Como el total debe ser por transacción, porque el enunciado pide los percentiles por transacción. Quitamos de PERC_TABLE la columna PROD_ID.
+
+
+*/
