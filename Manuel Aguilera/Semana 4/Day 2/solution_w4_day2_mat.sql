@@ -21,3 +21,9 @@ INNER JOIN PRODUCTOS_TRANSACCION B
 GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 1;
+
+/*
+COMENTARIOS JUANPE:
+Todo correcto, de hecho me gusta mucho tu versión simple y clara y bien la salida en un array. Pero cuidado con el LIMIT 1, en este caso no hay problema pero en caso de empates, solo
+obtienes un resultado. Es mejor en este tipo de ejercicios usar algo tipo rank o una subconsulta para filtrar por el/los máximos.
+*/
