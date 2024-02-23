@@ -30,3 +30,8 @@ A.times_repeat
 FROM CTE_SPLITTED A
 JOIN sql_en_llamas.case04.product_details B
     ON A.product_id=B.product_id
+
+/*
+COMENTARIOS JUANPE:
+Todo correcto y muy bien por mostrar la salida final en filas usando el flatten.
+*/
