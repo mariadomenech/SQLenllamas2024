@@ -37,3 +37,9 @@ END;
 
 --Llamada procedimiento
 CALL SQL_EN_LLAMAS.CASE04.PROCEDIMIENTO_DAY1_WEEK4_MAT('PRODUCT_DETAILS');
+
+
+/*
+COMENTARIOS JUANPE:
+Aunque correcto el código y la creación del procedimiento, tu procedimiento solo nos dice que tiene duplicados pero no nos dice cuantos.
+*/
