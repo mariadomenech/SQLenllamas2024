@@ -38,3 +38,8 @@ FROM (
                 ON A.TXN_ID = B.TXN_ID
         GROUP BY 1)A
 WHERE RANKING_LISTA_PRODUCTOS = 1;
+
+/*
+COMENTARIOS JUANPE:
+Correcto el resultado, el código y la legibilidad. Tal vez la sálida se podía haber intentado montar de otra forma pero correcto.
+*/
