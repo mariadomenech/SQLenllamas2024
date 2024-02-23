@@ -61,3 +61,12 @@ END;
 CALL SQL_EN_LLAMAS.CASE04.MRA_CALCULO_DUPLICADOS('PRODUCT_DETAILS');
 CALL SQL_EN_LLAMAS.CASE04.MRA_CALCULO_DUPLICADOS('SALES');
 CALL SQL_EN_LLAMAS.CASE04.MRA_CALCULO_DUPLICADOS('QWEQ');
+
+
+/*
+COMENTARIOS JUANPE
+Resultado: Correcto.
+Código: Correcto.
+Legibilidad: Correcto.
+Extra: Aunque todo está correcto hay otras formas más óptimas, pues haces demasiados pasos.
+*/
