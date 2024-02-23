@@ -31,3 +31,9 @@ END;
 CALL num_duplicados_pnieto('sales');
 
 --DROP PROCEDURE num_duplicados_pnieto(STRING);
+
+
+/*
+COMENTARIOS JUANPE:
+Bien resuelto todo correcto y bien por el mensaje de error.
+*/
