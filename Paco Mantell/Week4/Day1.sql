@@ -37,3 +37,14 @@ CALL count_duplicates_pmz('product_hierarchy');
 
 /*Duplicados tabla product_prices*/
 CALL count_duplicates_pmz('product_prices');
+
+
+/*
+COMENTARIOS JUANPE:
+Bien resuelto y correcto los resultados. Un par de cosillas, si metes mal el nombre de la tabla estaría bien que te diera un mensaje de error tipo "la tabla no existe" en lugar de fallar el proceso.
+Aunque es correcto lo has resuelto en exclusividad para este esquema si alguna vez necesitas, los gestores de bbdd suelen tener una tabla intrinseca donde hay información de las tablas y los campos de la tablas
+que existen: 
+FROM INFORMATION_SCHEMA.COLUMNS
+FROM INFORMATION_SCHEMA.TABLES
+sueles ser útiles para estos casos y te ayudan a hacer cosas más genericas.
+*/
