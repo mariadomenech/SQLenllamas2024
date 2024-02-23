@@ -62,3 +62,12 @@ JOIN combinacion_id ci USING (combinacion_id)
 LEFT JOIN PRODUCT_DETAILS pd
        ON ci.prod_id = pd.product_id
 GROUP BY cmf.apariciones;
+
+
+/*
+COMENTARIOS JUANPE:
+Me has dejado sin palabras. De hecho a pesar de ser un poco enrevesada la solución es genial. No solo es buena 
+porque el resultado es correcto si no por la originialidad para resolverlo, a parte de demostrar un buen manejo 
+de SQL has demostrado un buen manejo de procesos lógicos/matemáticos. Es cierto que por lo general suele buscar 
+sencillas pero como te digo, me ha encantado! ¡chapó!
+*/
