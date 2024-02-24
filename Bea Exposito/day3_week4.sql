@@ -42,4 +42,11 @@ left join case04.product_prices D
 
 SELECT * FROM SQL_EN_LLAMAS.CASE04.DAY3_WEEK4_BEA; 
 
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
 
+El resultado es correcto.
+
+*/
