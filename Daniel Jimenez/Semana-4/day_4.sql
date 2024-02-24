@@ -49,3 +49,40 @@ SELECT  TXN_ID
     ,   percentile_50 AS percentil_redondeado_50
     ,   percentile_75 AS percentil_redondeado_75
 FROM percentiles_discretos;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado no es correcto.
+
+Habria que calcular el importe por transacción, como se pide en el ejercicio, habiendo limpiado los duplicados previamente:
+
+--Ejemplo con el percentile continuo:
+
+WITH importe_limpito AS (
+    SELECT  
+          TXN_ID
+        , SUM(QTY * PRICE* (100 - DISCOUNT)/100) AS importe_total
+    FROM (
+        SELECT DISTINCT *
+        FROM SALES
+        )
+    GROUP BY TXN_ID
+),
+
+percentiles_continuos AS (
+    SELECT  PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY importe_total) AS percentile_25 --Aquí se calculan los percentiles continuos.
+        ,   PERCENTILE_CONT(0.50) WITHIN GROUP (ORDER BY importe_total) AS percentile_50
+        ,   PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY importe_total) AS percentile_75
+    FROM importe_limpito
+)
+
+SELECT  
+        ROUND(percentile_25 , 4) AS percentil_redondeado_25
+    ,   ROUND(percentile_50, 4) AS percentil_redondeado_50
+    ,   ROUND(percentile_75, 4) AS percentil_redondeado_75
+FROM percentiles_continuos;
+
+*/
