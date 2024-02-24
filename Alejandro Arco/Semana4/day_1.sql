@@ -61,3 +61,13 @@ BEGIN
 END;
 
 CALL aas_duplicados ('product_prices'); -- Ejemplo
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado para la tabla SALES es correcto pero para el resto no, ya que usas siempre en el código la tabla SALES, en lugar de parametrizar el from con la tabla introducida en la llamada del procedimiento. 
+Yo lo que haría seria crear una consulta que tenga la tabla del from parametrizada, y con un rank() identificar los duplicados para contarlos posteriormente.
+
+*/
