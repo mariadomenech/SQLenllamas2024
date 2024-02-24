@@ -48,3 +48,12 @@ end;
 
 call bcm_duplicidades('product_details');
 call bcm_duplicidades('sales');
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto.
+
+*/
