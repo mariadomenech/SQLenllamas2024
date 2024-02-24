@@ -40,3 +40,12 @@ LEFT JOIN
   SEGMENT SEG ON S.SEGMENT_ID = SEG.SEGMENT_ID
 LEFT JOIN 
   CATEGORY C ON SEG.CATEGORY_ID = C.CATEGORY_ID;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto.
+
+*/
