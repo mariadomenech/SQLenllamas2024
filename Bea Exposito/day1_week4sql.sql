@@ -34,4 +34,13 @@ BEGIN
     END CASE;
 END;
 
-CALL SQL_EN_LLAMAS.CASE04.BEA_EXPOSITO_DUPLICATES('SALES')
+CALL SQL_EN_LLAMAS.CASE04.BEA_EXPOSITO_DUPLICATES('SALES');
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto.
+
+*/
