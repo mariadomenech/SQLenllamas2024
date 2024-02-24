@@ -49,3 +49,12 @@ LEFT JOIN product_segments AS pseg
 ON psty.parent_id = pseg.id_segment
 LEFT JOIN product_category AS pcat
 ON pseg.parent_id = pcat.id_category;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto.
+
+*/
