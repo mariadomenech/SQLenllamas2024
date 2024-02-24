@@ -36,3 +36,12 @@ $$
 ;
 
 select * from table(sql_en_llamas.case04.bcm_cat_seg('womens','jeans'));
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado no es correcto del todo ya que, tal cual lo estas haciendo, te faltaria ordenar los registros por venta desc, asi el limit 1 se queda siempre con el mayor.
+
+*/
