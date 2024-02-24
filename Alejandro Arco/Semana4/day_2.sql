@@ -33,3 +33,12 @@ SELECT TOP 1
 FROM combinaciones_pedidos
 GROUP BY combinacion
 ORDER BY total_combinacion DESC;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto. 
+
+*/
