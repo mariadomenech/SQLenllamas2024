@@ -26,3 +26,11 @@ $$
 
 SELECT * FROM TABLE( SQL_EN_LLAMAS.CASE03.BEA_EXPOSITO_LEADING_PRODUCT('Womens', 'Jeans'));
 
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto.
+
+*/
