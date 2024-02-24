@@ -24,3 +24,12 @@ CREATE OR REPLACE FUNCTION producto_mas_vendido_aas(categoria STRING, segmento S
 ;
 
 SELECT * FROM TABLE(producto_mas_vendido_aas('Mens', 'Shirt'));
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto.
+
+*/
