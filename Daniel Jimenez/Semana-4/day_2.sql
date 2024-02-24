@@ -25,3 +25,12 @@ FROM combinaciones_productos
 GROUP BY combinacion_producto
 ORDER BY frecuencia DESC
 LIMIT 1;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto.
+
+*/
