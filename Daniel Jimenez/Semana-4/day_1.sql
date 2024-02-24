@@ -58,3 +58,12 @@ CALL contar_duplicados_daniel_jimenez2 ('SALES');
 CALL contar_duplicados_daniel_jimenez2 ('PRODUCT_PRICES');
 CALL contar_duplicados_daniel_jimenez2 ('PRODUCT_HIERARCHY');
 CALL contar_duplicados_daniel_jimenez2 ('PRODUCT_DETAILS');
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto.
+
+*/
