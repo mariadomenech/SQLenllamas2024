@@ -38,3 +38,12 @@ LIMIT 1
 $$;
 
 SELECT * FROM TABLE(prueba_top_ventas_djr(2, 6)); --Me fijo en PRODUCT_DETAILS para ver los ID que paso de parámetros y comprobar que los resultados son correctos.
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto.
+
+*/
