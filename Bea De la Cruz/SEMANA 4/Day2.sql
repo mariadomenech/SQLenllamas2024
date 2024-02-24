@@ -25,3 +25,12 @@ inner join lista b
 group by b.lista_prod
 order by num_transacciones desc
 limit 1;
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto.
+
+*/
