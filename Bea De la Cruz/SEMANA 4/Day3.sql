@@ -16,3 +16,12 @@ inner join product_hierarchy c
     on b.parent_id = c.id
 inner join product_hierarchy d
     on c.parent_id = d.id
+
+/*********************************************************/
+/***************** COMENTARIO ÁNGEL *********************/
+/*********************************************************/
+/*
+
+El resultado es correcto.
+
+*/
