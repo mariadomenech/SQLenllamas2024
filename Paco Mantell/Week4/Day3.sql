@@ -15,3 +15,6 @@ LEFT JOIN sql_en_llamas.case04.product_hierarchy C
     ON B.parent_id=C.ID
 LEFT JOIN sql_en_llamas.case04.product_hierarchy D
     ON C.parent_id=D.ID
+
+
+    /*COMENTARIOS JUANPE: TODO CORRECTO*/
