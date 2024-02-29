@@ -18,3 +18,9 @@ FROM(
     GROUP BY 1,2
 )
 GROUP BY 1;
+
+/*COMENTARIOS JUANPE:
+
+No es correcto. En tu subconsulta cuando haces el gruop by 1,2, solo te interesa agrupar por tasacion, ya que una tasación tiene varios productos, por tanto en esa subconsulta sobra PORD_ID.
+En la consulta final te sobra agrupar por tasacion ya que se quire solo el dato del percentil entre todas las tasaciones.
+*/
