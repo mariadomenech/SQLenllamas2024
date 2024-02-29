@@ -33,3 +33,11 @@ UNION
 SELECT * FROM TABLE(top_product_pmz('Womens', 'Jacket'))
 UNION
 SELECT * FROM TABLE(top_product_pmz('Womens', 'Jeans'))
+/*COMENTARIOS JUANPE:
+Incorrecto. Se pide la función por cantidad de productos vendides por tanto el campo sales
+    SUM((A.qty * A.price) - A.discount) sales 
+deberia ser:
+    SUM(A.qty ) sales
+y el order by deberia ser por este mismo campo que es el 4 en tu select
+    ORDER BY 4 DESC
+*/
