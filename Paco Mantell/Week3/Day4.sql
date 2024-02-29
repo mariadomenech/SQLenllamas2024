@@ -62,3 +62,5 @@ CALL customer_purchase_pmz('deposit',100,3);
 
 /*Retiros*/
 CALL customer_purchase_pmz('withdrawal',100,3);
+
+/*COMENTARIOS JUANPE: TODO CORRECTO Y BIEN ORGANIZADO EL CÓDIGO*/
