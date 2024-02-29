@@ -49,3 +49,11 @@ END;
 
 
 CALL MNievesPerez_informe_cliente (6,3,'purchase');
+
+/*COMENTARIOS JUANPE: primero disculpa la demora en corregir.
+Te comento los fallos por los que no te ejecuta:
+ 1 - el where de la linea 45 (cliente mes y tipo) debe ir en la lina 49, no puedes hacerlo al final si no en la subconsulta interna.
+ 2 - en los concat lineas 22-23-24 el los NVL el campo total tienes que quitar los dos puntos ya que si le ponemos los dos puntos le indicamos que es un campo de los que se define en la función y no, es un campo calculado en la select.
+ 3 - en la lina 19 debes poner "END as mensaje into mensaje" ya que mensaje es una variable declarada con el declare estas se rellenan o bien manualmente o si es a traves de una select con el into. 
+Cualquier duda preguntame sin problemas. Y una vez más disculpa la tardandza en contestar.
+*/
