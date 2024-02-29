@@ -24,3 +24,6 @@ SELECT
     ROUND(PERCENTILE_CONT(0.50) WITHIN GROUP (ORDER BY ingresos_txn), 2) AS percentil_50,
     ROUND(PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY ingresos_txn), 2) AS percentil_75
 FROM ingresos_transaccion;
+
+/*COMENTARIOS JUANPE
+Casi correcto un lapsus muy tonto, en la tabla ingresos_transaccion has usado en from la tabla SALES en lugar de la que previamente has calculado quitar_duplicados, pero salvo este despite todo correcto */
