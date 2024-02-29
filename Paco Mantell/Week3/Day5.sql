@@ -58,3 +58,5 @@ CALL day5_pmz('deposit',100,3);
 
 /*Retiros*/
 CALL day5_pmz('withdrawal',100,3);
+
+/*COMENTARIOS JUANPE: TODO CORRECTO*/
