@@ -24,3 +24,5 @@ $$;
 SELECT * FROM TABLE(producto_mas_vendido_pnieto(2, 5));
 
 --DROP FUNCTION producto_mas_vendido_pnieto(INT, INT);
+
+/*COMENTARIOS JUANPE: TODO CORRECTO*/
