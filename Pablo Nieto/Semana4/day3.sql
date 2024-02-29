@@ -22,3 +22,5 @@ JOIN PRODUCT_HIERARCHY ph2
   ON ph1.parent_id = ph2.id
 JOIN PRODUCT_HIERARCHY ph3
   ON ph2.parent_id = ph3.id;
+
+    /*COMENTARIOS JUANPE: TODO CORRECTO*/
