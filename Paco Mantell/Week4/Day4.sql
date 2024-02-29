@@ -31,3 +31,9 @@ WITH CTE_CLEAN_DATA AS(
     PERCENTILE_CONT(0.50) WITHIN GROUP (ORDER BY amount)::decimal(10,2) P_50,
     PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY amount)::decimal(10,2) P_75
 FROM CTE_AMOUNT
+/*COMENTARIOS JUANPE:
+Casi correcto, el unico fallo es que el descuento no es un descuento en valor absoluto si no en valor porcentual lo puedes comprobar ya que si fuera en valor absoluto algunos saldrian en valor negativo con el descuento:
+   SELECT DISTINCT * FROM sql_en_llamas.case04.sales where qty*price < discount
+por tanto para que estuviera correcto tu codigo el campo amount habria que calcularlo asi:
+    SUM((qty * price) - qty*price*discount/100) amount
+*/
