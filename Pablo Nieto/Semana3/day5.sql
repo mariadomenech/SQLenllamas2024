@@ -117,3 +117,4 @@ CALL SQL_EN_LLAMAS.CASE03.movimientos_cliente_pnieto(1, 3, 1);
 --DROP FUNCTION SQL_EN_LLAMAS.CASE03.importe_retirado_pnieto(INT, INT);
 --DROP FUNCTION SQL_EN_LLAMAS.CASE03.importe_balance_pnieto(INT, INT);
 --DROP PROCEDURE SQL_EN_LLAMAS.CASE03.movimientos_cliente_pnieto(INT, INT, INT);
+/*COMENTARIOS JUANPE: TODO CORRECTO*/
