@@ -98,3 +98,5 @@ BEGIN
     RETURN 'El cliente ' || customer || ' tiene un total de  ' || :TOTAL_COMPRAS || 
          ' EUR en '|| :TIPO_CALCULO ||' en el mes de ' || :MES_FINAL || '. Siendo el balance total ' || :BALANCE || '.';
 END;
+
+/*COMENTARIOS JUANPE: TODO CORRECTO Y BIEN ORGANIZADO EL CÓDIGO*/
